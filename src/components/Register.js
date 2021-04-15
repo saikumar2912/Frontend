@@ -2,11 +2,11 @@ import React,{useState} from 'react'
 import Axios from 'axios';
 import './Register.css'
 
-const Register = () => {
+const Register = (props) => {
 const[name,setName]=useState('');
 const[age,setAge]=useState('');
 const[email,setEmail]=useState('');
-const[phoneno,setphoneNo]=useState('');
+const[phoneNo,setphoneNo]=useState('');
 const[passwordd,setPassword]=useState('');
 const[passwordd2,setPassword2]=useState('');
 
@@ -20,7 +20,7 @@ const[passwordd2,setPassword2]=useState('');
             password:e,
             password2:f
         }
-        Axios.post('http://localhost:8000/users/adduser',{register})
+        Axios.post('http://localhost:8000/users/adduser',register)
         .then( (res)=>console.log(res.data))
         .then(
          alert("Registered successful")
@@ -61,7 +61,7 @@ const[passwordd2,setPassword2]=useState('');
             <label htmlFor="password"  className="form-label"> Confirm Password</label>
                 <input type="password" name='password2'placeholder=" RE ENTER PASSWORD"  className="form-input"onChange={(e)=>setPassword2(e.target.value)}/>
                </div>
-               <button className="form-button-btn" onClick={()=>{submit(name,age,email,phoneno,passwordd,passwordd2)}} >Register </button>
+               <button className="form-button-btn" onClick={()=>{submit(name,age,email,phoneNo,passwordd,passwordd2);props.history.goBack()}} >Register </button>
         </form> 
         </div>
         </div>
