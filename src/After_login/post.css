@@ -49,3 +49,11 @@ cursor:pointer;
     cursor:pointer;
     bottom:50px;
 } */
+
+.post_text{
+    padding:100px;
+    border:1px solid lightgray;
+}
+.textarea{
+    resize:none
+}

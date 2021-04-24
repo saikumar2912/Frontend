@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,Route } from 'react-router-dom';
 import './Nav.css';
+import Home from '../Pages/home'
 import FadeMenu from './profile';
-
-function Nav() {
+import Homee from './Homee';
+import Skills from './Skills';
+import AddPost from './AddPost';
+function Nav(props) {
+  const {location:{state}}=props;
+  console.log(state);
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -27,19 +32,22 @@ function Nav() {
           </li>
           <li className='nav-item'>
             <Link to='/skills'className='nav-links' onClick={closeMobileMenu} >
-              Skills <i className='' />
+
+              Skills
             </Link>
           </li>
 
           <li className='nav-item'>
-            <Link to='/addpost' className='nav-links' onClick={closeMobileMenu}>
-             ADD POST
-            </Link>
+            <Link to='/addpost' className='nav-links' onClick={closeMobileMenu} >Add Post  </Link>
             
           </li>
-        <FadeMenu/>
+          <FadeMenu/>
+
         </ul>
         </nav>
+        <Route path='/home' component={Home}/>
+
+<AddPost user={state}/>
     </div>
   );
 }

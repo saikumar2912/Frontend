@@ -2,22 +2,31 @@ import React,{useState}from 'react'
 import auth from './Auth'
 import Axios from 'axios';
 import './login.css'
+import Navbar from './Navbar';
+import { Route } from 'react-router';
 const Login = (props) => {
+   
   const[email,setEmail]=useState('');
   const[password,setPassword]=useState('')
-
-  const submit=(a,f)=>{
+  const login=(a,b)=>{
     const register={
-        email:a,
-        password:f
+      email_id:a,
+      password:b
     }
-    Axios.post('http://localhost:8000/users/login',register)
-    .then( (res)=>console.log(res.data))
-    .then(
-     alert("Registered successful")
-    ).catch((e)=>{alert(e.message)})
-    console.log(register)
-       }
+    Axios.post('http://localhost:8000/users/login',register
+    )
+    .then((res)=>{console.log(res.data)
+    console.log(res.data)
+     alert(res.data.message)
+     if(res.data.message === "login sucessful"){
+      props.history.push('/navbar',res.data)
+    }
+   })
+    .catch((e)=>{console.log(e)})
+
+ }
+
+
       const handlesubmit=(e)=>{
 
         e.preventDefault()
@@ -39,8 +48,10 @@ const Login = (props) => {
                </div>
                <button
                className='button'
-        onClick={() => {submit(email,password); props.history.push('/navbar')}}
-      > Login</button>
+               onClick={() => {
+                auth.login(() => {login(email,password);
+               });
+              }} type='button'> Login</button>
        </form>
         </div>
         </div>

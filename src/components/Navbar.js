@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import { Link,Route } from 'react-router-dom';
+import Homee from '../After_login/Homee'
+import AddPost from '../After_login/AddPost'
+import Skills from '../After_login/Skills';
+// import './Navbar.css';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -11,7 +14,7 @@ function Navbar() {
   return (
     <div>
       <nav className='navbars'>
-        <Link to='/' className='navbar_logo' onClick={closeMobileMenu}>
+        <Link to='/navbar' className='navbar_logo' onClick={closeMobileMenu}>
           BUILD OUT
           <i class='fab fa-firstdraft' />
         </Link>
@@ -35,13 +38,31 @@ function Navbar() {
              Register
             </Link>
           </li>
-          <li className='navbar-item'>
-            <Link to='/login' className='navbar-links' onClick={closeMobileMenu} >
-              login
+          
+          <li className='nav-item'>
+            <Link to='/homee' className='nav-links' onClick={closeMobileMenu}>
+              Homee
             </Link>
           </li>
+          <li className='nav-item'>
+            <Link to='/skills'className='nav-links' onClick={closeMobileMenu} >
+
+              Skills
+            </Link>
+          </li>
+
+          <li className='nav-item'>
+            <Link to='/addpost' className='' onClick={closeMobileMenu} >Add Post  </Link>
+            
+          </li>
+
+        
         </ul>
         </nav>
+        <Route path='/skills' exact component={Skills}/>
+        <Route path="/homee" exact component={Homee}/>
+        <Route path="/AddPost" exact component={AddPost}/>
+
     </div>
   );
 }
