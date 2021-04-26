@@ -1,19 +1,23 @@
 import React,{useState} from 'react'
 import Axios from 'axios';
 import { useHistory } from "react-router-dom";
-import Navbar from '../components/Navbar';
 
 
-const AddPost = ({user}) => {
+const AddPost = (user) => {
      let history = useHistory();
 console.log(history);
-console.log(user)
+const {location:{state}}=user
+console.log(state._id)
+
+
 const [content,setContent]=useState("");
 
-const post=(a)=>{
+const post=(a,b)=>{
 const posted={
-    // user_id:user._id,
-    content:a
+   user_id:state._id,
+   user_name:state.user_name,
+    content:a,
+    like:b
 }
 Axios.post("http://localhost:8000/post/addpost",posted)
 .then((res)=>(console.log(res.data)))

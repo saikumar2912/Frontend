@@ -2,8 +2,7 @@ import React,{useState}from 'react'
 import auth from './Auth'
 import Axios from 'axios';
 import './login.css'
-import Navbar from './Navbar';
-import { Route } from 'react-router';
+import { Link} from 'react-router-dom';
 const Login = (props) => {
    
   const[email,setEmail]=useState('');
@@ -21,6 +20,7 @@ const Login = (props) => {
      if(res.data.message === "login sucessful"){
       props.history.push('/navbar',res.data)
     }
+    console.log(res.data)
    })
     .catch((e)=>{console.log(e)})
 
@@ -52,9 +52,14 @@ const Login = (props) => {
                 auth.login(() => {login(email,password);
                });
               }} type='button'> Login</button>
+               <Link to="/Register" className="alreadyuser">Don't have an account?</Link>
+
        </form>
+
         </div>
+
         </div>
+        
     )
 }
 

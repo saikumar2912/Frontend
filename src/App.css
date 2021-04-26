@@ -1,31 +1,25 @@
-/* 
-.home,
-.skills,
-.post,
-.contactus,
-.sign-up {
-  display: flex;
-  height: 90vh;
+.initial{
+  background-color: khaki;
+  height: 100vh;
+ display:grid;
+}
+.initial-item{
   align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-}
+  cursor: pointer;
+  display: flex;
+  margin-right:200px;
 
-.home {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-size: 100px;
-} */
-*{
-  margin:0;
+  
 }
-.cgprofile{
-  display:flex;
-  color:white;
-  margin: 5%;
-margin-top:25px;
-font-size:30px;
-cursor:pointer;
-
+.initial-links {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: table;
+margin-right:200px;
+}
+.initial-links:hover {
+  background-color: #1888ff;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
 }

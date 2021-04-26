@@ -7,8 +7,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import { red } from '@material-ui/core/colors';
-import Skills from './Skills'
-// import FavoriteIcon from '@material-ui/icons/Favorite';
 import Axios from 'axios';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,21 +33,17 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function RecipeReviewCard(user) {
-  console.log(user)
+  const {location:{state}}=user
+console.log(state)
   const classes = useStyles();
-//   const[Like,setLike]=useState('')
+  // const [count, setCount] = useState(0);
 
-//   const like=(a)=>{
-//       const register={
-//           like:a
-//        }
-//        Axios.patch('http://localhost:8000/post/updatepost',register)
-//        .then( (res)=>console.log(res.data))
-//         .catch((e)=>{alert(e.message)})
-//         console.log(register)
-//   }
+  //   const increment = () => {
+  //       //more logic here ..
+  //       setCount(count + 1);
+  //   }
+  //   console.log(count);  
 
-  
     const [Data,setData] = useState([]);
     useEffect(()=>{
       Axios.post('http://localhost:8000/post/getpost').then(
@@ -64,8 +58,8 @@ export default function RecipeReviewCard(user) {
 {Data.map((e)=> <>
           {e.content.length > 0 ?     <Card className={classes.root} >
       <CardContent>
+        {e.user_name}
       </CardContent>
-      
       <CardHeader
       
         avatar={
@@ -77,13 +71,14 @@ export default function RecipeReviewCard(user) {
      
       <CardContent>
       {e.content}
-
-      {/* {e.like.map(a=> a.like )} */}
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-            {/* <button onClick={()=>{like(Like)}}>like</button> */}
         </IconButton>
+        <span>
+       {/* <button onClick={()=>{increment()}} >likes </button>  */}
+
+        </span>
        
       </CardActions>  
          

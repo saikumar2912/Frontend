@@ -96,7 +96,6 @@ function validatepassword(){
                <button className="form-button-btn" onClick={()=>{submit(name,email,phoneNo,passwordd);props.history.goBack()}} disabled={validateForm()}>Register </button>
         </form> 
         </div>
-<Link to="/login"> user</Link>
         </div>
 
     )

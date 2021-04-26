@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Link,Route } from 'react-router-dom';
-import Homee from '../After_login/Homee'
-import AddPost from '../After_login/AddPost'
+import Home from '../After_login/Home'
+import AddPost from '../After_login/AddPost';
+import Profile from '../After_login/profile';
 import Skills from '../After_login/Skills';
-// import './Navbar.css';
+import './Navbar.css';
 
-function Navbar() {
-  const [click, setClick] = useState(false);
+function Navbar(props) {
+  const {location:{state}}=props;
+console.log(state); 
+
+
+    const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -21,47 +26,40 @@ function Navbar() {
         <div className='menu-icons' onClick={handleClick}>
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
-        <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
-          <li className='navbar-item'>
-            <Link to='/home' className='navbar-links' onClick={closeMobileMenu}>
+x        <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
+ 
+        <li className='navbar-item'>
+            <Link to={{
+              pathname:"/navbar/Home",
+              state:props.location.state}} className='navbar-links' onClick={closeMobileMenu}>
               Home
             </Link>
           </li>
+         
           <li className='navbar-item'>
-            <Link to='/contactus'className='navbar-links' onClick={closeMobileMenu} >
-              Contact Us <i className='' />
-            </Link>
-          </li>
-
-          <li className='navbar-item'>
-            <Link to='/register' className='navbar-links' onClick={closeMobileMenu}>
-             Register
-            </Link>
-          </li>
-          
-          <li className='nav-item'>
-            <Link to='/homee' className='nav-links' onClick={closeMobileMenu}>
-              Homee
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link to='/skills'className='nav-links' onClick={closeMobileMenu} >
+            <Link to={{
+              pathname:"/navbar/skills",
+              state:props.location.state}} className='navbar-links' onClick={closeMobileMenu} >
 
               Skills
             </Link>
           </li>
 
-          <li className='nav-item'>
-            <Link to='/addpost' className='' onClick={closeMobileMenu} >Add Post  </Link>
+          <li className='navbar-item'>
+            <Link to={{
+              pathname:"/navbar/addpost",
+              state:props.location.state
+            }} className='navbar-links' onClick={closeMobileMenu} >Add Post  </Link>
             
           </li>
+          <Profile/>
 
         
         </ul>
         </nav>
-        <Route path='/skills' exact component={Skills}/>
-        <Route path="/homee" exact component={Homee}/>
-        <Route path="/AddPost" exact component={AddPost}/>
+        <Route path='/navbar/skills' component={Skills}/>
+        <Route path="/navbar/Home"  component={Home}/>
+        <Route path='/navbar/addpost' component={AddPost}/>
 
     </div>
   );

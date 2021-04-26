@@ -148,3 +148,12 @@
     background-image: url('https://img.17qq.com/images/hjibefodgfz.jpeg');
 
 }
+.cgprofile{
+  display:flex;
+  color:white;
+  margin: 5%;
+margin-top:25px;
+font-size:30px;
+cursor:pointer;
+
+}
