@@ -53,8 +53,9 @@ const submit=(a)=>{
     useEffect(()=>{
       Axios.post('http://localhost:8000/bit/newskill',{skill_id:state})
       .then(
-        (res)=>{setData(res.data)
+        (res)=>{setData(res.data.bits)
             console.log(res.data)
+        
         // if (state===res.data._id){
 
         // }
@@ -62,27 +63,12 @@ const submit=(a)=>{
       },[state])
  console.log(Data);
  return (
-    <>   
-<input onChange={(e)=>setTitle(e.target.value)} />
-<button onClick={()=>{submit(title)}}>Add</button>
-    {Data.map((e)=> <>
-              {e.title.length > 0 ?     <Card className={classes.root}>
-          <CardContent>
-          </CardContent>
-          Title:{e.title}
-          <CardContent>
-          </CardContent>
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-            </IconButton>
-          </CardActions>  
-             
-        </Card>: <>{console.log("no posts")}</>}
+  <>   
+  {Data.map(e=>e.title)}
+  <input onChange={(e)=>setTitle(e.target.value)}/>
+  <button onClick={()=>submit(title)}>add</button>
       </>
-    
-      
-    )}
-    </>
+
 
       );
     }

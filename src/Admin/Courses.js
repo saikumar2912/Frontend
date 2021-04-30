@@ -42,7 +42,7 @@ const Courses = (props) => {
         (res)=>setData(res.data)  )
       },[])
  console.log(Data);
- 
+
  return (
     <>   
     {Data.map((e)=> <>
