@@ -37,59 +37,80 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard(user) {
   const {location:{state}}=user
 // console.log(state)
-  const classes = useStyles();
 
     const [Data,setData] = useState([]);
     let history = useHistory()
     
-        useEffect(()=>{
+    
+    useEffect(()=>{
             
-            Axios.post(['http://localhost:8000/skill/skills']).then(
-              (res)=>setData(res.data)
+      Axios.post('http://localhost:8000/skill/skills')
+      .then(
+        (res)=>setData(res.data)
 
-             )
+       )
+       
+      },[])
+      console.log(history)
+      console.log(Data)
+
+const[Follow,setFollow]=useState([])
+
+const follow=(a)=>{
+  const user={
+     user_id:state
+
+  }
+  Axios.post("http://localhost:8000/skill/follow",user)
+  .then((res)=>setFollow(res.data))
+  .catch((e)=>{alert(e.message)})
+}
+        // useEffect(()=>{
+            
+        //     Axios.post('http://localhost:8000/skill/userskills',{user_id:state})
+        //     .then(
+        //       (res)=>setData(res.data.skills)
+
+        //      )
              
-            },[history])
-       console.log(history)
-       console.log(Data)
+        //     },[state])
+      
        
    
-       const Add=()=>{
-           Data.map(e=>console.log(e))
-        const user={
-            user_id:state._id,
-            skill_id:Data.map(e=>e._id)
-                }
-        Axios.post('http://localhost:8000/middle/addskill',user)
-        .then((res)=>(console.log(res.data)))
-        .catch((e)=>{alert(e.message)})
-        console.log(user)
+    //    const Add=()=>{
+    //        Data.map(e=>console.log(e))
+    //     const user={
+    //         user_id:state._id,
+    //             }
+    //     Axios.post('http://localhost:8000/middle/addskill',user)
+    //     .then((res)=>(console.log(res.data)))
+    //     .catch((e)=>{alert(e.message)})
+    //     console.log(user)
 
-    }
+    // }
 
   return (
-<>   
-{Data.map((e)=> <>
-               <Card className={classes.root} >
-      <CardContent>
-         Title: {e.Title}
-      </CardContent>
-     
-      <CardContent>
-        Description: {e.Description}
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-        </IconButton>
-       <button value={state._id} onClick={()=>{Add()}}>Follow</button>
-       
-      </CardActions>  
+    <>   
+    {Data.map((e)=> <>
+              {e.Title.length > 0 ?   
+              
+              <div className="post">
          
-    </Card>
-  </>
+          <div className="post__header">
+          <Avatar className="post__avatar"
+            src="/static/images/avatar/jpg"
+            alt={e.Title}/>
+            <h3>{e.Title}</h3>
 
-  
-)}  
-</>
+          </div>
+          <h4 className="post__text"> {e.Description} </h4>
+<button onClick={()=>follow()}>follow</button>
+        </div>
+        : <>{console.log("no posts")}</>}
+      </>
+    
+      
+    )}
+    </>
   );
 }

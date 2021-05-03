@@ -1,35 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import Axios from 'axios';
-import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import { red } from '@material-ui/core/colors';
-import{Link} from 'react-router-dom';
-const useStyles = makeStyles((theme) => ({
-    root: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-    },
-    expand: {
-      transform: 'rotate(0deg)',
-      marginLeft: 'auto',
-      transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: 'rotate(180deg)',
-    },
-    avatar: {
-      backgroundColor: red[500],
-    },
-  }));
-  
+import { Button } from 'primereact/button';
+
 const Bit = (props) => {
     const {location:{state}}=props;
 
@@ -48,7 +20,6 @@ const submit=(a)=>{
 
 
     console.log(state)
-  const classes = useStyles();
     const [Data,setData] = useState([]);
     useEffect(()=>{
       Axios.post('http://localhost:8000/bit/newskill',{skill_id:state})
@@ -63,11 +34,30 @@ const submit=(a)=>{
       },[state])
  console.log(Data);
  return (
-  <>   
-  {Data.map(e=>e.title)}
-  <input onChange={(e)=>setTitle(e.target.value)}/>
-  <button onClick={()=>submit(title)}>add</button>
-      </>
+
+   <>
+
+  {Data.map((e)=> <>
+    {e.title.length > 0 ?   
+    
+    <div className="pos">
+
+<div className="post__header">
+{e.title}
+
+</div>
+</div>
+
+: <>{console.log("no bits")}
+[nobits]
+</>
+}
+</>
+)}
+<input onChange={(e)=>setTitle(e.target.value)}/>
+<Button label="ADD" onClick={()=>submit(title)}/>
+</>
+
 
 
       );

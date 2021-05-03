@@ -46,10 +46,10 @@ console.log(state)
 
     const [Data,setData] = useState([]);
     useEffect(()=>{
-      Axios.post('http://localhost:8000/post/getpost').then(
+      Axios.post('http://localhost:8000/post/getpost/user_id',{user_id:state}).then(
         (res)=>setData(res.data)
        )
-      },[])
+      },[state])
  console.log(Data);
  
 

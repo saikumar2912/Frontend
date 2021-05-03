@@ -1,40 +1,14 @@
-import React,{useState,useEffect} from 'react';
-import Axios from 'axios';
-import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import { red } from '@material-ui/core/colors';
-import{Link} from 'react-router-dom';
-const useStyles = makeStyles((theme) => ({
-    root: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-    },
-    expand: {
-      transform: 'rotate(0deg)',
-      marginLeft: 'auto',
-      transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: 'rotate(180deg)',
-    },
-    avatar: {
-      backgroundColor: red[500],
-    },
-  }));
-  
-const Courses = (props) => {
+import React , {useState ,useEffect} from 'react';
+import './Courses.css';
+import {Link} from 'react-router-dom';
+import Axios from 'axios'
+import Avatar from "@material-ui/core/Avatar";
+
+function Post(props) {
+    
   const {location:{state}}=props;
   console.log(state)
 
-  const classes = useStyles();
     const [Data,setData] = useState([]);
     useEffect(()=>{
       Axios.post('http://localhost:8000/skill/skills')
@@ -43,32 +17,36 @@ const Courses = (props) => {
       },[])
  console.log(Data);
 
- return (
-    <>   
-    {Data.map((e)=> <>
-              {e.Title.length > 0 ?     <Card className={classes.root}>
-          <CardContent>
-          </CardContent>
-          Title:{e.Title}
-          <CardContent>
-           Description:{e.Description}
-          </CardContent> 
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-                <Link to={{
-              pathname:"/navbar/course/view",
-              state:e._id}} onClick={()=>{}}>view</Link>
-            </IconButton>
-          </CardActions>  
+    return (
+    
+        <>   
+        {Data.map((e)=> <>
+                  {e.Title.length > 0 ?   
+                  
+                  <div className="post">
              
-        </Card>: <>{console.log("no posts")}</>}
-      </>
-    
-      
-    )}
-    </>
+              <div className="post__header">
+              <Avatar className="post__avatar"
+                src="/static/images/avatar/jpg"
+                alt={e.Title}/>
+                <h3>{e.Title}</h3>
 
-      );
-    }
-    
-export default Courses
+              </div>
+              <h4 className="post__text"> {e.Description} </h4>
+
+                    <Link to={{
+                  pathname:"/navbar/course/view",
+                  state:e._id}} onClick={()=>{}}>view</Link>
+            
+
+            </div>
+            : <>{console.log("no posts")}</>}
+          </>
+        
+          
+        )}
+        </>
+    )
+}
+
+export default Post;

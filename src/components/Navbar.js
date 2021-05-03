@@ -13,6 +13,8 @@ function Navbar(props) {
 console.log(state); 
 
 
+
+
     const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -28,8 +30,8 @@ console.log(state);
         <div className='menu-icons' onClick={handleClick}>
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
-x        <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
- 
+        <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
+
         <li className='navbar-item'>
             <Link to={{
               pathname:"/navbar/Home",
@@ -43,7 +45,7 @@ x        <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
               pathname:"/navbar/skills",
               state:props.location.state}} className='navbar-links' onClick={closeMobileMenu} >
 
-              Skills
+              userSkills
             </Link>
           </li>
           <li className='navbar-item'>
@@ -51,7 +53,7 @@ x        <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
               pathname:"/navbar/addcourse",
               state:props.location.state}} className='navbar-links' onClick={closeMobileMenu} >
 
-              Add Course
+              Add skills
             </Link>
             </li>
             <li className='navbar-item'>
@@ -59,7 +61,7 @@ x        <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
               pathname:"/navbar/courses",
               state:props.location.state}} className='navbar-links' onClick={closeMobileMenu} >
 
-              Courses
+              skills
             </Link>
             </li>
 
