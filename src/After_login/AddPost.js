@@ -11,7 +11,6 @@ console.log(state._id)
 const [content,setContent]=useState([]);
 const [Data,setData] = useState([]);
 const[value,setValue]=useState([]);
-
     useEffect(()=>{
         
       Axios.post('http://localhost:8000/skill/userskills',{user_id:state})
@@ -37,14 +36,19 @@ const Skillchange=(e)=>{
 }
 const Bit= value.map(Bit=>Bit)
 console.log(Bit)
+const [id,setId]=useState([])
 const BitChange=(e)=>{
-    console.log((value[e.target.value]))
+    setId((value[e.target.value]))
 }
-const post=(a,b)=>{
+console.log(id.skill_id)
+
+ const post=(a,b)=>{
+     console.log(id)
     const posted={
        user_id:state._id,
        user_name:state.user_name,
-skill_id:value.skill_id,
+    skill_id:id.skill_id,
+    bit_id:id.bit_id,
        content:a,
         like:b
     }
@@ -52,6 +56,8 @@ skill_id:value.skill_id,
     .then((res)=>(console.log(res.data)))
     .catch((e)=>{alert(e.message)})
     }
+
+
     return (
         <div>
             <div>
@@ -65,7 +71,6 @@ skill_id:value.skill_id,
             <div>
                 <select onChange={e=>BitChange((e))}>
                     <option> Select the bit</option>
-                    {/* {Bit.map(option=>(<option key={option.id} value={option.title}>{option.title}</option>))} */}
                     {
                          Bit.map((address, key) => <option key={key}value={key}>{address.title}</option>)
                          }
