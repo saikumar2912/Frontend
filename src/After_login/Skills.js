@@ -9,59 +9,35 @@ import { useHistory } from "react-router-dom";
 
 export default function RecipeReviewCard(user) {
   const {location:{state}}=user
-// console.log(state)
+console.log(state)
 
     const [Data,setData] = useState([]);
-    let history = useHistory()
     
     
     useEffect(()=>{
             
       Axios.post('http://localhost:8000/skill/skills')
-      .then(
-        (res)=>setData(res.data)
-
-       )
+      .then((res)=>setData(res.data))
        
       },[])
-      console.log(history)
       console.log(Data)
+const follow=(skillid)=>{  
+  console.log(skillid)
 
-const[Follow,setFollow]=useState([])
+  const data={
+     user_id:state._id
 
-const follow=(a)=>{
-  const user={
-     user_id:state
-
-  }
-  Axios.post("http://localhost:8000/skill/follow",user)
-  .then((res)=>setFollow(res.data))
+     }
+  Axios.put(`http://localhost:8000/skill/follow/${skillid}`,data)
+  .then((res)=>console.log(res.data))
+  .then(data=>console.log(data))
   .catch((e)=>{alert(e.message)})
 }
-        // useEffect(()=>{
-            
-        //     Axios.post('http://localhost:8000/skill/userskills',{user_id:state})
-        //     .then(
-        //       (res)=>setData(res.data.skills)
 
-        //      )
-             
-        //     },[state])
+        
       
        
    
-    //    const Add=()=>{
-    //        Data.map(e=>console.log(e))
-    //     const user={
-    //         user_id:state._id,
-    //             }
-    //     Axios.post('http://localhost:8000/middle/addskill',user)
-    //     .then((res)=>(console.log(res.data)))
-    //     .catch((e)=>{alert(e.message)})
-    //     console.log(user)
-
-    // }
-
   return (
     <>   
     {Data.map((e)=> <>
@@ -77,7 +53,7 @@ const follow=(a)=>{
 
           </div>
           <h4 className="post__text"> {e.Description} </h4>
-<button onClick={()=>follow()}>follow</button>
+<button onClick={()=>follow(e._id)}>follow</button>
         </div>
         : <>{console.log("no posts")}</>}
       </>

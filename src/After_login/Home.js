@@ -43,7 +43,7 @@ console.log(state)
   //       setCount(count + 1);
   //   }
   //   console.log(count);  
-
+ 
     const [Data,setData] = useState([]);
     useEffect(()=>{
       Axios.post('http://localhost:8000/post/getpost/user_id',{user_id:state}).then(
@@ -51,6 +51,12 @@ console.log(state)
        )
       },[state])
  console.log(Data);
+ const[like,setLike]=useState([]);
+
+  const Like=()=>{
+Axios.post("http://localhost:8000/post/like",{_id:"6091060327b68a080c7b57ed"})
+.then((res)=>console.log(res.data))
+  }
  
 
   return (
@@ -76,7 +82,7 @@ console.log(state)
         <IconButton aria-label="add to favorites">
         </IconButton>
         <span>
-       {/* <button onClick={()=>{increment()}} >likes </button>  */}
+       <button onClick={()=>{Like()}} >likes </button> 
 
         </span>
        

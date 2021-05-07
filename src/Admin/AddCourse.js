@@ -6,10 +6,10 @@ const AddCourse = () => {
     
 const[Title,setTitle]=useState('')
 const[Description,setDescription]=useState('')
-const [image, setImage] = useState("")
+const [image, setImage] = useState(" ")
 const[url,setUrl]=useState('')
 
-const addPost = async (a,c)=>{
+const addPost =()=>{
     //console.log(image)
     var formdata = new FormData();
 
@@ -17,7 +17,7 @@ const addPost = async (a,c)=>{
     formdata.append("cloud_name", "buildout123");
     formdata.append("upload_preset", "saikumar");
 
-    let res = await fetch(
+    let res = fetch(
     "https://api.cloudinary.com/v1_1/buildout123/auto/upload",
     {
         method: "post",
@@ -27,26 +27,18 @@ const addPost = async (a,c)=>{
     )
     .then(res=>res.json())
     .then(data=>{
-        setUrl(data.url)
-    })
-    .catch(err=>{
-        console.log(err)
-    })
+        const course={
+            Title,
+            Description,
+            photo:data.url
+        }
+        
+        Axios.post('http://localhost:8000/skill/addskill',course)
+        .then( (res)=>{console.log(res.data)
+        })
+        .catch((e)=>{console.log(e.message)})
 
-    const course={
-        Title:a,
-        Description:c,
-        photo:url
-    }
-    
-    Axios.post('http://localhost:8000/skill/addskill',course)
-    .then( (res)=>{console.log(res.data)
-   
-    // Axios.post('http://localhost:8000/bit/addbit',{skill_id:res.data._id})
-    .catch((e)=>{alert(e.message)})
     })
-    .catch((e)=>{alert(e.message)})
-    console.log(course)
 }
  
 

@@ -11,44 +11,47 @@ console.log(state._id)
 const [content,setContent]=useState([]);
 const [Data,setData] = useState([]);
 const[value,setValue]=useState([]);
+const[skill,setSkill]=useState([]);
+const [id,setId]=useState([]);
+
     useEffect(()=>{
         
       Axios.post('http://localhost:8000/skill/userskills',{user_id:state})
       .then((res)=>{setData(res.data.skills)
-        
-       }
+        }
     )
 
 
       },[state])
 
- console.log({skills:Data})
+//  console.log({skills:Data})
 const Add= Data.map(Add=>Add)
-
 const Skillchange=(e)=>{
-    console.log((Data[e.target.value]))
+    setSkill((Data[e.target.value]))
     
    const skill=Data[e.target.value].skill_id
-    console.log(skill)
+    // console.log(skill)
         
     Axios.post("http://localhost:8000/bit/newskill",{skill_id:skill})
             .then((res)=>setValue(res.data.bits)) 
 }
+console.log(skill)
 const Bit= value.map(Bit=>Bit)
-console.log(Bit)
-const [id,setId]=useState([])
+// console.log(Bit)
 const BitChange=(e)=>{
     setId((value[e.target.value]))
 }
-console.log(id.skill_id)
+// console.log(id)
 
  const post=(a,b)=>{
-     console.log(id)
+    //  console.log(id)
     const posted={
        user_id:state._id,
        user_name:state.user_name,
     skill_id:id.skill_id,
+    skill_title:skill.title,
     bit_id:id.bit_id,
+    bit_title:id.title,
        content:a,
         like:b
     }
