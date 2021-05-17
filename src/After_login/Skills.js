@@ -1,15 +1,20 @@
 import React,{useState,useEffect} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { red } from '@material-ui/core/colors';
 import Axios from 'axios';
-import { useHistory } from "react-router-dom";
+import {useSelector} from 'react-redux'
+
+
+export default function RecipeReviewCard() {
+
+  const user = useSelector(state => state.user.user._id)
+  console.log(user)
+  const [showfollow,setShowFollow] = useState(true)
+
+
+  const gettoken = ()=>localStorage.getItem('user')
 
 
 
-export default function RecipeReviewCard(user) {
-  const {location:{state}}=user
-console.log(state)
 
     const [Data,setData] = useState([]);
     
@@ -21,20 +26,18 @@ console.log(state)
        
       },[])
       console.log(Data)
+
 const follow=(skillid)=>{  
   console.log(skillid)
-
-  const data={
-     user_id:state._id
-
-     }
-  Axios.put(`http://localhost:8000/skill/follow/${skillid}`,data)
+  Axios.post(`http://localhost:8000/skill/follow`,{user_id:user,_id:skillid},{headers:{authorization:`Bearer ${gettoken()}`}})
   .then((res)=>console.log(res.data))
   .then(data=>console.log(data))
   .catch((e)=>{alert(e.message)})
+
+  setShowFollow(true)
 }
 
-        
+      
       
        
    
@@ -47,13 +50,19 @@ const follow=(skillid)=>{
          
           <div className="post__header">
           <Avatar className="post__avatar"
-            src="/static/images/avatar/jpg"
+            src={e.photo}
             alt={e.Title}/>
             <h3>{e.Title}</h3>
 
           </div>
           <h4 className="post__text"> {e.Description} </h4>
-<button onClick={()=>follow(e._id)}>follow</button>
+          {showfollow ?
+            <button onClick={()=>follow(e._id)}>follow</button>
+            :
+            <button onClick={()=>follow(e._id)}>unfollow</button>
+          }
+
+         
         </div>
         : <>{console.log("no posts")}</>}
       </>

@@ -1,41 +1,41 @@
 import React,{useState}from 'react'
 import auth from './Auth'
+import {useDispatch} from 'react-redux';
 import Axios from 'axios';
 import './login.css'
 import { Link} from 'react-router-dom';
+import { login } from '../Redux/Auth/Login/Action';
 const Login = (props) => {
-   
+  const dispatch=useDispatch();
   const[email,setEmail]=useState('');
   const[password,setPassword]=useState('')
-  const login=(a,b)=>{
-    const register={
-      email_id:a,
-      password:b
-    }
-    Axios.post('http://localhost:8000/users/login',register
-    )
-    .then((res)=>{console.log(res.data)
-    console.log(res.data)
-     alert(res.data.message)
-     if(res.data.message === "login sucessful"){
-      props.history.push('/navbar',res.data)
-    }
-    console.log(res.data)
-   })
-    .catch((e)=>{console.log(e)})
 
- }
+//   const login=(a,b)=>{
+//     const register={
+//       email_id:a,
+//       password:b
+//     }
+//     Axios.post('http://localhost:8000/users/login',register
+//     )
+//     .then((res)=>{console.log(res.data)
+//     console.log(res.data)
+//      alert(res.data.message)
+//      if(res.data.message === "login sucessful"){
+//       props.history.push('/navbar',res.data)
+//     }
+//     console.log(res.data)
+//    })
+//     .catch((e)=>{console.log(e)})
+
+//  }
 
 
-      const handlesubmit=(e)=>{
-
-        e.preventDefault()
-    }
+      
     return (
 
         <div className='login-main'>
         <div className="login-container" >
-         <form onSubmit={handlesubmit} className="login">
+         <form className="login">
              <h1 className=''> hi welcome</h1>
              <div className="login-inputs" >
             <label htmlFor="email" className="login-label" > Email</label>
@@ -48,10 +48,11 @@ const Login = (props) => {
                </div>
                <button
                className='button'
-               onClick={() => {
-                auth.login(() => {login(email,password);
-               });
-              }} type='button'> Login</button>
+               onClick={()=>{
+                   dispatch(login(email,password))
+                 }
+                   
+                   } type='button'> Login</button>
                <Link to="/Register" className="alreadyuser">Don't have an account?</Link>
 
        </form>

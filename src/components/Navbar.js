@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { Link,Route } from 'react-router-dom';
 import Home from '../After_login/Home'
 import AddPost from '../After_login/AddPost';
+import {useDispatch,useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 import Profile from '../After_login/profile';
 import Skills from '../After_login/Skills';
 import './Navbar.css';
 import Courses from '../Admin/Courses';
 import AddCourse from '../Admin/AddCourse';
 import Bit from '../Admin/Bit';
-function Navbar(props) {
-  const {location:{state}}=props;
-console.log(state); 
-
-
+function Navbar() {
+const user = useSelector(state => state.user)
+console.log(user)
 
 
     const [click, setClick] = useState(false);
@@ -23,7 +23,7 @@ console.log(state);
   return (
     <div>
       <nav className='navbars'>
-        <Link to='/navbar' className='navbar_logo' onClick={closeMobileMenu}>
+        <Link to='/navbar/home' className='navbar_logo' onClick={closeMobileMenu}>
           BUILD OUT
           <i class='fab fa-firstdraft' />
         </Link>
@@ -33,49 +33,40 @@ console.log(state);
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
 
         <li className='navbar-item'>
-            <Link to={{
-              pathname:"/navbar/Home",
-              state:props.location.state}} className='navbar-links' onClick={closeMobileMenu}>
+            <Link to="/navbar/Home" className='navbar-links' onClick={closeMobileMenu}>
               Home
             </Link>
           </li>
          
           <li className='navbar-item'>
-            <Link to={{
-              pathname:"/navbar/skills",
-              state:props.location.state}} className='navbar-links' onClick={closeMobileMenu} >
+            <Link to="/navbar/skills" className='navbar-links' onClick={closeMobileMenu} >
 
               userSkills
             </Link>
           </li>
           <li className='navbar-item'>
-            <Link to={{
-              pathname:"/navbar/addcourse",
-              state:props.location.state}} className='navbar-links' onClick={closeMobileMenu} >
+            <Link to="/navbar/addpost" className='navbar-links' onClick={closeMobileMenu} >Add Post  </Link>
+            
+          </li>
+          <li className='navbar-item'>
+            <Link to="/navbar/addcourse" className='navbar-links' onClick={closeMobileMenu} >
 
               Add skills
             </Link>
             </li>
             <li className='navbar-item'>
-            <Link to={{
-              pathname:"/navbar/courses",
-              state:props.location.state}} className='navbar-links' onClick={closeMobileMenu} >
+            <Link to="/navbar/courses" className='navbar-links' onClick={closeMobileMenu} >
 
               skills
             </Link>
             </li>
 
-          <li className='navbar-item'>
-            <Link to={{
-              pathname:"/navbar/addpost",
-              state:props.location.state
-            }} className='navbar-links' onClick={closeMobileMenu} >Add Post  </Link>
-            
-          </li>
+          
           
 
         
         </ul>
+       
         </nav>
         <Route path='/navbar/skills' component={Skills}/>
         <Route path="/navbar/Home"  component={Home}/>

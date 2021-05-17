@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
+import {useSelector} from 'react-redux';
 import { red } from '@material-ui/core/colors';
 import Axios from 'axios';
 const useStyles = makeStyles((theme) => ({
@@ -32,9 +33,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function RecipeReviewCard(user) {
-  const {location:{state}}=user
+export default function RecipeReviewCard() {
+  // const {location:{state}}=user
+const state = useSelector(state => state.user.user._id)
 console.log(state)
+  const gettoken = ()=>localStorage.getItem('user')
   const classes = useStyles();
   // const [count, setCount] = useState(0);
 
@@ -46,12 +49,11 @@ console.log(state)
  
     const [Data,setData] = useState([]);
     useEffect(()=>{
-      Axios.post('http://localhost:8000/post/getpost/user_id',{user_id:state}).then(
-        (res)=>setData(res.data)
+      Axios.post('http://localhost:8000/post/getpost/user_id',{user_id:state},{headers:{authorization:`Bearer ${gettoken()}`}}).then(
+        (res)=>console.log(res.data)
        )
       },[state])
  console.log(Data);
- const[like,setLike]=useState([]);
 
   const Like=()=>{
 Axios.post("http://localhost:8000/post/like",{_id:"6091060327b68a080c7b57ed"})

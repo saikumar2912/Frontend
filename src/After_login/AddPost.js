@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import Axios from 'axios';
+import {useSelector} from 'react-redux';
 
-
-const AddPost = (user) => {
-const {location:{state}}=user
-console.log(state._id)
-
-
+const AddPost = () => {
+// const {location:{state}}=user
+// console.log(state._id)
+ const user = useSelector(state => state.user.user)
+console.log(user)
 
 const [content,setContent]=useState([]);
 const [Data,setData] = useState([]);
@@ -16,13 +16,13 @@ const [id,setId]=useState([]);
 
     useEffect(()=>{
         
-      Axios.post('http://localhost:8000/skill/userskills',{user_id:state})
+      Axios.post('http://localhost:8000/skill/userskills',{user_id:user._id})
       .then((res)=>{setData(res.data.skills)
         }
     )
 
 
-      },[state])
+      },[user._id])
 
 //  console.log({skills:Data})
 const Add= Data.map(Add=>Add)
@@ -46,8 +46,7 @@ const BitChange=(e)=>{
  const post=(a,b)=>{
     //  console.log(id)
     const posted={
-       user_id:state._id,
-       user_name:state.user_name,
+    user_id:user,
     skill_id:id.skill_id,
     skill_title:skill.title,
     bit_id:id.bit_id,

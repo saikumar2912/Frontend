@@ -1,66 +1,42 @@
 import React,{useState,useEffect} from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import { Button } from 'primereact/button';
+import {useDispatch,useSelector} from 'react-redux'
+import {bitdetails, submit} from '../Redux/Auth/ADMIN/BitAction'
+import { skills } from '../Redux/Auth/PostAction';
 
 const Bit = (props) => {
-    const {location:{state}}=props;
-
-    const[title,setTitle]=useState('')
-const submit=(a)=>{
-  const Add={
-    skill_id:state,
-    title:a
-  }
-  Axios.post("http://localhost:8000/bit/addbit",Add)
-  .then((res)=>(console.log(res.data)))
-  .catch((e)=>{alert(e.message)})
-  console.log(Add)
-
-}
+  const {location:{state}}=props;
+  console.log(state)
+  const dispatch=useDispatch()
+const Data = useSelector(data => data.bit.bit.bits)
+console.log(Data)
 
 
-    console.log(state)
-    const [Data,setData] = useState([]);
+const[title,setTitle]=useState('')
     useEffect(()=>{
-      Axios.post('http://localhost:8000/bit/newskill',{skill_id:state})
-      .then(
-        (res)=>{setData(res.data.bits)
-            console.log(res.data)
-        
-        // if (state===res.data._id){
-
-        // }
-        }  )
-      },[state])
- console.log(Data);
- return (
-
-   <>
-
-  {Data.map((e)=> <>
-    {e.title.length > 0 ?   
+      const Token = () => localStorage.getItem("user");
+   return axios.post('http://localhost:8000/bit/newskill',{skill_id:state},{
+       headers:{authorization:`Bearer ${Token()}`}
+    })
+   .then(
+       (res)=> {
+          console.log(res.data)
+          dispatch(bitdetails(res.data))
+       })
+.catch((e)=>console.log(e))
+  },[])
     
-    <div className="pos">
+ return (
+  <div>
 
-<div className="post__header">
-{e.title}
-
-</div>
-</div>
-
-: <>{console.log("no bits")}
-[nobits]
-</>
-}
-</>
-)}
 <input onChange={(e)=>setTitle(e.target.value)}/>
-<Button label="ADD" onClick={()=>submit(title)}/>
-</>
+<Button label="ADD" onClick={()=>dispatch(submit(state,title))}/>
+  </div>
 
 
 
-      );
-    }
+      )
+}
     
 export default Bit
