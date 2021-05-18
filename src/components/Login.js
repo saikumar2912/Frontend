@@ -10,24 +10,6 @@ const Login = (props) => {
   const[email,setEmail]=useState('');
   const[password,setPassword]=useState('')
 
-//   const login=(a,b)=>{
-//     const register={
-//       email_id:a,
-//       password:b
-//     }
-//     Axios.post('http://localhost:8000/users/login',register
-//     )
-//     .then((res)=>{console.log(res.data)
-//     console.log(res.data)
-//      alert(res.data.message)
-//      if(res.data.message === "login sucessful"){
-//       props.history.push('/navbar',res.data)
-//     }
-//     console.log(res.data)
-//    })
-//     .catch((e)=>{console.log(e)})
-
-//  }
 
 
       

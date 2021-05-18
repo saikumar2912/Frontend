@@ -4,12 +4,14 @@ import UserReducer from "./Login/Reducers";
 import PostReducer from './PostReducer'
 import BitReducer from './ADMIN/BitReducer'
 import SkillReducer from './ADMIN/SkillReducer'
-import thunk from "redux-thunk";
+import DisplayReducer from './Login/DisplayReducer';
+ import thunk from "redux-thunk";
 const RootReducer = combineReducers({
   user: UserReducer,
   post:PostReducer,
   bit:BitReducer,
-  // skill:SkillReducer
+  skill:SkillReducer,
+  display:DisplayReducer
 });
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);

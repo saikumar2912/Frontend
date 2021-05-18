@@ -3,15 +3,14 @@ import axios from 'axios';
 import { Button } from 'primereact/button';
 import {useDispatch,useSelector} from 'react-redux'
 import {bitdetails, submit} from '../Redux/Auth/ADMIN/BitAction'
-import { skills } from '../Redux/Auth/PostAction';
 
 const Bit = (props) => {
   const {location:{state}}=props;
   console.log(state)
   const dispatch=useDispatch()
-const Data = useSelector(data => data.bit.bit.bits)
+const Data = useSelector(data => data.bit.bit)
 console.log(Data)
-
+// const [bit,setBit]=useState([])
 
 const[title,setTitle]=useState('')
     useEffect(()=>{
@@ -22,16 +21,22 @@ const[title,setTitle]=useState('')
    .then(
        (res)=> {
           console.log(res.data)
-          dispatch(bitdetails(res.data))
+          dispatch(bitdetails(res.data.bits))
        })
 .catch((e)=>console.log(e))
-  },[])
+  },[state])
     
  return (
-  <div>
+   <div>
+  <div >
+{Data.map(e=>e.title)}
 
+</div>
+<div>
 <input onChange={(e)=>setTitle(e.target.value)}/>
 <Button label="ADD" onClick={()=>dispatch(submit(state,title))}/>
+</div>
+
   </div>
 
 

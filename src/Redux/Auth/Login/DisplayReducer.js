@@ -1,17 +1,17 @@
 const initialstate={
-    skill:[]
+    display:[]
 }
 
 const reducer = (state = initialstate, action) => {
     switch (action.type) {
      
-      case "SKILL_SUCCESS":
+      case "DISPLAY_POST_SUCCESS":
         return {
          ...state,
-         skill:action.payload
+        display:action.payload
           
         }
-      case "SKILL_FAILED":
+      case "DISPLAY_POST_FAILED":
         return {
             ...state
         }

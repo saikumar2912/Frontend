@@ -1,22 +1,19 @@
 import React,{useState,useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Axios from 'axios';
-import {useSelector} from 'react-redux'
-
+import {useSelector,useDispatch} from 'react-redux'
+import { Skill } from '../Redux/Auth/ADMIN/SkillAction';
+import './Skills.css'
 
 export default function RecipeReviewCard() {
+  const dispatch=useDispatch();
 
   const user = useSelector(state => state.user.user._id)
   console.log(user)
   const [showfollow,setShowFollow] = useState(true)
 
-
-  const gettoken = ()=>localStorage.getItem('user')
-
-
-
-
-    const [Data,setData] = useState([]);
+  const gettoken = ()=>localStorage.getItem('user');
+      const [Data,setData] = useState([]);
     
     
     useEffect(()=>{
@@ -30,8 +27,10 @@ export default function RecipeReviewCard() {
 const follow=(skillid)=>{  
   console.log(skillid)
   Axios.post(`http://localhost:8000/skill/follow`,{user_id:user,_id:skillid},{headers:{authorization:`Bearer ${gettoken()}`}})
-  .then((res)=>console.log(res.data))
-  .then(data=>console.log(data))
+  .then((res)=>{console.log(res.data)
+  dispatch(Skill())
+  }
+  )
   .catch((e)=>{alert(e.message)})
 
   setShowFollow(true)
@@ -46,16 +45,16 @@ const follow=(skillid)=>{
     {Data.map((e)=> <>
               {e.Title.length > 0 ?   
               
-              <div className="post">
+              <div className="skill">
          
-          <div className="post__header">
-          <Avatar className="post__avatar"
+          <div className="skill__header">
+          <Avatar className="skill__avatar"
             src={e.photo}
             alt={e.Title}/>
             <h3>{e.Title}</h3>
 
           </div>
-          <h4 className="post__text"> {e.Description} </h4>
+          <h4 className="skill__text"> {e.Description} </h4>
           {showfollow ?
             <button onClick={()=>follow(e._id)}>follow</button>
             :

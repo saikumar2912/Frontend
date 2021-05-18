@@ -4,6 +4,7 @@ export const Post = (user_id,Title,Description,photo) => {
    
     return (dispatch) => {
       const Token = () => localStorage.getItem("user");
+      
         
       return  axios.post('http://localhost:8000/skill/addskill',{
           user_id:user_id,
