@@ -11,6 +11,7 @@ const reducer=(state=initial,action)=>{
       }
       case 'LOGOUT':
         return null
+        
       default:
         return state
   }

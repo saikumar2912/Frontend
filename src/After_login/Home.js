@@ -2,6 +2,7 @@ import React from 'react'
 import {useSelector,useDispatch} from 'react-redux';
 import Post from '../components/Post';
 import { Display } from '../Redux/Auth/Login/DisplayAction';
+import './Home.css'
 const Home = () => {
 
   const user = useSelector(state => state.user.user)
@@ -18,21 +19,37 @@ console.log(state)
 
 const Dis = useSelector(state => state.display.display.map(e=>e.bit_id.title))
 console.log(Dis)
-const skil=useSelector(state=>state.display.display.map(e=>e.skill_id.Title))
+const skil=useSelector(state=>state.display.display)
 console.log(skil)
 
   return (
-    <div>
+    <div> 
       {skill.map(e=>e.followers.map(s=>(
         user._id ===s ? <Post id={e._id}/>:<></>
       )))}
-<div class="card text-white bg-primary mb-3" style={{"max-width": "18rem;"}}>
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Primary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-    </div>
+<>   
+    {skil.map((e)=> <>
+
+              {console.log(e.skill_id.Title.length > 0 ) ?   
+              
+              <div className="skill">
+         
+          <div className="skill__header">
+          
+            <h3>{e.Title}</h3>
+
+          </div>
+          <h4 className="skill__text"> {e.Description} </h4>
+          
+         
+        </div>
+        : <>{console.log("no posts")}</>}
+      </>
+    
+      
+    )}
+    </>
+
     </div>
   )
 }

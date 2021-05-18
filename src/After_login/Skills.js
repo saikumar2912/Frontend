@@ -33,7 +33,7 @@ const follow=(skillid)=>{
   )
   .catch((e)=>{alert(e.message)})
 
-  setShowFollow(true)
+  setShowFollow(false)
 }
 
       
@@ -41,25 +41,31 @@ const follow=(skillid)=>{
        
    
   return (
+    <div className="container">
+
+
     <>   
     {Data.map((e)=> <>
               {e.Title.length > 0 ?   
               
-              <div className="skill">
+              <div className="profile-card">
          
-          <div className="skill__header">
-          <Avatar className="skill__avatar"
+         <div>
+         <Avatar className=""
             src={e.photo}
             alt={e.Title}/>
-            <h3>{e.Title}</h3>
-
+         </div>
+          <div>
+            <h3 className="profile-content">{e.Title}</h3>
+            
           </div>
-          <h4 className="skill__text"> {e.Description} </h4>
-          {showfollow ?
-            <button onClick={()=>follow(e._id)}>follow</button>
-            :
-            <button onClick={()=>follow(e._id)}>unfollow</button>
-          }
+          
+          <h4 className="desc"> {e.Description} </h4>
+         <div className="btn-div">
+         <button className="btn" onClick={()=>follow(e._id)}>follow</button>
+
+         </div>
+
 
          
         </div>
@@ -69,5 +75,7 @@ const follow=(skillid)=>{
       
     )}
     </>
+    </div>
+
   );
 }

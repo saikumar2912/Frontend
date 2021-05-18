@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link,Route } from 'react-router-dom';
 import Home from '../After_login/Home'
 import AddPost from '../After_login/AddPost';
-import {useDispatch,useSelector} from 'react-redux'
-import {useHistory} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 import Profile from '../After_login/profile';
 import Skills from '../After_login/Skills';
 import './Navbar.css';
@@ -11,7 +10,7 @@ import Courses from '../Admin/Courses';
 import AddCourse from '../Admin/AddCourse';
 import Bit from '../Admin/Bit';
 function Navbar() {
-const user = useSelector(state => state.user)
+const user = useSelector(state => state.user.user)
 console.log(user)
 
 
@@ -22,12 +21,15 @@ console.log(user)
 
   return (
     <div>
-      <nav className='navbars'>
+        <nav className='navbars'>
         <Link to='/navbar/home' className='navbar_logo' onClick={closeMobileMenu}>
           BUILD OUT
           <i class='fab fa-firstdraft' />
         </Link>
-        <div className='menu-icons' onClick={handleClick}>
+
+      {user.role==="user"? 
+      <>
+      <div className='menu-icons' onClick={handleClick}>
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
@@ -48,24 +50,31 @@ console.log(user)
             <Link to="/navbar/addpost" className='navbar-links' onClick={closeMobileMenu} >Add Post  </Link>
             
           </li>
+          <Profile/>
+          </ul>
+          </>
+          :
+          <ul>
           <li className='navbar-item'>
-            <Link to="/navbar/addcourse" className='navbar-links' onClick={closeMobileMenu} >
+          <Link to="/navbar/addcourse" className='navbar-links' onClick={closeMobileMenu} >
 
-              Add skills
-            </Link>
-            </li>
-            <li className='navbar-item'>
-            <Link to="/navbar/courses" className='navbar-links' onClick={closeMobileMenu} >
+            Add skills
+          </Link>
+          </li>
+          <li className='navbar-item'>
+          <Link to="/navbar/courses" className='navbar-links' onClick={closeMobileMenu} >
 
-              skills
-            </Link>
-            </li>
-
-          
-          
+            skills
+          </Link>
+          </li>
 
         
-        </ul>
+        
+
+      
+      </ul>}
+        
+          
        
         </nav>
         <Route path='/navbar/skills' component={Skills}/>
