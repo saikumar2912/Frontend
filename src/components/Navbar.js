@@ -3,6 +3,7 @@ import { Link,Route } from 'react-router-dom';
 import Home from '../After_login/Home'
 import AddPost from '../After_login/AddPost';
 import {useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 import Profile from '../After_login/profile';
 import Skills from '../After_login/Skills';
 import './Navbar.css';

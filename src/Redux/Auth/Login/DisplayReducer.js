@@ -15,6 +15,12 @@ const reducer = (state = initialstate, action) => {
         return {
             ...state
         }
+        case "LIKE_POST_SUCCESS":
+        return {
+         ...state,
+        display:action.payload
+          
+        }
       default: return state
     }
   }

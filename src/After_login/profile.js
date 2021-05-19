@@ -36,9 +36,10 @@ export default function FadeMenu() {
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={()=>{
-              localStorage.clear()
-              history.push('/login')
-            }}>Logout</MenuItem>
+          // AuthService.logout()
+          history.replace("/login")
+          window.location.reload()
+          }}>Logout</MenuItem>
       </Menu>
     </div>
   );

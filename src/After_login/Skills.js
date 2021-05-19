@@ -42,25 +42,22 @@ const follow=(skillid)=>{
    
   return (
     <div className="container">
-
+<div className="row">
 
     <>   
     {Data.map((e)=> <>
               {e.Title.length > 0 ?   
               
               <div className="profile-card">
-         
-         <div>
-         <Avatar className=""
-            src={e.photo}
-            alt={e.Title}/>
-         </div>
-          <div>
-            <h3 className="profile-content">{e.Title}</h3>
-            
-          </div>
           
-          <h4 className="desc"> {e.Description} </h4>
+          <div>
+          <Avatar className="avatar"src={e.photo}alt={e.Title}/>
+            <h3 className="profile-content">{e.Title}</h3>
+
+          </div>
+         
+          
+          <h4 className="desc">Description: {e.Description} </h4>
          <div className="btn-div">
          <button className="btn" onClick={()=>follow(e._id)}>follow</button>
 
@@ -75,6 +72,7 @@ const follow=(skillid)=>{
       
     )}
     </>
+    </div>
     </div>
 
   );
