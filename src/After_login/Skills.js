@@ -4,6 +4,7 @@ import Axios from 'axios';
 import {useSelector,useDispatch} from 'react-redux'
 import { Skill } from '../Redux/Auth/ADMIN/SkillAction';
 import './Skills.css'
+import { Card } from '@material-ui/core';
 
 export default function RecipeReviewCard() {
   const dispatch=useDispatch();
@@ -41,39 +42,43 @@ const follow=(skillid)=>{
        
    
   return (
-    <div className="container">
-<div className="row">
 
     <>   
     {Data.map((e)=> <>
-              {e.Title.length > 0 ?   
+              {e.Title.length > 0 ?<Card className='skill__card'>
+              <div className="homepage__card__header" >
+
+
+              <Avatar alt={"title"} src={e.photo} className="homepage__card__header__avatar" />
+              <div className="skill_name">
+              <h4> {e.Title}</h4>  
+
+              </div>
+              </div>
+
+              <div className="user_name" >
+               <h3><strong> Description:</strong> </h3>
+
+               <h4 className="des">{e.Description} </h4> 
+              </div>
+              <div className="btn-div">
+                <button className="btn" onClick={()=>follow(e._id)}> follow</button>
+              </div>
+
+              </Card>
               
-              <div className="profile-card">
           
-          <div>
-          <Avatar className="avatar"src={e.photo}alt={e.Title}/>
-            <h3 className="profile-content">{e.Title}</h3>
-
-          </div>
          
           
-          <h4 className="desc">Description: {e.Description} </h4>
-         <div className="btn-div">
-         <button className="btn" onClick={()=>follow(e._id)}>follow</button>
 
-         </div>
 
 
          
-        </div>
         : <>{console.log("no posts")}</>}
       </>
     
       
     )}
     </>
-    </div>
-    </div>
-
   );
 }

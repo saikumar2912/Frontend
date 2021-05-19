@@ -30,7 +30,7 @@ console.log(user)
         <Switch>
        
        <Route path='/navbar' component={Navbar}/>
-         <Redirect to='/navbar'/>
+         <Redirect to='/navbar/home'/>
        
 
         {/* <Route path="*" component={()=>"404 not found"}/>     */}

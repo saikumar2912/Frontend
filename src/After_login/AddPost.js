@@ -1,12 +1,15 @@
 import React,{useState,useEffect} from 'react'
 import Axios from 'axios';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
+import { Display } from '../Redux/Auth/Login/DisplayAction';
 
 const AddPost = () => {
 // const {location:{state}}=user
 // console.log(state._id)
  const user = useSelector(state => state.user.user)
 console.log(user)
+
+const dispatch=useDispatch()
 
 const [content,setContent]=useState([]);
 const [Data,setData] = useState([]);
@@ -57,6 +60,8 @@ const BitChange=(e)=>{
     Axios.post("http://localhost:8000/post/addpost",posted)
     .then((res)=>(console.log(res.data)))
     .catch((e)=>{alert(e.message)})
+    dispatch(Display())
+
     }
 
 

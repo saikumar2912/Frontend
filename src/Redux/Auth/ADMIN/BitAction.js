@@ -20,7 +20,7 @@ export const submit = (skill_id,title) => {
            .then(
                (res)=> {
                   console.log(res.data)
-                  dispatch(PostSuccess(res.data))
+                  dispatch(bitdetails(res.data.bits))
                })
       .catch((e)=>console.log(e))
          }

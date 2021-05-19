@@ -55,7 +55,7 @@ console.log(user)
           </ul>
           </>
           :
-          <ul>
+          <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
           <li className='navbar-item'>
           <Link to="/navbar/addcourse" className='navbar-links' onClick={closeMobileMenu} >
 
