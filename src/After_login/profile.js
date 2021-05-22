@@ -6,10 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import {CgProfile} from 'react-icons/cg'
 import {useHistory} from 'react-router-dom'
-import { logout } from '../Redux/Auth/Login/Action';
-
+import {Link} from 'react-router-dom';
 export default function FadeMenu() {
-  const dispatch=useDispatch();
   const history=useHistory()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -33,8 +31,8 @@ export default function FadeMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <Link to="/navbar/profile" className='navbar-link'>Profile</Link>
+
         <MenuItem onClick={()=>{
           // AuthService.logout()
           history.replace("/login")

@@ -2,18 +2,18 @@ import React,{useState,useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Axios from 'axios';
 import {useSelector,useDispatch} from 'react-redux'
-import { Skill } from '../Redux/Auth/ADMIN/SkillAction';
+import { follow } from '../Redux/Auth/ADMIN/SkillAction';
 import './Skills.css'
 import { Card } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Delete } from '../Redux/Auth/PostAction';
 
 export default function RecipeReviewCard() {
   const dispatch=useDispatch();
 
-  const user = useSelector(state => state.user.user._id)
+  const user = useSelector(state => state.user.user)
   console.log(user)
-  const [showfollow,setShowFollow] = useState(true)
 
-  const gettoken = ()=>localStorage.getItem('user');
       const [Data,setData] = useState([]);
     
     
@@ -25,17 +25,6 @@ export default function RecipeReviewCard() {
       },[])
       console.log(Data)
 
-const follow=(skillid)=>{  
-  console.log(skillid)
-  Axios.post(`http://localhost:8000/skill/follow`,{user_id:user,_id:skillid},{headers:{authorization:`Bearer ${gettoken()}`}})
-  .then((res)=>{console.log(res.data)
-  dispatch(Skill())
-  }
-  )
-  .catch((e)=>{alert(e.message)})
-
-  setShowFollow(false)
-}
 
       
       
@@ -62,7 +51,28 @@ const follow=(skillid)=>{
                <h4 className="des">{e.Description} </h4> 
               </div>
               <div className="btn-div">
-                <button className="btn" onClick={()=>follow(e._id)}> follow</button>
+{user.role==="user"?<div>
+{    e.followers.includes(user._id)?
+                <button className="btn" onClick={()=>dispatch(follow(e._id,user._id))}> unfollow</button>
+
+
+:
+<button className="btn" onClick={()=>dispatch(follow(e._id,user._id))}> follow</button>
+
+}
+</div>:
+
+<div>
+        <Link to={{pathname:"/navbar/view",
+                  state:e._id}} onClick={()=>{}} className="navbar-lin">view</Link>
+        <button className="bttn" onClick={()=>{dispatch(Delete(e._id))}}> delete</button>
+
+</div>
+}
+
+               
+
+
               </div>
 
               </Card>

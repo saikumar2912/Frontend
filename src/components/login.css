@@ -1,7 +1,7 @@
 .login-main{
 display: flex;
 background-image: url('https://www.compotus.com/assets/ppics/12.jpg');
-height:100vh;
+min-height:100vh;
 align-items: center;
 justify-content: center;
 background-repeat: no-repeat;
@@ -10,7 +10,7 @@ background-size: cover;
 
 
 .login-container {
-    margin-left: 900px;
+    right:-1px;
     width: 500px;
     position: relative;
     border-radius: 10px;

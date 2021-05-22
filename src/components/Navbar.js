@@ -3,13 +3,12 @@ import { Link,Route } from 'react-router-dom';
 import Home from '../After_login/Home'
 import AddPost from '../After_login/AddPost';
 import {useSelector} from 'react-redux'
-import {useHistory} from 'react-router-dom'
 import Profile from '../After_login/profile';
 import Skills from '../After_login/Skills';
 import './Navbar.css';
-import Courses from '../Admin/Courses';
 import AddCourse from '../Admin/AddCourse';
 import Bit from '../Admin/Bit';
+import profilepage from '../Pages/profilepage';
 function Navbar() {
 const user = useSelector(state => state.user.user)
 console.log(user)
@@ -44,7 +43,7 @@ console.log(user)
           <li className='navbar-item'>
             <Link to="/navbar/skills" className='navbar-links' onClick={closeMobileMenu} >
 
-              userSkills
+              Skills
             </Link>
           </li>
           <li className='navbar-item'>
@@ -63,7 +62,7 @@ console.log(user)
           </Link>
           </li>
           <li className='navbar-item'>
-          <Link to="/navbar/courses" className='navbar-links' onClick={closeMobileMenu} >
+          <Link to="/navbar/skills" className='navbar-links' onClick={closeMobileMenu} >
 
             skills
           </Link>
@@ -81,10 +80,9 @@ console.log(user)
         <Route path='/navbar/skills' component={Skills}/>
         <Route path="/navbar/Home"  component={Home}/>
         <Route path='/navbar/addpost' component={AddPost}/>
-        <Route path='/navbar/courses' component={Courses}/>
         <Route path='/navbar/addcourse' component={AddCourse}/>
-        <Route path="/navbar/course/view" component={Bit}/>  
-
+        <Route path="/navbar/view" component={Bit}/>  
+<Route path="/navbar/profile" component={profilepage}/>
 
 
     </div>

@@ -137,3 +137,100 @@ text-align: left;
 .des{
   padding:8px;
 }
+
+
+
+
+
+*{
+  margin :0;
+}
+.app{
+  background-color: #FAFAFA;
+}
+.app__headerimage{
+  
+  width: 60px;
+  height :30px;
+  object-fit: contain;
+  
+}
+.app__header{
+  padding: 15px;
+  background-color: white;
+  object-fit: contain;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.app__signUp{
+  display : flex;
+  flex-direction : column;
+}
+
+.app__posts{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.app__postsLeft{
+  margin-right: 40px;
+}
+
+.app__postsRight{
+  margin-left: 50px;
+}
+
+
+.navbar-lin {
+  color: black;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  width: 160px;
+  cursor: pointer;
+  height: 38px;
+box-shadow: 3px 3px 3px 3px #e6e6e6;
+text-transform: uppercase;
+
+}
+.navbar-lin:hover{
+  background:lightgrey;
+    transition: 250ms;
+    
+}
+.navbar-lin:hover {
+  background-color:lightgrey;
+  border-radius: 0;
+}
+
+.bttn
+{
+margin-top:50px;
+background-color:white;
+color:black;
+width: 130px;
+cursor: pointer;
+height: 38px;
+font-size: 13px;
+font-weight: 600;
+box-shadow: 3px 3px 3px 3px #e6e6e6;
+border-radius: 3px;
+outline:none;
+border:none;
+text-transform: uppercase;
+margin-left:150px;
+box-shadow: 3px 3px 3px 3px #e6e6e6;
+
+}
+.bttn:hover{
+  background-color:lightgrey;
+  transition: 250ms;
+
+}

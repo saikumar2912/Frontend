@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import Axios from 'axios';
 import {useSelector,useDispatch} from 'react-redux';
 import { Display } from '../Redux/Auth/Login/DisplayAction';
+import './AddPost.css';
+import Button from '@material-ui/core/Button';
 
 const AddPost = () => {
 // const {location:{state}}=user
@@ -66,34 +68,31 @@ const BitChange=(e)=>{
 
 
     return (
-        <div>
-            <div>
-                <select onChange={e=> Skillchange((e))} >
+        <div className="bit" >
+            <div className="select">
+                <select className="select__skill" onChange={e=> Skillchange((e))} >
                         <option  > Select the Skills</option>
                          {
                          Add.map((address, key) => <option key={key}value={key}>{address.title}</option>)
                          }
                 </select>
-            </div>
-            <div>
-                <select onChange={e=>BitChange((e))}>
+                <select className="select__bit" onChange={e=>BitChange((e))}>
                     <option> Select the bit</option>
                     {
                          Bit.map((address, key) => <option key={key}value={key}>{address.title}</option>)
                          }
                 </select>
+                
             </div>
-            {/* <div>
-                <select onChange={(e)=>setData(e.target.value)} >
-                {Data.map((option) => (
-              <option key={option.id} value={option.id}>{option.Title}</option>
-            ))}
-                    <option value={Data}> select the skills</option>
-                    <option></option>
-                </select>
-            </div> */}
-<input type="text" onChange={(e)=>setContent(e.target.value)} />
-<button onClick={()=>post(content)}>post</button>   
+           
+            <div className="post__textarea"> 
+            <textarea  cols="50" rows="20" className="textarea"onChange={(e)=>setContent(e.target.value)} placeholder="Content"></textarea>
+
+            </div>
+<div className="post__btn">
+<Button className="post_btn" onClick={()=>post(content)}>post</Button>   
+
+</div>
         </div>
     )
 }

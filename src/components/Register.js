@@ -100,5 +100,4 @@ function validatepassword(){
 
     )
 }
-
 export default Register

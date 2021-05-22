@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { Display } from './Login/DisplayAction';
 export const Post = (user_id,Title,Description,photo) => {
   console.log('AddPostReducer')
    
@@ -27,6 +26,28 @@ export const Post = (user_id,Title,Description,photo) => {
             })
     }
   }
+  export const Delete = (id) => {
+    console.log('AddPostReducer')
+     
+      return (dispatch) => {
+        const Token = () => localStorage.getItem("user");
+        
+          
+        return  axios.delete(`http://localhost:8000/skill/deleteskill/${id}`,{headers:{authorization:`Bearer ${Token()}`}
+          }).then(
+              (res)=> {
+                 console.log(res.data)
+                 return  axios.post('http://localhost:8000/skill/skills',{},{headers:{authorization:`Bearer ${Token()}`}
+          }).then(
+              (res)=> {
+                 console.log(res.data)
+                 dispatch(PostSuccess(res.data))
+                 
+              })
+  
+              })
+      }
+    }
   
   
   export const PostSuccess = posts => {

@@ -25,16 +25,25 @@ console.log(user)
          <Route path="/contactus" exact component={Contactus}/>
          <Route path='/login'exact component={Login}/>
          
+         <Route path="*" component={()=>"404 not found"}/>    
 
-        </Switch>:    
+        </Switch>: 
+        user.role==="user"?   
         <Switch>
        
        <Route path='/navbar' component={Navbar}/>
          <Redirect to='/navbar/home'/>
+
        
 
-        {/* <Route path="*" component={()=>"404 not found"}/>     */}
                 </Switch>
+                :
+                <Switch>
+<Route path='/navbar' component={Navbar}/>
+
+<Redirect to='/navbar/addcourse'/>
+                </Switch>
+                
          }
         
 

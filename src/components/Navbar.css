@@ -166,3 +166,19 @@ margin-bottom: 1px;
   margin-left:600px;
   margin-bottom:15px;
 }
+
+
+.navbar-link {
+  color: black;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+.navbar-link:hover{
+  background:lightgrey;
+    transition: 250ms;
+    
+}
+.navbar-link:hover {
+  background-color:lightgrey;
+  border-radius: 0;
+}
