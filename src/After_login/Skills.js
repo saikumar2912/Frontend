@@ -51,20 +51,15 @@ export default function RecipeReviewCard() {
                <h4 className="des">{e.Description} </h4> 
               </div>
               <div className="btn-div">
-{user.role==="user"?<div>
-{    e.followers.includes(user._id)?
-                <button className="btn" onClick={()=>dispatch(follow(e._id,user._id))}> unfollow</button>
-
-
-:
-<button className="btn" onClick={()=>dispatch(follow(e._id,user._id))}> follow</button>
-
-}
+              {user.role==="user"?<div>
+                <button className="btn" onClick={()=>dispatch(follow(e._id,user._id))}> 
+                {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }
+</button>
 </div>:
 
 <div>
         <Link to={{pathname:"/navbar/view",
-                  state:e._id}} onClick={()=>{}} className="navbar-lin">view</Link>
+                  state:e._id}} onClick={()=>{}} className="navbar-lin">add bit</Link>
         <button className="bttn" onClick={()=>{dispatch(Delete(e._id))}}> delete</button>
 
 </div>

@@ -61,6 +61,7 @@ const BitChange=(e)=>{
     }
     Axios.post("http://localhost:8000/post/addpost",posted)
     .then((res)=>(console.log(res.data)))
+    .then(alert("posted succeffully"))
     .catch((e)=>{alert(e.message)})
     dispatch(Display())
 

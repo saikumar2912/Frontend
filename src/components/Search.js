@@ -13,7 +13,7 @@ const Search = () => {
  console.log(Data);
     return (
         <div>
-            <input type="text"/>
+            <input type="text" placeholder="Search skills"/>
         </div>
     )
 }

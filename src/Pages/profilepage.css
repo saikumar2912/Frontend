@@ -91,3 +91,8 @@ margin-right:100px;
 .new{
   margin-left:200px;
 }
+.delete_icon{
+  margin-left:500px;
+  margin: bottom 100px;
+  cursor:pointer;
+}

@@ -27,7 +27,6 @@ export const Post = (user_id,Title,Description,photo) => {
     }
   }
   export const Delete = (id) => {
-    console.log('AddPostReducer')
      
       return (dispatch) => {
         const Token = () => localStorage.getItem("user");

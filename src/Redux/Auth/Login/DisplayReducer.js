@@ -11,6 +11,11 @@ const reducer = (state = initialstate, action) => {
         display:action.payload
           
         }
+        case "DELETE_POST_SUCCESS":
+        return{
+...state,
+display:action.payload
+        }
       case "DISPLAY_POST_FAILED":
         return {
             ...state

@@ -28,6 +28,33 @@ export const submit = (skill_id,title) => {
       
     }
   }
+  
+  export const DeleteBit =(id,skill_id)=>{
+    return (dispatch) => {
+      const Token = () => localStorage.getItem("user");
+      
+        
+      return  axios.delete(`http://localhost:8000/bit/delete_bit/${id}`,{},{headers:{authorization:`Bearer ${Token()}`}
+        }).then(
+            (res)=> { console.log(res.data)
+              return axios.post('http://localhost:8000/bit/newskill',{skill_id},{
+                headers:{authorization:`Bearer ${Token()}`}
+             })
+            .then(
+                (res)=> {
+                   console.log(res.data)
+                   dispatch(deletedetails(res.data))
+                })
+       .catch((e)=>console.log(e))
+            })
+    }
+  }
+  export const deletedetails = (e) => {
+    return (dispatch) => {
+      console.log("new",e);
+      dispatch(DeleteSuccess(e))
+      }
+    }
   export const bitdetails = (e) => {
     return (dispatch) => {
       console.log("new",e);
@@ -42,7 +69,13 @@ export const submit = (skill_id,title) => {
           payload: bit
         }
       }
-  
+      export const DeleteSuccess = bit => {
+
+        return {
+          type: "DELETE_BIT_SUCCESS",
+          payload: bit
+        }
+      }
   export const PostFailure = () => {
     return {
       type: "ADD_BIT_FAILED",

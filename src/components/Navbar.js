@@ -9,11 +9,14 @@ import './Navbar.css';
 import AddCourse from '../Admin/AddCourse';
 import Bit from '../Admin/Bit';
 import profilepage from '../Pages/profilepage';
+import Search from './Search';
+import {useHistory} from 'react-router-dom'
+
 function Navbar() {
 const user = useSelector(state => state.user.user)
 console.log(user)
 
-
+const history=useHistory();
     const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -33,7 +36,10 @@ console.log(user)
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
+        <li className='navbar-item'>
 
+        <Search/>
+</li>
         <li className='navbar-item'>
             <Link to="/navbar/Home" className='navbar-links' onClick={closeMobileMenu}>
               Home
@@ -67,7 +73,13 @@ console.log(user)
             skills
           </Link>
           </li>
-
+          <li className='navbar-item'>
+            <button className='navbar-links' onClick={()=>{
+          // AuthService.logout()
+          history.replace("/login")
+          window.location.reload()
+          }}> logout</button>
+</li>
         
         
 
