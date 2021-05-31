@@ -11,6 +11,9 @@ import Bit from '../Admin/Bit';
 import profilepage from '../Pages/profilepage';
 import Search from './Search';
 import {useHistory} from 'react-router-dom'
+import Skillsearch from '../Pages/skillsearch';
+import AdminHome from '../Admin/AdminHome';
+import Achivements from '../Pages/Achivements';
 
 function Navbar() {
 const user = useSelector(state => state.user.user)
@@ -61,6 +64,12 @@ const history=useHistory();
           </>
           :
           <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
+            <li className='navbar-item'>
+          <Link to="/navbar/new" className='navbar-links' onClick={closeMobileMenu} >
+
+            Home
+          </Link>
+          </li>
           <li className='navbar-item'>
           <Link to="/navbar/addcourse" className='navbar-links' onClick={closeMobileMenu} >
 
@@ -95,8 +104,9 @@ const history=useHistory();
         <Route path='/navbar/addcourse' component={AddCourse}/>
         <Route path="/navbar/view" component={Bit}/>  
 <Route path="/navbar/profile" component={profilepage}/>
-
-
+<Route path="/navbar/search" component={Skillsearch}/>
+<Route path="/navbar/new" component={AdminHome}/>
+<Route path="/navbar/achivement" component={Achivements}/>
     </div>
   );
 }

@@ -8,18 +8,18 @@
 .profile__body{
   display: flex;
   margin-top: 10px;
-  height: 80vh;
-  width: 26vw;
+  
   border-radius: 2px;
   background-color: white;
   padding:10px;
 }
 
 .profile__body__left{
-  display: flex;
   flex-direction: column;
-  flex: 0.35;
-  padding: 10px;
+  flex: 0 0 300px;
+  width:300px;
+  padding: 1rem;
+  border-right:1px solid #dedede;
   /* margin-top: -10%; */
   /* color: rgb(255, 157, 171); */
 }
@@ -89,10 +89,8 @@ margin-right:100px;
 }
 
 .new{
-  margin-left:200px;
+  margin-left:2rem;
+  width:calc(100% - 300px);
 }
-.delete_icon{
-  margin-left:500px;
-  margin: bottom 100px;
-  cursor:pointer;
-}
+
+.skill_name h5{ margin-bottom: 0; flex:1;}

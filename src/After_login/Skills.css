@@ -234,3 +234,7 @@ box-shadow: 3px 3px 3px 3px #e6e6e6;
   transition: 250ms;
 
 }
+.staricon{
+  margin-left:450px;
+  cursor:pointer;
+}

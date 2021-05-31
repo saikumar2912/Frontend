@@ -45,6 +45,9 @@ console.log(user)
 const state = useSelector(state => state.display.display)
 console.log(state)
 
+const achive=useSelector(state=>state.user.achivement )
+console.log(achive)
+
 const dispatch=useDispatch()
 useEffect(() => {
 userposts()
@@ -69,10 +72,7 @@ console.log(state.map(e=>e.content))
 <p className="h4"> <strong> PhoneNo:</strong> {user.phoneNo} </p>
 
 <div className="profile__body__logout">
-    <Button>Skills</Button>
-</div>
-<div className="profile__body__logout">
-  <Button> Achivements</Button>
+  <Button onClick={()=>{history.push('/navbar/achivement')}}> Achivement {!achive ? "" : achive.achivement.length} </Button>
 </div >
 <div className="profile__body__logout">
     <Button onClick={()=>{

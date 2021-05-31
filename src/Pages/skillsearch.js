@@ -1,27 +1,31 @@
-import Avatar from '@material-ui/core/Avatar';
-import {useSelector,useDispatch} from 'react-redux'
-import { follow } from '../Redux/Auth/ADMIN/SkillAction';
-import './Skills.css'
 import { Card } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import { Delete } from '../Redux/Auth/PostAction';
+import React from 'react'
+import {useSelector,useDispatch} from 'react-redux'
+import {Link, useHistory} from 'react-router-dom';
+import { follow } from '../Redux/Auth/ADMIN/SkillAction';
 
+import Avatar from '@material-ui/core/Avatar';
 
-export default function RecipeReviewCard() {
+const Skillsearch = (search) => {
+
+  const findd = search.history.location.state
   const dispatch=useDispatch();
 
   const user = useSelector(state => state.user.user)
   console.log(user)
-  
+    const Data = useSelector(state => state.skill.skill)
+    console.log(Data)
 
-const Data = useSelector(state => state.skill.skill)
-console.log(Data)
+    const filteredPost =
+   Data  &&
+  Data.filter((e) => e && e.Title.toLowerCase().replace(/\s/g, '').includes(findd.toLowerCase().replace(/\s/g, '')))
 
-return (
+  console.log(filteredPost)
+     console.log (search)
 
-    <>   
-    {Data.map((e)=> <>
-              {e.Title.length > 0 ?<Card className='skill__card'>
+    return (
+        <div>
+{filteredPost.map(e=><Card className='skill__card'>
               <div className="homepage__card__header" >
 
 
@@ -39,23 +43,19 @@ return (
                <h4 className="des">{e.Description} </h4> 
               </div>
               <div className="btn-div">
-              {user.role==="user"?<div>
+              <div>
                 <button className="btn" onClick={()=>dispatch(follow(e._id,user._id))}> 
                 {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }
 </button>
-</div>:
+</div>               
 
-<div>
-        <Link to={{pathname:"/navbar/view",
-                  state:e._id}}  className="navbar-lin">add bit</Link>
-        <button className="bttn" onClick={()=>{dispatch(Delete(e._id))}}> delete</button>
+no skills
+              </div>
 
-</div>
-}    
-  </div>
-  </Card> : <>{console.log("no posts")}</>}
-      </>
-     )}
-    </>
-  );
+              </Card>
+              )}
+        </div>
+    )
 }
+
+export default Skillsearch

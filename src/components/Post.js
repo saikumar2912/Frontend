@@ -12,10 +12,12 @@ const dispatch=useDispatch();
     console.log(user)
     const Display = useSelector(state => state.display.display)
     console.log(Display)
+   
 
     return (
 <div>
   {Display.map(e=>id === e.skill_id._id ?
+
     <Card className='homepage__card'>
 
           <div className="homepage__card__header" >
@@ -31,14 +33,16 @@ const dispatch=useDispatch();
           <strong> Bit_Title:</strong>  {e.bit_id.title}
           </div>
 <div className="content">
-  Content:{e.content}
+<strong>  Content:</strong>{e.content}
   </div>
 
   <div className="icons">
   
    <div>
-   <BiLike className="like_icon" onClick={()=>{dispatch(like(e._id,user._id));}}  variant="contained"
-       size={100}/>{e.like.length}
+   <BiLike className="like_icon"  
+ onClick={()=>{dispatch(like(e._id,user._id))}}  variant="contained"
+       size={100}>  </BiLike>{e.like.length}
+
 <BiDislike className="dislike_icon"  onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
 <WarningIcon className="warning_icon" onClick={()=>{dispatch(irrevelant(e._id,user._id))}} size={100}/>{e.irrevelant_content.length}
 

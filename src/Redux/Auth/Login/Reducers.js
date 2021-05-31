@@ -1,5 +1,6 @@
 const initial={
-  user:null
+  user:null,
+  achivement:null
 }
 
 const reducer=(state=initial,action)=>{
@@ -8,6 +9,11 @@ const reducer=(state=initial,action)=>{
       return{
              ...state,
              user:action.payload
+      }
+      case 'ACHIVEMENT':
+      return{
+             ...state,
+             achivement:action.payload
       }
       case 'LOGOUT':
         return null

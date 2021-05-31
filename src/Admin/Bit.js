@@ -15,6 +15,9 @@ console.log(Data)
 // const [bit,setBit]=useState([])
 const bit = useSelector(state => state)
 console.log(bit)
+const user = useSelector(state => state.user.user)
+  console.log(user)
+
 
 const[title,setTitle]=useState('')
     useEffect(()=>{
@@ -35,13 +38,20 @@ const[title,setTitle]=useState('')
    {Data.map((e)=><>
    {e.title.length >0 ?<Card>
      {e.title}
-     {/* <button onClick={()=>{dispatch(DeleteBit(e.bit_id))}}> delete</button> */}
-   </Card>:<></>}
+
+     {user.role==="user"?<></>:<>
+     <button onClick={()=>{dispatch(DeleteBit(e.bit_id))}}> delete</button>
+     
+     </>}
+   </Card>:<>
+  
+   </>}
    </>)}
   
  <div>
-<input onChange={(e)=>setTitle(e.target.value)}/>
-<Button label="ADD" onClick={()=>dispatch(submit(state,title))}/>
+   {user.role==="user"?<></>:<><input onChange={(e)=>setTitle(e.target.value)}/>
+<Button label="ADD" onClick={()=>dispatch(submit(state,title))}/></>}
+ 
 </div> 
 
   </div>

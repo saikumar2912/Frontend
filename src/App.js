@@ -41,7 +41,7 @@ console.log(user)
                 <Switch>
 <Route path='/navbar' component={Navbar}/>
 
-<Redirect to='/navbar/addcourse'/>
+<Redirect to='/navbar/new'/>
                 </Switch>
                 
          }

@@ -28,6 +28,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "thunk": "0.0.1",
+    "two-step-auth": "^1.1.2",
     "validator": "^13.5.2",
     "web-vitals": "^1.1.0"
   },

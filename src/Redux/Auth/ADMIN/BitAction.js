@@ -37,24 +37,19 @@ export const submit = (skill_id,title) => {
       return  axios.delete(`http://localhost:8000/bit/delete_bit/${id}`,{},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> { console.log(res.data)
-              return axios.post('http://localhost:8000/bit/newskill',{skill_id},{
+              return axios.post('http://localhost:8000/bit/newskill',{skill_id:res.data.skill_id},{
                 headers:{authorization:`Bearer ${Token()}`}
              })
             .then(
                 (res)=> {
                    console.log(res.data)
-                   dispatch(deletedetails(res.data))
+                   dispatch(bitdetails(res.data.bits))
                 })
        .catch((e)=>console.log(e))
             })
     }
   }
-  export const deletedetails = (e) => {
-    return (dispatch) => {
-      console.log("new",e);
-      dispatch(DeleteSuccess(e))
-      }
-    }
+ 
   export const bitdetails = (e) => {
     return (dispatch) => {
       console.log("new",e);

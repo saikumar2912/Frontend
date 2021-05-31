@@ -21,7 +21,8 @@ console.log(state)
   return (
     <div> 
       {skill.map(e=>e.followers.map(s=>(
-        user._id ===s ? <Post id={e._id}/>:<></>
+        user._id ===s ? <Post id={e._id}/> :<div> </div>
+
       )))}
     </div>
   )
