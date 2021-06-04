@@ -25,7 +25,7 @@ const login = (email_id, password) => {
   };
 
 
-  const getCurrentUser=()=> {
+ export const getCurrentUser=()=> {
     const Token =()=> localStorage.getItem("user");
     return axios.post('http://localhost:8000/users/particularUser',{},{
       headers:{authorization:`Bearer ${Token()}`}

@@ -1,59 +1,73 @@
 import { Card } from '@material-ui/core';
-import React from 'react'
+import React, { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {Link, useHistory} from 'react-router-dom';
-import { follow } from '../Redux/Auth/ADMIN/SkillAction';
+import WarningIcon from '@material-ui/icons/Warning';
+import {  dislike, irrevelant, like} from '../Redux/Auth/Login/DisplayAction';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
 import Avatar from '@material-ui/core/Avatar';
 
 const Skillsearch = (search) => {
+
+  const [skills, setskills] = useState('')
 
   const findd = search.history.location.state
   const dispatch=useDispatch();
 
   const user = useSelector(state => state.user.user)
   console.log(user)
-    const Data = useSelector(state => state.skill.skill)
+    const Data = useSelector(state => state.display.display)
     console.log(Data)
 
-    const filteredPost =
-   Data  &&
-  Data.filter((e) => e && e.Title.toLowerCase().replace(/\s/g, '').includes(findd.toLowerCase().replace(/\s/g, '')))
+    const filteredPost = Data && Data.filter((e) => e && e.skill_id.Title.toLowerCase().replace(/\s/g, '').includes(skills.toLowerCase().replace(/\s/g, '')))
 
   console.log(filteredPost)
      console.log (search)
 
     return (
-        <div>
-{filteredPost.map(e=><Card className='skill__card'>
-              <div className="homepage__card__header" >
+<div class="card-class">
+    <div class="row">
+      <input onChange={(e)=>setskills(e.target.value)}/>
+{filteredPost.map(e=>
+              <div class="col-xl-4 col-lg-4 col-4">
+
+<Card className='homepage__card'>
+
+          <div className="homepage__card__header" >
+               <Avatar alt={"title"} src={e.skill_id.photo} className="homepage__card__header__avatar" />
+               <div className="skill_name">
+             <h5> <strong>{e.skill_id.Title}</strong></h5> 
+             <div className="user_name">
+        <h6>  {e.user_id.user_name}</h6>
+          </div>
+               </div>
+          </div>
+          
+          <div className="bit_name">
+          <strong> Bit_Title:</strong>  {e.bit_id.title}
+          </div>
+<div className="con">
+<strong> Content:</strong>{e.content}
+  </div>
+
+  <div className="icons">
+  <div class="warn-img">
+   
+   <ThumbUpAltIcon className={e.like.includes(user._id)?"like_icon":"likes_icon"} onClick={()=>{dispatch(like(e._id,user._id));}} 
+       size={100}/>{e.like.length}
+<ThumbDownIcon className={e.dislike.includes(user._id)?"dislike_icon":"dislikes_icon"} onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
+</div>
+<WarningIcon className={e.irrevelant_content.includes(user._id)?"warning_icon":"warnings_icon"} onClick={()=>{dispatch(irrevelant(e._id,user._id))}} size={100}/>{e.irrevelant_content.length}
 
 
-              <Avatar alt={"title"} src={e.photo} className="homepage__card__header__avatar" />
-              <div className="skill_name">
-              <h4> <Link to={{pathname:"/navbar/view",
-                  state:e._id}} onClick={()=>{}} className="navbar-li">{e.Title}</Link></h4>  
-
+  </div>
+  
+  </Card>
               </div>
-              </div>
-
-              <div className="user_name" >
-               <h3><strong> Description:</strong> </h3>
-
-               <h4 className="des">{e.Description} </h4> 
-              </div>
-              <div className="btn-div">
-              <div>
-                <button className="btn" onClick={()=>dispatch(follow(e._id,user._id))}> 
-                {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }
-</button>
-</div>               
-
-no skills
-              </div>
-
-              </Card>
               )}
+
+              </div>
         </div>
     )
 }

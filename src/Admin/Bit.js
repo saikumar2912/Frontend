@@ -4,9 +4,10 @@ import { Button } from 'primereact/button';
 import {useDispatch,useSelector} from 'react-redux'
 import {bitdetails, DeleteBit, submit} from '../Redux/Auth/ADMIN/BitAction'
 import { Card } from '@material-ui/core';
-import { DeletePost } from '../Redux/Auth/Login/DisplayAction';
-
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import SimplePopover from './EditBit';
 const Bit = (props) => {
+
   const {location:{state}}=props;
   console.log(state)
   const dispatch=useDispatch()
@@ -40,7 +41,8 @@ const[title,setTitle]=useState('')
      {e.title}
 
      {user.role==="user"?<></>:<>
-     <button onClick={()=>{dispatch(DeleteBit(e.bit_id))}}> delete</button>
+     <SimplePopover id={e.bit_id}/>
+     <DeleteForeverIcon onClick={()=>{dispatch(DeleteBit(e.bit_id))}}/> 
      
      </>}
    </Card>:<>

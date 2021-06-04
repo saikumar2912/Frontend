@@ -15,6 +15,11 @@ const reducer=(state=initial,action)=>{
              ...state,
              achivement:action.payload
       }
+      case 'UPDATE':
+      return{
+             ...state,
+             achivement:action.payload
+      }
       case 'LOGOUT':
         return null
         

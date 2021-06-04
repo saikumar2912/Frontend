@@ -9,15 +9,17 @@ import './Navbar.css';
 import AddCourse from '../Admin/AddCourse';
 import Bit from '../Admin/Bit';
 import profilepage from '../Pages/profilepage';
-import Search from './Search';
-import {useHistory} from 'react-router-dom'
+import {useHistory,useLocation} from 'react-router-dom';
 import Skillsearch from '../Pages/skillsearch';
 import AdminHome from '../Admin/AdminHome';
-import Achivements from '../Pages/Achivements';
+import Achivements from '../Pages/Achivements'
+import SearchAppBar from './SearchPost';
+import Postsearch from '../Pages/PostSearch';
 
 function Navbar() {
 const user = useSelector(state => state.user.user)
 console.log(user)
+const location=useLocation();
 
 const history=useHistory();
     const [click, setClick] = useState(false);
@@ -26,9 +28,9 @@ const history=useHistory();
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <div>
+    <div class="wrapper">
         <nav className='navbars'>
-        <Link to='/navbar/home' className='navbar_logo' onClick={closeMobileMenu}>
+        <Link to='/navbar/home' className='navbar-links' onClick={closeMobileMenu}>
           BUILD OUT
           <i class='fab fa-firstdraft' />
         </Link>
@@ -39,9 +41,9 @@ const history=useHistory();
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
+          
         <li className='navbar-item'>
-
-        <Search/>
+        {location.pathname === "/navbar/addpost"?<></> :<SearchAppBar/>}
 </li>
         <li className='navbar-item'>
             <Link to="/navbar/Home" className='navbar-links' onClick={closeMobileMenu}>
@@ -104,9 +106,17 @@ const history=useHistory();
         <Route path='/navbar/addcourse' component={AddCourse}/>
         <Route path="/navbar/view" component={Bit}/>  
 <Route path="/navbar/profile" component={profilepage}/>
-<Route path="/navbar/search" component={Skillsearch}/>
+<Route path="/navbar/postsearch" component={Skillsearch}/>
+<Route path="/navbar/skillsearch" component={Postsearch}/>
 <Route path="/navbar/new" component={AdminHome}/>
 <Route path="/navbar/achivement" component={Achivements}/>
+
+<footer class="c-footer">
+            <div class="c-inner">
+              Copyright BuildOut. All rights reserved. For internal use only.
+            </div>
+          </footer>
+
     </div>
   );
 }

@@ -1,5 +1,5 @@
 .navbars {
-  background:transparent linear-gradient(270deg, #00BAFF 0%, #004DFF 100%) 0% 0% no-repeat padding-box ;
+  background:transparent linear-gradient(270deg, #addaeb 0%, #0084ffe5 100%) 0% 0% no-repeat padding-box ;
   height: 4.5rem;
   display: flex;
   align-items: center;
@@ -214,4 +214,15 @@ margin-bottom: 1px;
 .navbar-link:hover {
   background-color:lightgrey;
   border-radius: 0;
+}
+
+.search__icon{
+  cursor:pointer;
+}
+.search__input{
+  border-radius:15px
+}
+.searchinput:focus{
+  width: 100%;
+
 }

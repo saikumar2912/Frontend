@@ -94,3 +94,23 @@ margin-right:100px;
 }
 
 .skill_name h5{ margin-bottom: 0; flex:1;}
+
+.checkcircle{
+cursor:pointer;
+}
+.h1{
+  text-transform: capitalize;
+}
+.profile__card{
+  width: 300px;
+  padding:5px;
+}
+.save__icon{
+  margin-top:20px;
+  margin-left:100px
+}
+.create__icon{
+  margin-left:180px;
+  cursor:pointer;
+  
+}

@@ -2,15 +2,19 @@ import React,{useState} from 'react'
 import Axios from 'axios';
 import './Register.css'
 import { Link } from 'react-router-dom';
-import Auth from 'two-step-auth';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {useHistory} from 'react-router-dom';
+
+
 const Register = (props) => {
+ const history=useHistory()
+
 const[name,setName]=useState('');
 const[email,setEmail]=useState('');
 const[phoneNo,setphoneNo]=useState('');
 const[passwordd,setPassword]=useState('');
+
 // const[errors,setErrors]=useState({})
-const history=useHistory()
 function validateForm() {
     if(!name)
     return("Name Required")
@@ -47,7 +51,6 @@ function validatepassword(){
     }
 }
 
-
         const submit=(a,c,d,e)=>{
         const register={
             user_name:a,
@@ -74,34 +77,58 @@ function validatepassword(){
 }
 
     return (
-        <div className='main'>
-     <div className="form-container" >
+        <div class="wrapper-class">
+            <div class="wrap">
+            <div class="topbar-class">
+              <div class="contain">
+                <h5 className="app-name">BuildOut</h5>
+                <div class="topbar-items">
+                <Link to='/login' className='topbar-links'>
+                    Login
+                </Link>
+                <Link to='/Register' className='topbar-links'>
+                    Register
+                </Link>
+              </div>
+            </div>
+            </div>
+            <div class="login-con">
+            <div className="form-container" >
+                
          <form onSubmit={handlesubmit} className="form">
-
+         <h3>Register</h3>
              <div className="form-inputs" >
             <label htmlFor="name" className="form-label" > Name</label>
-                <input type="text" name='name' placeholder=" Enter Your Name" className="form-input"  onChange={(e)=>setName(e.target.value)}/>
+                <input type="text" name='name' placeholder=" Enter Your Name" className="form-control"  onChange={(e)=>setName(e.target.value)}/>
                 {validateForm()}
                </div>
                
                <div className="form-inputs">
             <label htmlFor="email"  className="form-label"> Email</label>
-                <input type="email" name='email'placeholder=" Enter Your EMAIL"  className="form-input" onChange={(e)=>setEmail(e.target.value)} />
+                <input type="email" name='email'placeholder=" Enter Your EMAIL"  className="form-control " onChange={(e)=>setEmail(e.target.value)} />
 {ValidateEmail()}
                </div>
                <div className="form-inputs">
             <label htmlFor="phone NO"  className="form-label"> Phone NO:</label>
-                <input type="text"name='phoneNo' placeholder=" Enter Your PHONE NO"  className="form-input"onChange={(e)=>setphoneNo(e.target.value)} maxLength='10'/>
+                <input type="text"name='phoneNo' placeholder=" Enter Your PHONE NO"  className="form-control"onChange={(e)=>setphoneNo(e.target.value)} maxLength='10'/>
                {validatephoneno()}
                </div>
                <div className="form-inputs">
             <label htmlFor="password" className="form-label"> Password</label>
-                <input type="password" name='password'placeholder=" Enter Your PASSWORD"  className="form-input"onChange={(e)=>setPassword(e.target.value)}/>
+                <input type="password" name='password'placeholder=" Enter Your PASSWORD"  className="form-control"onChange={(e)=>setPassword(e.target.value)}/>
                {validatepassword()}
                </div>
-               <button className="form-button-btn" onClick={()=>{submit(name,email,phoneNo,passwordd); history.goBack() }} disabled={validateForm()}>Register </button>
+               <button className="btn btn-primary" onClick={()=>{submit(name,email,phoneNo,passwordd);props.history.goBack()}} disabled={validateForm()}>Register </button>
         </form> 
         </div>
+            </div>
+            </div>
+            <footer class="c-footer">
+            <div class="c-inner">
+              Copyright BuildOut. All rights reserved. For internal use only.
+            </div>
+          </footer>
+          
         </div>
 
     )

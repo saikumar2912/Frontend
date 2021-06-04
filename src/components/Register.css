@@ -1,37 +1,23 @@
-.main{
-display: flex;
-background: linear-gradient(90deg, rgba(165, 73, 85, 0.582) 0%, rgb(31, 74, 192) 100%);
-height:100vh;
-align-items: center;
-justify-content: center;
+.login-con{
+  min-height: calc(100vh - calc(4.5rem + 2.5rem));
+  padding:5rem
 }
 
-
 .form-container {
-  margin: 100px auto;
-  width: 1000px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   border-radius: 10px;
-  height: 600px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  box-shadow: transparent;
+  min-height: 500px;
+  width: 500px;
+  justify-content: center;
+  margin: 0 20rem;
+  
   
 }
+h3{text-align: center;}
 
-.form {
-  background: linear-gradient(90deg, rgba(163, 165, 73, 0.582) 0%, rgb(192, 31, 31) 100%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.form{
+  padding:2rem;
 }
 .form-content-left {
   background: linear-gradient(
@@ -52,7 +38,7 @@ justify-content: center;
 
 .form-inputs {
   margin-bottom: 0.5rem;
-  width: 40%;
+  width: auto;
 }
 
 .form-label {
@@ -71,7 +57,7 @@ justify-content: center;
   width: 70%;  border: none;
 }
 
-.form-input::placeholder {
+.form-control::placeholder {
   color: #837c7c;
   font-size: 12px;
 }
