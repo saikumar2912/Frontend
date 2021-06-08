@@ -15,6 +15,8 @@ import AdminHome from '../Admin/AdminHome';
 import Achivements from '../Pages/Achivements'
 import SearchAppBar from './SearchPost';
 import Postsearch from '../Pages/PostSearch';
+import Verification from '../Admin/Verification';
+import PostDetails from '../Pages/PostDetails';
 
 function Navbar() {
 const user = useSelector(state => state.user.user)
@@ -43,7 +45,7 @@ const history=useHistory();
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
           
         <li className='navbar-item'>
-        {location.pathname === "/navbar/addpost"?<></> :<SearchAppBar/>}
+        {location.pathname === "/navbar/addpost"?<></> :<input type="text"  />}
 </li>
         <li className='navbar-item'>
             <Link to="/navbar/Home" className='navbar-links' onClick={closeMobileMenu}>
@@ -83,6 +85,13 @@ const history=useHistory();
 
             skills
           </Link>
+          <li className='navbar-item'>
+          <Link to="/navbar/verification" className='navbar-links' onClick={closeMobileMenu} >
+
+            Users list
+          </Link>
+          </li>
+
           </li>
           <li className='navbar-item'>
             <button className='navbar-links' onClick={()=>{
@@ -110,6 +119,10 @@ const history=useHistory();
 <Route path="/navbar/skillsearch" component={Postsearch}/>
 <Route path="/navbar/new" component={AdminHome}/>
 <Route path="/navbar/achivement" component={Achivements}/>
+<Route path="/navbar/verification" component={Verification}/>
+<Route path="/navbar/postDetails" component={PostDetails}/>
+
+
 
 <footer class="c-footer">
             <div class="c-inner">

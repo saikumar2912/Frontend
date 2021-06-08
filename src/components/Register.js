@@ -59,13 +59,15 @@ function validatepassword(){
             password:e,
         }
         Axios.post('http://localhost:8000/users/addUser',register)
-        .then((res)=>{
+        .then((res)=>{ console.log(res.data)
         alert(res.data.message)
-
-            if(res.data.message ==="Registered successfully  please login in")
-        {
-       history.push('/login')
-        }})
+        return Axios.post('http://localhost:8000/verify/verification',{
+            user_id:res.data.data._id,
+           })
+           .then((res)=>{
+            console.log(res.data) })
+            .catch((e)=>console.log(e))
+        })
         
         .catch((e)=>{alert(e.message)})
         console.log(register)

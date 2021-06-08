@@ -1,12 +1,13 @@
 
 
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import WarningIcon from '@material-ui/icons/Warning';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
+import { report } from '../Redux/Auth/Login/DisplayAction';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -39,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SimpleModal({postid}) {
+export default function SimpleModal({postid,count}) {
+  const dispatch=useDispatch()
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -55,30 +57,25 @@ export default function SimpleModal({postid}) {
 const user = useSelector(state => state.user.user._id)
 console.log(user)
 
-const[report,setReport]=useState('')
-const submit=(user,postid,report)=>{
-    const reported={
-        user_id:user,
-        post_id:postid,
-        report:report
 
-    }
-    axios.post('http://localhost:8000/report/reported',reported)
-    .then((res)=>console.log(res.data))
-    
-}
-console.log(report)
+const[reports,setReport]=useState('')
+
+
+console.log(reports)
+
+
   const body = (
     <div style={modalStyle} className={classes.paper}>
           <TextField id="standard-basic" className={classes.textfield} label="Reason" onChange={(e)=>setReport(e.target.value)} />
-          <button onClick={()=>{submit(user,postid,report)}}> add</button>
+          <button onClick={()=>{dispatch(report(user,postid,reports))}}> add</button>
 
     </div>
   );
 
   return (
     <div>
-      <WarningIcon onClick={handleOpen}size={100}/>
+  <WarningIcon onClick={handleOpen}size={100}/>{count}
+
 
       <Modal
         open={open}

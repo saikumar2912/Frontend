@@ -4,6 +4,7 @@ import {  dislike, irrevelant, like} from '../Redux/Auth/Login/DisplayAction';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import SimpleModal from './Pop';
+import { Link } from 'react-router-dom';
 
 const Post = ({id}) => {
     
@@ -12,25 +13,24 @@ const dispatch=useDispatch();
     console.log(user)
     const Display = useSelector(state => state.display.display)
     console.log(Display)
-    
-
+  
     return (
 <div class="col-xl-6 col-lg-6 col-6">
-  {Display.map(e=>id === e.skill_id._id ?
+  {Display.map(e=>id === e.skill._id ?
     <Card className='homepage__card'>
 
           <div className="homepage__card__header" >
-               <Avatar alt={"title"} src={e.skill_id.photo} className="homepage__card__header__avatar" />
+               <Avatar alt={"title"} src={e.skill.photo} className="homepage__card__header__avatar" />
                <div className="skill_name">
-             <h5> <strong>{e.skill_id.Title}</strong></h5> 
+             <h5> <strong>{e.skill.Title}</strong></h5> 
              <div className="user_name">
-        <h6>  {e.user_id.user_name}</h6>
+        <h6>  {e.user.user_name}</h6>
           </div>
                </div>
           </div>
           
           <div className="bit_name">
-          <strong> Bit_Title:</strong>  {e.bit_id.title}
+          <strong> Bit_Title:</strong>  {e.bit.title}
           </div>
 <div className="con">
 <strong> Content:</strong>{e.content}
@@ -43,8 +43,9 @@ const dispatch=useDispatch();
        size={100}/>{e.like.length}
 <ThumbDownIcon className={e.dislike.includes(user._id)?"dislike_icon":"dislikes_icon"} onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
 </div>
+<Link to={{pathname:'/navbar/postDetails',state:e}} >view</Link>
 
-<SimpleModal postid={e._id}/>
+<SimpleModal postid={e._id} count={e.reports.length}/>
   </div>
   
   </Card>
@@ -52,7 +53,6 @@ const dispatch=useDispatch();
   
      </div>
               
-          
     )
 }
 

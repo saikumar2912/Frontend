@@ -124,5 +124,5 @@ export default function SearchAppBar() {
      );
 }
 const category = [
-   
+   "react"
   ];

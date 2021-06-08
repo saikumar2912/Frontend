@@ -10,6 +10,7 @@ import { Delete } from '../Redux/Auth/PostAction';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import PeopleIcon from '@material-ui/icons/People';
+import Navbar from '../components/Navbar'
 export default function RecipeReviewCard() {
   const dispatch=useDispatch();
 
@@ -36,8 +37,8 @@ console.log(Data)
     <>   
     <div class="card-class">
     <div class="row">
-<input type="text" onChange={e=>setskills(e.target.value)}/>
-
+    <input type="text" onChange={e=>setskills(e.target.value)}/>
+    
     {filteredPost.map((e)=> <>
               {e.Title.length > 0 ?
               <div class="col-xl-4 col-lg-4 col-4">

@@ -3,6 +3,7 @@ import { createBrowserHistory } from 'history';
 import { Skill } from '../ADMIN/SkillAction';
 import axios from 'axios';
 import {getCurrentUser} from './services'
+import { reqVerification } from '../ADMIN/VerificationAction';
 // import {useHistory} from  'react-router-dom'
 export const history = createBrowserHistory();
 export const login=(email,password)=>{
@@ -11,14 +12,22 @@ export const login=(email,password)=>{
         .then(response =>{
       const user=response
       console.log(user)
-     if(user.message === "login sucessful")
+     if(user.message === "login sucessful"&& localStorage.getItem('user') !== null)
       
      {
         services.getCurrentUser().then(res=>{
           dispatch(fetchuser(res))
           console.log(res)
-          dispatch(Achivement(res._id))
-          dispatch(Skill())
+          if(user.role==='user'){
+            dispatch(Achivement(res._id))
+
+          }
+          else{
+            dispatch(reqVerification())
+            dispatch(Skill())
+
+          }
+         
 
           console.log(res)
 

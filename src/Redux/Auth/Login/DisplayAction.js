@@ -7,7 +7,7 @@ export const Display= () => {
       const Token = () => localStorage.getItem("user");
       
         
-      return  axios.post('http://localhost:8000/post/getpost',{},{headers:{authorization:`Bearer ${Token()}`}
+      return  axios.post('http://localhost:8000/post/getposts',{},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> {
                console.log(res.data)
@@ -27,7 +27,7 @@ export const Display= () => {
       return  axios.post('http://localhost:8000/post/like',{_id:id,user_id:user_id},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> { console.log(res.data)
-              return axios.post('http://localhost:8000/post/getpost',{},{
+              return axios.post('http://localhost:8000/post/getposts',{},{
                 headers:{authorization:`Bearer ${Token()}`}
              })
             .then(
@@ -49,7 +49,7 @@ export const Display= () => {
       return  axios.post('http://localhost:8000/post/dislike',{_id:id,user_id:user_id},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> { console.log(res.data)
-              return axios.post('http://localhost:8000/post/getpost',{},{
+              return axios.post('http://localhost:8000/post/getposts',{},{
                 headers:{authorization:`Bearer ${Token()}`}
              })
             .then(
@@ -62,16 +62,16 @@ export const Display= () => {
     }
 
   }
-  export const irrevelant=(id,user_id)=>{
+  export const report= (user_id,post_id,report) => {
     
     return (dispatch) => {
       const Token = () => localStorage.getItem("user");
       
         
-      return  axios.post('http://localhost:8000/post/irrevelant',{_id:id,user_id:user_id},{headers:{authorization:`Bearer ${Token()}`}
+      return  axios.post('http://localhost:8000/report/reported',{user_id:user_id,post_id:post_id,report:report},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> { console.log(res.data)
-              return axios.post('http://localhost:8000/post/getpost',{},{
+              return axios.post('http://localhost:8000/post/getposts',{},{
                 headers:{authorization:`Bearer ${Token()}`}
              })
             .then(
@@ -82,8 +82,9 @@ export const Display= () => {
        .catch((e)=>console.log(e))
             })
     }
-
   }
+
+  
   export const userposts= (user_id) => {
     
     return (dispatch) => {
@@ -120,6 +121,10 @@ export const Display= () => {
             })
     }
   }
+
+  
+
+
   export const postdetails = (e) => {
     return (dispatch) => {
       console.log("new",e);
@@ -140,6 +145,7 @@ export const Display= () => {
       payload: skill
     }
   }
+  
   
   
   export const DisplayFailure = () => {

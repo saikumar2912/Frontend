@@ -21,7 +21,7 @@ const post=useSelector(state=>state.display.display.map(e=>e._id))
 console.log(post)
 
 useEffect(() => {
-    axios.post('http://localhost:8000/post/likes/counts')
+    axios.post('http://localhost:8000/post/highposts')
     .then((res)=>setPosts(res.data))
     
 }, [])
@@ -66,7 +66,7 @@ Content:{e.content}
 <BiLike className="like_icon"size={100}/>{e.like.length}
 <BiDislike className="dislike_icon"   size={100}/>{e.dislike.length}
 </div>
-<WarningIcon className="warning_icon" size={100}/>{e.irrevelant_content.length}
+<WarningIcon className="warning_icon" size={100}/>
 
 
 </div>

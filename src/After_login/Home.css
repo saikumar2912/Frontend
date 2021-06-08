@@ -49,11 +49,10 @@ text-align: left;
 
 }
 .con{
- display:inherit;
-  padding-left:1rem;
-    margin-top:10px;
-    text-transform: capitalize;
-    font-weight:bold;
+    display: -webkit-box;   
+    -webkit-line-clamp: 3;   
+    -webkit-box-orient: vertical;     
+    overflow: hidden; 
 }
 .icons{
     margin-top:1rem;
