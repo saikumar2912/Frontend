@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { PostSuccess } from '../ADMIN/BitAction';
-import {useSelector} from 'react-redux';
+
 export const Display= () => {
     
     return (dispatch) => {
@@ -62,6 +61,21 @@ export const Display= () => {
     }
 
   }
+  export const Displayreports= () => {
+    
+    return (dispatch) => {
+      const Token = () => localStorage.getItem("user");
+      
+        
+      return  axios.post('http://localhost:8000/post/getposts',{},{headers:{authorization:`Bearer ${Token()}`}
+        }).then(
+            (res)=> {
+               console.log(res.data)
+               dispatch(ReportSuccess(res.data))
+              
+            })
+    }
+  }
   export const report= (user_id,post_id,report) => {
     
     return (dispatch) => {
@@ -71,19 +85,61 @@ export const Display= () => {
       return  axios.post('http://localhost:8000/report/reported',{user_id:user_id,post_id:post_id,report:report},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> { console.log(res.data)
-              return axios.post('http://localhost:8000/post/getposts',{},{
+              return axios.post('http://localhost:8000/report/reports',{},{
                 headers:{authorization:`Bearer ${Token()}`}
              })
             .then(
                 (res)=> {
                    console.log(res.data)
-                   dispatch(DisplaySuccess(res.data))
+                   dispatch(ReportSuccess(res.data))
                 })
        .catch((e)=>console.log(e))
             })
     }
   }
+  export const Reportlike= (id,user_id) => {
+    
+    return (dispatch) => {
+      const Token = () => localStorage.getItem("user");
+      
+        
+      return  axios.post('http://localhost:8000/report/like',{_id:id,user_id:user_id},{headers:{authorization:`Bearer ${Token()}`}
+        }).then(
+            (res)=> { console.log(res.data)
+              return axios.post('http://localhost:8000/post/reports',{},{
+                headers:{authorization:`Bearer ${Token()}`}
+             })
+            .then(
+                (res)=> {
+                   console.log(res.data)
+                   dispatch(ReportSuccess(res.data))
+                })
+       .catch((e)=>console.log(e))
+            })
+    }
+  }
+  export const Reportdislike=(id,user_id)=>{
+    
+    return (dispatch) => {
+      const Token = () => localStorage.getItem("user");
+      
+        
+      return  axios.post('http://localhost:8000/report/dislike',{_id:id,user_id:user_id},{headers:{authorization:`Bearer ${Token()}`}
+        }).then(
+            (res)=> { console.log(res.data)
+              return axios.post('http://localhost:8000/report/reports',{},{
+                headers:{authorization:`Bearer ${Token()}`}
+             })
+            .then(
+                (res)=> {
+                   console.log(res.data)
+                   dispatch(ReportSuccess(res.data))
+                })
+       .catch((e)=>console.log(e))
+            })
+    }
 
+  }
   
   export const userposts= (user_id) => {
     
@@ -146,6 +202,13 @@ export const Display= () => {
     }
   }
   
+  export const ReportSuccess = report => {
+  
+    return {
+      type: "REPORT_POST_SUCCESS",
+      payload: report
+    }
+  }
   
   
   export const DisplayFailure = () => {

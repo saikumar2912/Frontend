@@ -19,8 +19,9 @@ console.log(e)
     return (
         <div className="postDetails">
              <div className="Details__skill">
-                {e.skill.Title} 
                 <Avatar alt={"title"} src={e.skill.photo} className="Details__avatar"/>
+
+                {e.skill.Title} 
 
             </div>
             <div className="Details__user">

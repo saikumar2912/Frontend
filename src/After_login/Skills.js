@@ -47,10 +47,9 @@ console.log(Data)
 
               <Avatar alt={"title"} src={e.photo} className="homepage__card__header__avatar" />
               <div className="skill_name">
-              <h4> {e.Title}</h4> 
-
-             
-
+              <h4> </h4>
+{user.role==="user"?<> {e.Title}</>:<><Link to={{pathname:'/navbar/topskillposts',state:e}} >{e.Title}</Link>
+ </>}
               </div>
 <PeopleIcon/>      {e.followers.length}
 

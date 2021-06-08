@@ -53,7 +53,6 @@ const Token = () => localStorage.getItem("user");
 
 const [Data,setData]=useState([])
 
-const dispatch=useDispatch()
 useEffect(() => {
 userposts()
 
@@ -104,7 +103,7 @@ useEffect(()=>{
 </div >
 
     </div> 
-    <div className="new">
+    <div className="ne">
     <h1>Following Skills</h1>
 
       <div class="ro">
@@ -114,14 +113,11 @@ useEffect(()=>{
       <div class="col-lg-6 col-xl-6 col-6">
       <Card className='profile__card'>
       <div className="homepage__card__header" >
-               <Avatar alt={"title"} src={e.photo} className="homepage__card__header__avatar" />
                <div className="skill_name">
              <h5> <strong>{e.title}</strong></h5> 
                  
                </div>
-               <button type="button" class="btn btn-primary">
- <span class="badge badge-light">4</span>
-</button>  
+              
           </div>
          
   

@@ -17,6 +17,7 @@ import SearchAppBar from './SearchPost';
 import Postsearch from '../Pages/PostSearch';
 import Verification from '../Admin/Verification';
 import PostDetails from '../Pages/PostDetails';
+import TopSkillPosts from '../Pages/TopSkillPosts';
 
 function Navbar() {
 const user = useSelector(state => state.user.user)
@@ -109,11 +110,11 @@ const history=useHistory();
           
        
         </nav>
-        <Route path='/navbar/skills' component={Skills}/>
-        <Route path="/navbar/Home"  component={Home}/>
-        <Route path='/navbar/addpost' component={AddPost}/>
-        <Route path='/navbar/addcourse' component={AddCourse}/>
-        <Route path="/navbar/view" component={Bit}/>  
+  <Route path='/navbar/skills' component={Skills}/>
+  <Route path="/navbar/Home"  component={Home}/>
+  <Route path='/navbar/addpost' component={AddPost}/>
+  <Route path='/navbar/addcourse' component={AddCourse}/>
+  <Route path="/navbar/view" component={Bit}/>  
 <Route path="/navbar/profile" component={profilepage}/>
 <Route path="/navbar/postsearch" component={Skillsearch}/>
 <Route path="/navbar/skillsearch" component={Postsearch}/>
@@ -121,6 +122,7 @@ const history=useHistory();
 <Route path="/navbar/achivement" component={Achivements}/>
 <Route path="/navbar/verification" component={Verification}/>
 <Route path="/navbar/postDetails" component={PostDetails}/>
+<Route path="/navbar/topskillposts" component={TopSkillPosts}/>
 
 
 

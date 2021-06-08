@@ -1,6 +1,7 @@
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux';
 import Post from '../components/Post';
+import Reports from '../Pages/Reports';
 import { Display } from '../Redux/Auth/Login/DisplayAction';
 import './Home.css'
 const Home = () => {
@@ -26,6 +27,7 @@ console.log(state)
         user._id ===s ? <Post id={e._id}/> :<div> </div>
 
       )))}
+      <Reports/>
       </div>
     </div>
   )
