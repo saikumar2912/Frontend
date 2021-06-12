@@ -1,11 +1,10 @@
 
 
-import React,{useEffect, useState} from 'react';
+import React,{ useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import WarningIcon from '@material-ui/icons/Warning';
 import TextField from '@material-ui/core/TextField';
-import axios from 'axios';
 import {useSelector,useDispatch} from 'react-redux'
 import { report } from '../Redux/Auth/Login/DisplayAction';
 

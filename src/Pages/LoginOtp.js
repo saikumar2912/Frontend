@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import axios from 'axios';
-import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
 import services from '../Redux/Auth/Login/services';
 import {fetchuser} from '../Redux/Auth/Login/Action'
@@ -12,7 +11,6 @@ const LoginOtp = () => {
     const [code, setCode] = useState('')
 
     const [state,setState]=useState(true)
-    const history=useHistory()
     const dispatch= useDispatch()
     
 const submit=(a)=>{

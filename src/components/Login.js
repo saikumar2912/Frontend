@@ -1,7 +1,5 @@
 import React,{useState}from 'react'
-import auth from './Auth'
 import {useDispatch} from 'react-redux';
-import Axios from 'axios';
 import './login.css'
 import { Link} from 'react-router-dom';
 import { login } from '../Redux/Auth/Login/Action';

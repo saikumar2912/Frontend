@@ -1,14 +1,13 @@
 import { Card } from '@material-ui/core';
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { follow } from '../Redux/Auth/ADMIN/SkillAction';
 
 import Avatar from '@material-ui/core/Avatar';
 
 const Postsearch = (search) => {
 
-  const findd = search.history.location.state
   const dispatch=useDispatch();
 
 

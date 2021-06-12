@@ -1,7 +1,6 @@
 import { Card } from '@material-ui/core';
 import React, { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import WarningIcon from '@material-ui/icons/Warning';
 import {  dislike, like} from '../Redux/Auth/Login/DisplayAction';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
@@ -12,7 +11,6 @@ const Skillsearch = (search) => {
 
   const [skills, setskills] = useState('')
 
-  const findd = search.history.location.state
   const dispatch=useDispatch();
 
   const user = useSelector(state => state.user.user)

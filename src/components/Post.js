@@ -1,6 +1,6 @@
 import {useSelector,useDispatch} from 'react-redux';
 import { Avatar, Card } from '@material-ui/core';
-import {  dislike, irrevelant, like} from '../Redux/Auth/Login/DisplayAction';
+import {  dislike,like} from '../Redux/Auth/Login/DisplayAction';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import SimpleModal from './Pop';

@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import Axios from 'axios';
 import {useSelector,useDispatch} from 'react-redux';
 import { Display } from '../Redux/Auth/Login/DisplayAction';
-import './AddPost.css';
 import Button from '@material-ui/core/Button';
 
 const AddPost = () => {

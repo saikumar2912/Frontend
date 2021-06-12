@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
-import '../App.css'
 import {Post} from '../Redux/Auth/PostAction';
 const AddCourse = () => {
     

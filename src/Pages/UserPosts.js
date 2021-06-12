@@ -1,14 +1,12 @@
 import React from 'react'
-import {useDispatch,useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import WarningIcon from '@material-ui/icons/Warning';
-import { DeletePost } from '../Redux/Auth/Login/DisplayAction';
 
 
 const UserPosts = (props) => {
-const dispatch=useDispatch();
     const history=useHistory();
     const state=history.location.state;
     const posts = useSelector(state => state.display.display)

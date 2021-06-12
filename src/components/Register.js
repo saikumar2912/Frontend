@@ -3,11 +3,9 @@ import Axios from 'axios';
 import './Register.css'
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useHistory} from 'react-router-dom';
 
 
-const Register = (props) => {
- const history=useHistory()
+const Register = () => {
 
 const[name,setName]=useState('');
 const[email,setEmail]=useState('');
