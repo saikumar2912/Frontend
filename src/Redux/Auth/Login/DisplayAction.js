@@ -67,7 +67,7 @@ export const Display= () => {
       const Token = () => localStorage.getItem("user");
       
         
-      return  axios.post('http://localhost:8000/post/getposts',{},{headers:{authorization:`Bearer ${Token()}`}
+      return  axios.post('http://localhost:8000/report/reports',{},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> {
                console.log(res.data)
@@ -106,7 +106,7 @@ export const Display= () => {
       return  axios.post('http://localhost:8000/report/like',{_id:id,user_id:user_id},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> { console.log(res.data)
-              return axios.post('http://localhost:8000/post/reports',{},{
+              return axios.post('http://localhost:8000/report/reports',{},{
                 headers:{authorization:`Bearer ${Token()}`}
              })
             .then(

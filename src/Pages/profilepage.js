@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import{useSelector,useDispatch} from 'react-redux';
+import{useSelector} from 'react-redux';
 import './profilepage.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom'
-import { userposts,DeletePost } from '../Redux/Auth/Login/DisplayAction';
+import { userposts } from '../Redux/Auth/Login/DisplayAction';
 import { Card } from '@material-ui/core';
 import Axios from 'axios'
 import {MdEmail} from 'react-icons/md'
@@ -13,6 +13,7 @@ import {HiPhone} from 'react-icons/hi'
 import SimpleModal from './Edit'
 import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
 import AssignmentIndRoundedIcon from '@material-ui/icons/AssignmentIndRounded';
+import {Link}  from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
     large: {
       width: theme.spacing(14),
@@ -71,18 +72,18 @@ useEffect(()=>{
   console.log(Data)
 
     return (
-        <div className='card-class'>
-            <div className="profile__post">
+        <div >
+            <div >
 
             </div>
-        <div className="profile__body" >
+        <div  >
             
-<div className="profile__body__left">
+<div >
 <Avatar  alt={user.user_name} src={user.profile_picture} className={classes.large}/>
 
 <SimpleModal/>
 
-<h1 className="h1">{user.user_name}</h1>
+<h1 >{user.user_name}</h1>
 
 <MdEmail/> {user.email_id}
 <div>
@@ -98,31 +99,31 @@ useEffect(()=>{
 </div>
 
 
-<div className="profile__body__logout">
+<div >
 <Button onClick={()=>{history.push('/navbar/achivement')}}> Achivement {!achive ? "" : achive.achivement.length} </Button>
 </div >
 
     </div> 
-    <div className="ne">
+    <div >
     <h1>Following Skills</h1>
 
-      <div class="ro">
+      <div >
 
-      {Data.map((e)=><>
+      {Data.map((e)=><Card>
       {e.title.length > 0?
-      <div class="col-lg-6 col-xl-6 col-6">
-      <Card className='profile__card'>
-      <div className="homepage__card__header" >
-               <div className="skill_name">
-             <h5> <strong>{e.title}</strong></h5> 
-                 
+      <div >
+      <>
+      <div  >
+               <div >
+             <Link to={{pathname:"/navbar/userposts",
+                  state:e.skill_id}} onClick={()=>{}}>{e.title}</Link>
                </div>
               
           </div>
          
   
-      </Card></div>:<div> NO POSTS YET</div> }
-      </>)}
+      </></div>:<div> NO POSTS YET</div> }
+      </Card>)}
      </div>
     </div>
 

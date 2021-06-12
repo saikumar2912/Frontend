@@ -7,6 +7,7 @@ import Register from './components/Register';
 import New from './Pages/InitialPage';
 import Contactus from './Pages/Contactus';
 import {useSelector} from 'react-redux'
+import LoginOtp from './Pages/LoginOtp';
 // import { ProtectedRoute } from './components/Protected_route';
 // import New from './After_login/New'
 
@@ -14,6 +15,8 @@ import {useSelector} from 'react-redux'
 const App = () => {
 const user= useSelector(state => state.user.user)
 console.log(user)
+const state = useSelector(state => state)
+console.log(state)
   return (
     <div>
 
@@ -24,6 +27,8 @@ console.log(user)
           <Route path='/Register'exact component={Register} />
          <Route path="/contactus" exact component={Contactus}/>
          <Route path='/login'exact component={Login}/>
+         <Route path='/loginotp'exact component={LoginOtp}/>
+
          
          <Route path="*" component={()=>"404 not found"}/>    
 

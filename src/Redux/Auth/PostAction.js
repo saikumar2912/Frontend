@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Skill } from './ADMIN/SkillAction';
 export const Post = (user_id,Title,Description,photo) => {
   console.log('AddPostReducer')
    
@@ -48,7 +49,21 @@ export const Post = (user_id,Title,Description,photo) => {
       }
     }
   
-  
+    export const UpdateSkill =(id,Title)=>{
+      return (dispatch) => {
+        const Token = () => localStorage.getItem("user");
+        
+          
+        return  axios.patch(`http://localhost:8000/skill/updateskill/${id}`,{Title:Title},{headers:{authorization:`Bearer ${Token()}`}
+          }).then(
+              (res)=> { console.log(res.data)
+                dispatch(Skill())
+                
+              })
+      }
+    }
+    
+
   export const PostSuccess = posts => {
   
     return {

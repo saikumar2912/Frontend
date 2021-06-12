@@ -120,7 +120,7 @@ function validatepassword(){
                 <input type="password" name='password'placeholder=" Enter Your PASSWORD"  className="form-control"onChange={(e)=>setPassword(e.target.value)}/>
                {validatepassword()}
                </div>
-               <button className="btn btn-primary" onClick={()=>{submit(name,email,phoneNo,passwordd);props.history.goBack()}} disabled={validateForm()}>Register </button>
+               <button className="btn btn-primary" onClick={()=>{submit(name,email,phoneNo,passwordd)}} disabled={validateForm()}>Register </button>
         </form> 
         </div>
             </div>

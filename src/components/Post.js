@@ -15,29 +15,29 @@ const dispatch=useDispatch();
     console.log(Display)
   
     return (
-<div class="col-xl-6 col-lg-6 col-6">
+<div >
   {Display.map(e=>id === e.skill._id ?
-    <Card className='homepage__card'>
+    <Card >
 
-          <div className="homepage__card__header" >
-               <Avatar alt={"title"} src={e.skill.photo} className="homepage__card__header__avatar" />
-               <div className="skill_name">
+          <div  >
+               <Avatar alt={"title"} src={e.skill.photo}  />
+               <div >
              <h5> <strong>{e.skill.Title}</strong></h5> 
-             <div className="user_name">
+             <div >
         <h6>  {e.user.user_name}</h6>
           </div>
                </div>
           </div>
           
-          <div className="bit_name">
+          <div>
           <strong> Bit_Title:</strong>  {e.bit.title}
           </div>
-<div className="con">
+<div >
 <strong> Content:</strong>{e.content}
   </div>
 
-  <div className="icons">
-  <div class="warn-img">
+  <div >
+  <div >
    
    <ThumbUpAltIcon className={e.like.includes(user._id)?"like_icon":"likes_icon"} onClick={()=>{dispatch(like(e._id,user._id));}} 
        size={100}/>{e.like.length}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import {FaUserEdit} from 'react-icons/fa'
 import { Avatar, TextField } from '@material-ui/core';
 import {useDispatch, useSelector} from 'react-redux';
 import { Update } from '../Redux/Auth/Login/Action';
@@ -10,6 +9,10 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 import CreateIcon from '@material-ui/icons/Create';
+import {HiPhone} from 'react-icons/hi'
+import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
+import AssignmentIndRoundedIcon from '@material-ui/icons/AssignmentIndRounded';
+import PersonIcon from '@material-ui/icons/Person';
 
 
 
@@ -113,11 +116,24 @@ const UpdateDetails =async(id,Name,PhoneNo,Education,Bio)=>{
           <PhotoCamera />
         </IconButton>
       </label>
-        <TextField id="standard-basic" label="Name" onChange={(e)=>setName(e.target.value)} value={Name} />
-        <TextField id="standard-basic" label="PhoneNo" onChange={(e)=>setPhoneNo(e.target.value)} value={PhoneNo} />
-        <TextField id="standard-basic" label="Education" onChange={(e)=>setEducation(e.target.value)} value={Education}/>
 
+      <div> 
+        
+      </div>
+      <PersonIcon/>
+       <TextField id="standard-basic" label="Name" onChange={(e)=>setName(e.target.value)} value={Name} />
+       <div>
+     <HiPhone/> 
+     <TextField id="standard-basic" label="PhoneNo" onChange={(e)=>setPhoneNo(e.target.value)} value={PhoneNo} />
+          </div>
+          <div> 
+            <SchoolRoundedIcon/>
+          <TextField id="standard-basic" label="Education" onChange={(e)=>setEducation(e.target.value)} value={Education}/>
+        </div>
+        <div> 
+          <AssignmentIndRoundedIcon/>
         <TextField id="standard-basic" label="Bio" onChange={(e)=>setBio(e.target.value)} value={Bio} />
+       </div>
 
        
       <div className="save__icon">

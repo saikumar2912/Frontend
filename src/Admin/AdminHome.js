@@ -11,14 +11,11 @@ const AdminHome = () => {
 const [posts, setPosts] = useState([])
 
 const Data = useSelector(state => state.display.display)
-console.log(Data)
 
 const user=useSelector(state=>state.display.display)
 console.log(user)
 const admin=useSelector(state=>state.user.user._id)
-console.log(admin)
 const post=useSelector(state=>state.display.display.map(e=>e._id))
-console.log(post)
 
 useEffect(() => {
     axios.post('http://localhost:8000/post/highposts')
@@ -38,36 +35,35 @@ console.log(posts)
     }
 
     return (
-        <div class="col-xl-6 col-lg-6 col-6">
+        <div >
             {posts.map((e)=><>
-            {e.content.length>0?<Card className='homepage__card'>
+            {e.content.length>0?<Card >
 
-<div className="homepage__card__header" >
-     <Avatar alt={"title"} src={e.skill_id.photo} className="homepage__card__header__avatar" />
-     <div className="skill_name">
-   <h5> <strong>{e.skill_id.Title}</strong></h5> 
-   <StarBorderIcon  onClick={()=>{achive(e.user_id._id,e._id)}} className="staricon"/>
+<div  >
+     <Avatar alt={"title"} src={e.skill.photo}  />
+     <div >
+   <h5> <strong>{e.skill.Title}</strong></h5> 
+   <StarBorderIcon  onClick={()=>{achive(e.user._id,e._id)}} />
 
      </div>
 </div>
-<div className="user_name">
-<strong>  PostedBy:</strong> {e.user_id.user_name}
+<div >
+<strong>  PostedBy:</strong> {e.user.user_name}
 </div>
-<div className="bit_name">
-<strong> Bit_Title:</strong>  {e.bit_id.title}
+<div >
+<strong> Bit_Title:</strong>  {e.bit.title}
 </div>
-<div className="con">
+<div >
 Content:{e.content}
 </div>
 
-<div className="icons">
-<div class="warn-img">
+<div >
+<div >
 
 <BiLike className="like_icon"size={100}/>{e.like.length}
 <BiDislike className="dislike_icon"   size={100}/>{e.dislike.length}
 </div>
-<WarningIcon className="warning_icon" size={100}/>
-
+<WarningIcon size={100}/>{e.reports.length}
 
 </div>
 

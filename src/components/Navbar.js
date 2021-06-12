@@ -18,7 +18,9 @@ import Postsearch from '../Pages/PostSearch';
 import Verification from '../Admin/Verification';
 import PostDetails from '../Pages/PostDetails';
 import TopSkillPosts from '../Pages/TopSkillPosts';
-
+import {Dropdown} from 'react-bootstrap';
+import services from '../Redux/Auth/Login/services';
+import UserPosts from '../Pages/UserPosts';
 function Navbar() {
 const user = useSelector(state => state.user.user)
 console.log(user)
@@ -75,17 +77,21 @@ const history=useHistory();
             Home
           </Link>
           </li>
+         
           <li className='navbar-item'>
-          <Link to="/navbar/addcourse" className='navbar-links' onClick={closeMobileMenu} >
 
-            Add skills
-          </Link>
-          </li>
-          <li className='navbar-item'>
-          <Link to="/navbar/skills" className='navbar-links' onClick={closeMobileMenu} >
+          <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+SKILLS  </Dropdown.Toggle>
 
-            skills
-          </Link>
+  <Dropdown.Menu>
+    <Dropdown.Item> <Link to="/navbar/addcourse" className='' onClick={closeMobileMenu}>ADD SKILLS </Link></Dropdown.Item>
+    <Dropdown.Item> <Link to="/navbar/skills" className='' onClick={closeMobileMenu} >SKILLS
+</Link></Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+
+         
           <li className='navbar-item'>
           <Link to="/navbar/verification" className='navbar-links' onClick={closeMobileMenu} >
 
@@ -96,7 +102,7 @@ const history=useHistory();
           </li>
           <li className='navbar-item'>
             <button className='navbar-links' onClick={()=>{
-          // AuthService.logout()
+services.logout()
           history.replace("/login")
           window.location.reload()
           }}> logout</button>
@@ -123,6 +129,8 @@ const history=useHistory();
 <Route path="/navbar/verification" component={Verification}/>
 <Route path="/navbar/postDetails" component={PostDetails}/>
 <Route path="/navbar/topskillposts" component={TopSkillPosts}/>
+<Route path="/navbar/userposts" component={UserPosts}/>
+
 
 
 

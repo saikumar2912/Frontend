@@ -26,17 +26,17 @@ const Postsearch = (search) => {
 
     return (
         <>   
-        <div class="card-class">
-        <div class="row">
+        <div >
+        <div>
         {filteredPost.map((e)=> <>
                   {e.Title.length > 0 ?
-                  <div class="col-xl-4 col-lg-4 col-4">
-                  <Card className='skill__card'>
-                  <div className="homepage__card__header" >
+                  <div >
+                  <Card>
+                  <div  >
     
     
-                  <Avatar alt={"title"} src={e.photo} className="homepage__card__header__avatar" />
-                  <div className="skill_name">
+                  <Avatar alt={"title"} src={e.photo}  />
+                  <div >
                   <h4> {e.Title}</h4> 
     
                  
@@ -46,21 +46,21 @@ const Postsearch = (search) => {
     
                   </div>
     
-                  <div className="description" >
+                  <div  >
                    <h3><strong> Description:</strong> </h3>
     
-                   <h4 className="des">{e.Description} </h4> 
+                   <h4 >{e.Description} </h4> 
                   </div>
-                  <div className="btn-di">
+                  <div >
                   {user.role==="user"?<div>
-                    <button className="btn btn-primary" onClick={()=>dispatch(follow(e._id,user._id))}> 
+                    <button  onClick={()=>dispatch(follow(e._id,user._id))}> 
                     {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }
     </button>
     </div>:
     
     <div className='navbar-item'>
             <Link to={{pathname:"/navbar/view",
-                      state:e._id}} onClick={()=>{}} className="navbar-lin">add bit</Link>
+                      state:e._id}} onClick={()=>{}} >add bit</Link>
     
     </div>
     }  

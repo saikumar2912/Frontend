@@ -8,9 +8,8 @@ import { login } from '../Redux/Auth/Login/Action';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const Login = () => {
   const dispatch=useDispatch();
-  const[email,setEmail]=useState('');
+  const[email_id,setEmail_id]=useState('');
   const[password,setPassword]=useState('')
-
 
 
       
@@ -21,7 +20,7 @@ const Login = () => {
           <div class="topbar-class">
               <div class="contain">
                 <h5 className="app-name">BuildOut</h5>
-                <div class="topbar-items">
+                  <div class="topbar-items">
                 <Link to='/login' className='topbar-links'>
                     Login
                 </Link>
@@ -36,7 +35,7 @@ const Login = () => {
            <h3>Login</h3>
             <div className="login-inputs" >
               <label htmlFor="email" className="form-label" > Email</label>
-              <input type="email" name='email' placeholder=" Enter Your Email" className="form-control"  onChange={(e)=>setEmail(e.target.value)}/>
+              <input type="email" name='email' placeholder=" Enter Your Email" className="form-control"  onChange={(e)=>setEmail_id(e.target.value)}/>
             </div>
             <div className="login-inputs">
               <label htmlFor="password"  className="form-label" > Password</label>
@@ -45,11 +44,11 @@ const Login = () => {
                <button
                className='btn btn-primary'
                onClick={()=>{
-                   dispatch(login(email,password))
+                   dispatch(login(email_id,password))
                  }
                    
                    } type='button'> Login</button>
-              
+              <Link to='/loginotp'>Login with otp </Link>
 
        </form>
 

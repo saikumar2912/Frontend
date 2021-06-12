@@ -4,6 +4,8 @@ import {useHistory} from 'react-router-dom';
 import { Avatar,Card } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import WarningIcon from '@material-ui/icons/Warning';
+
 
 const TopSkillPosts = ({props}) => {
 
@@ -21,32 +23,33 @@ console.log(a)
 
     return (
         <div>
-            {posts.map(e=>a._id===e.skill_id._id?<Card className='homepage__card'>
+            {posts.map(e=>a._id===e.skill._id?<Card >
 
-<div className="homepage__card__header" >
-     <Avatar alt={"title"} src={e.skill_id.photo}lassName="homepage__card__header__avatar" />
-     <div className="skill_name">
-   <h5> <strong>{e.skill_id.Title}</strong></h5> 
-   <div className="user_name">
-<h6>  {e.user_id.user_name}</h6>
+<div  >
+     <Avatar alt={"title"} src={e.skill.photo} />
+     <div >
+   <h5> <strong>{e.skill.Title}</strong></h5> 
+   <div >
+<h6>  {e.user.user_name}</h6>
 </div>
      </div>
 </div>
 
-<div className="bit_name">
-<strong> Bit_Title:</strong>  {e.bit_id.title}
+<div >
+<strong> Bit_Title:</strong>  {e.bit.title}
 </div>
-<div className="con">
+<div >
 <strong> Content:</strong>{e.content}
 </div>
 
-<div className="icons">
-<div class="warn-img">
+<div >
+<div>
 
 <ThumbUpAltIcon   
 size={100}/>{e.like.length}
 <ThumbDownIcon  size={100}/>{e.dislike.length}
 </div>
+<WarningIcon size={100}/>{e.reports.length}
 
 </div>
 

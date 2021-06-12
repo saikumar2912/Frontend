@@ -2,28 +2,28 @@ import services from './services';
 import { createBrowserHistory } from 'history';
 import { Skill } from '../ADMIN/SkillAction';
 import axios from 'axios';
-import {getCurrentUser} from './services'
 import { reqVerification } from '../ADMIN/VerificationAction';
 import { Displayreports } from './DisplayAction';
 // import {useHistory} from  'react-router-dom'
 export const history = createBrowserHistory();
-export const login=(email,password)=>{
+export const login=(user,password)=>{
   return (dispatch) =>{
-      services.login(email,password)
+      services.login(user,password)
         .then(response =>{
       const user=response
       console.log(user)
-     if(user.message === "login sucessful"&& localStorage.getItem('user') !== null)
+     if(user.message === "login sucessful" ||user.message==="User is Verified!!")
       
      {
         services.getCurrentUser().then(res=>{
           dispatch(fetchuser(res))
           console.log(res)
           if(user.role==='user'){
-            dispatch(Achivement(res._id))
 
           }
           else{
+            dispatch(Achivement(res._id))
+
             dispatch(reqVerification())
             dispatch(Skill())
             dispatch(Displayreports())
@@ -74,7 +74,7 @@ export const logout=()=>{
     dispatch(userlogout())
   }
 }
-const fetchuser=(user)=>{
+export const fetchuser=(user)=>{
   return{
     type:'LOGIN',
     payload:user

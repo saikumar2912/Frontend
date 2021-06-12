@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 
-const login = (email_id, password) => {
+const login = (user, password) => {
     return axios
       .post('http://localhost:8000/users/login', {
-        email_id,
+        user,
         password,
       })
       .then((response) => {
@@ -15,7 +15,7 @@ const login = (email_id, password) => {
         {
       alert(response.data.message)
       }
-      else if (response.data.email_id !== email_id) {
+      else if (response.data.email_id !== user) {
           alert(response.data.message)
           
       }  
@@ -24,6 +24,9 @@ const login = (email_id, password) => {
       })
   };
 
+  const logout=()=> {
+    localStorage.removeItem("user")
+  }
 
  export const getCurrentUser=()=> {
     const Token =()=> localStorage.getItem("user");
@@ -42,8 +45,7 @@ const login = (email_id, password) => {
       return {};
     }
   }
+  const service={authHeader
+    ,login,getCurrentUser,logout}
   
-  export default {
-      authHeader
-    ,login,getCurrentUser
-};
+  export default service

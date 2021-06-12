@@ -12,8 +12,8 @@ console.log(state)
    
     return (
         <div>
-            <input className="search__input" type="text" placeholder="Search skills" onChange={(e)=>setSearch(e.target.value)}  />
-            <SearchRoundedIcon className="search__icon" onClick={()=>{history.push('./search',search)}}></SearchRoundedIcon>
+            <input type="text" placeholder="Search skills" onChange={(e)=>setSearch(e.target.value)}  />
+            <SearchRoundedIcon  onClick={()=>{history.push('./search',search)}}></SearchRoundedIcon>
         </div>
     )
 }
