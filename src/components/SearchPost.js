@@ -82,8 +82,7 @@ export default function SearchAppBar() {
     const history = useHistory()
   const classes = useStyles();
   const {
-    getRootProps,
-    getInputLabelProps,
+   
     getInputProps,
     getListboxProps,
     getOptionProps,

@@ -22,38 +22,47 @@ console.log(a)
     console.log(posts)
 
     return (
-        <div>
-            {posts.map(e=>a._id===e.skill._id?<Card >
-
-<div  >
+        <div class="app-container">
+            <div class="admin-home-cards">
+                <div class="row">
+                {posts.map(e=>a._id===e.skill._id?
+                <div class="col-xl-12 col-lg-12 col-12">
+                    <div class="admin-cards">
+                        <span></span>
+<div class="card-head">
      <Avatar alt={"title"} src={e.skill.photo} />
-     <div >
-   <h5> <strong>{e.skill.Title}</strong></h5> 
-   <div >
-<h6>  {e.user.user_name}</h6>
+     <div class="card-head-in">
+         <div class="card-head-name">
+   <h5>{e.skill.Title}</h5> 
+   <div class="name">
+ {e.user.user_name}
 </div>
      </div>
 </div>
-
-<div >
+</div>
+<div class="card-body">
+    <div class="card-body-in">
 <strong> Bit_Title:</strong>  {e.bit.title}
 </div>
-<div >
+<div class="card-body-in">
 <strong> Content:</strong>{e.content}
 </div>
-
-<div >
-<div>
+<div className="card-foot">
 
 <ThumbUpAltIcon   
 size={100}/>{e.like.length}
 <ThumbDownIcon  size={100}/>{e.dislike.length}
-</div>
+<div class="admin-warning">
 <WarningIcon size={100}/>{e.reports.length}
+</div>
+</div>
+</div>
 
 </div>
 
-</Card>:<></>)}
+</div>:<></>)}
+                </div>
+                </div>
            
         </div>
     )

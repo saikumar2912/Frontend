@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -20,7 +19,7 @@ export default function FadeMenu() {
   };
 
   return (
-    <div>
+    <div >
      <CgProfile onClick={handleClick} />
       <Menu
         id="fade-menu"
@@ -30,13 +29,13 @@ export default function FadeMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-                  <Link to="/navbar/profile" >Profile</Link>
+                  <Link className="profile" to="/navbar/profile" >Profile</Link>
 
         <MenuItem onClick={()=>{
           // AuthService.logout()
           history.replace("/login")
           window.location.reload()
-          }}>Logout</MenuItem>
+          }}><div className="profile"> Logout</div></MenuItem>
       </Menu>
     </div>
   );

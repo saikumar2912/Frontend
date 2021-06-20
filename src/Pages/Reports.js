@@ -13,17 +13,27 @@ const user = useSelector(state => state.user.user)
     console.log(reportid)  
 
     return (
-        <div>
+        <div class="admin-cards">
+            <span></span>
+            <div class="card-body">
+                <h2>Reports</h2>
 {report.map(e=><>
-{e.post_id._id===reportid?<>{e.report}
-{e.user_id.user_name}
+{e.post_id._id===reportid?<>
+<div class="report-body">
 
+<h6>{e.user_id.user_name}</h6>
+<p>{e.report}</p>
+<div class="d-flex">
 <ThumbUpAltIcon className={e.reportlike.includes(user._id)?"like_icon":"likes_icon"} onClick={()=>{dispatch(Reportlike(e._id,user._id));}} 
        size={100}/>{e.reportlike.length}
+<div class="icon">
 <ThumbDownIcon className={e.reportdislike.includes(user._id)?"dislike_icon":"dislikes_icon"} onClick={()=>{dispatch(Reportdislike(e._id,user._id))}} size={100}/>{e.reportdislike.length}
+</div>
+</div>
+</div>
 </>:<></>}
 </>)}
-
+</div>
         </div>
     )
 }

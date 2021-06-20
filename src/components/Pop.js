@@ -1,5 +1,3 @@
-
-
 import React,{ useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -19,7 +17,8 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    transform: `translate(-${top}%, -${left}%)`
+    
   };
 }
 
@@ -27,15 +26,19 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
     width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    backgroundColor: 'white',
+    border: '2px solid #15f4ee',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     height:200,
-    borderRadius:'20px'
+    borderRadius:'20px',
+    color: 'white',
+  
+    
   },
   textfield:{
-      width:"100%"
+      width:"100%",
+      
   }
 }));
 
@@ -66,8 +69,9 @@ console.log(reports)
   const body = (
     <div style={modalStyle} className={classes.paper}>
           <TextField id="standard-basic" className={classes.textfield} label="Reason" onChange={(e)=>setReport(e.target.value)} />
-          <button onClick={()=>{dispatch(report(user,postid,reports))}}> add</button>
-
+          <div class="skill-button postdetail-btn">
+          <a onClick={()=>{dispatch(report(user,postid,reports))}}> add</a>
+          </div>
     </div>
   );
 

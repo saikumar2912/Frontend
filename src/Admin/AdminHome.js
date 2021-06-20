@@ -4,6 +4,7 @@ import { BiDislike, BiLike } from 'react-icons/bi'
 import{useSelector} from 'react-redux'
 import WarningIcon from '@material-ui/icons/Warning';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import './styles.css'
 import axios from 'axios';
 
 const AdminHome = () => {
@@ -35,40 +36,44 @@ console.log(posts)
     }
 
     return (
-        <div >
-            {posts.map((e)=><>
-            {e.content.length>0?<Card >
-
-<div  >
-     <Avatar alt={"title"} src={e.skill.photo}  />
-     <div >
-   <h5> <strong>{e.skill.Title}</strong></h5> 
-   <StarBorderIcon  onClick={()=>{achive(e.user._id,e._id)}} />
-
-     </div>
-</div>
-<div >
-<strong>  PostedBy:</strong> {e.user.user_name}
-</div>
-<div >
-<strong> Bit_Title:</strong>  {e.bit.title}
-</div>
-<div >
-Content:{e.content}
-</div>
-
-<div >
-<div >
-
-<BiLike className="like_icon"size={100}/>{e.like.length}
-<BiDislike className="dislike_icon"   size={100}/>{e.dislike.length}
-</div>
-<WarningIcon size={100}/>{e.reports.length}
-
-</div>
-
-</Card>:<></> }
-            </>)}
+        <div class="app-container">
+            <div class="admin-home-cards">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-12">
+                    {posts.map((e)=><>{e.content.length>0?
+                        <div className="admin-cards">
+                            <span></span>
+                            <div className="card-head">
+                                <Avatar alt={"title"} src={e.skill.photo}  />
+                                <div class="card-head-in">
+                                    <div class="card-head-name">
+                                    <h5>{e.skill.Title}</h5>
+                                    <div class="name">{e.user.user_name}</div>
+                                    </div>
+                                    <StarBorderIcon  onClick={()=>{achive(e.user._id,e._id)}} />
+                                </div>
+                            </div>
+                            <div className="card-body">
+                                
+                                <div className="card-body-in">
+                                    <strong> Bit_Title: </strong>{e.bit.title}
+                                </div>
+                                <div className="card-body-in">
+                                    Content:{e.content}
+                                </div>
+                                <div class="card-foot">
+                                    <BiLike className="like_icon"  size={30}/>{e.like.length}
+                                    <BiDislike className="dislike_icon"   size={30}/>{e.dislike.length}
+                                    <div className="admin-warning">
+                                        <WarningIcon size={30}/>{e.reports.length}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>:<></>}
+                    </>)}
+                </div>
+            </div>
+            </div>
         </div>
     )
 }

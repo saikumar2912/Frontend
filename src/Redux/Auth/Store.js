@@ -6,6 +6,7 @@ import BitReducer from './ADMIN/BitReducer'
 import SkillReducer from './ADMIN/SkillReducer'
 import DisplayReducer from './Login/DisplayReducer';
 import verification from './ADMIN/VerificationReducer';
+import question from './ADMIN/QuestionsReducers'
  import thunk from "redux-thunk";
 const RootReducer = combineReducers({
   user: UserReducer,
@@ -13,7 +14,8 @@ const RootReducer = combineReducers({
   bit:BitReducer,
   skill:SkillReducer,
   display:DisplayReducer,
-  verification:verification
+  verification:verification,
+  questions:question
 
 });
 

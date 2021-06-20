@@ -1,12 +1,3 @@
-.navbars {
-  background:transparent linear-gradient(270deg, #addaeb 0%, #0084ffe5 100%) 0% 0% no-repeat padding-box ;
-  height: 4.5rem;
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-  padding:1rem
-}
-
 .navbar_logo {
   color: #fff;
   justify-self: start;
@@ -69,19 +60,19 @@
   transform: translateY(-50%);
   height: .625rem;
 }
-.navbar-links {
+/* .navbar-links {
   color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
-}
+} */
 
-.navbar-links:hover {
+/* .navbar-links:hover {
   background-color: #fff;
   color:blue;
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.2s ease-out;
-}
+} */
 
 .fa-bars {
   color: #fff;

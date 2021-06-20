@@ -4,6 +4,7 @@ import { Skill } from '../ADMIN/SkillAction';
 import axios from 'axios';
 import { reqVerification } from '../ADMIN/VerificationAction';
 import { Displayreports } from './DisplayAction';
+import { Question } from '../ADMIN/QuestionsAction';
 // import {useHistory} from  'react-router-dom'
 export const history = createBrowserHistory();
 export const login=(user,password)=>{
@@ -27,6 +28,7 @@ export const login=(user,password)=>{
             dispatch(reqVerification())
             dispatch(Skill())
             dispatch(Displayreports())
+            dispatch(Question())
 
           }
          

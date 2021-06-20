@@ -1,30 +1,30 @@
 const initialstate={
-    bit:[]
+    questions:[]
   }
 
 const reducer = (state = initialstate, action) => {
     switch (action.type) {
      
-      case "ADD_BIT_SUCCESS":
+      case "QUESTION_DISPLAY_SUCCESS":
         return {
          ...state,
-         bit:action.payload
+         questions:action.payload
           
         }
-        case "DELETE_BIT_SUCCESS":
+        case "DELETE_QUES_SUCCESS":
         return {
          ...state,
-         bit:action.payload
+         questions:action.payload
           
         }
-        case "UPDATE_BIT_SUCCESS":
+        case "UPDATE_QUES_SUCCESS":
         return {
          ...state,
-         bit:action.payload
+         questions:action.payload
           
         }
        
-      case "ADD_BIT_FAILED":
+      case "QUESTION_FAILED":
         return {
             ...state
         }

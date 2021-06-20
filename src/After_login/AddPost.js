@@ -69,31 +69,37 @@ const BitChange=(e)=>{
 
 
     return (
-        <div  >
-            <div >
-                <select  onChange={e=> Skillchange((e))} >
+        <div className="app-container bit-container">
+            <div className="admin-cards add-post">
+                <span></span>
+                <div class="card-body ">
+                <div class="add-post-select">
+                <select className="form-control" onChange={e=> Skillchange((e))} >
                         <option  > Select the Skills</option>
                          {
                          Add.map((address, key) => <option key={key}value={key}>{address.title}</option>)
                          }
                 </select>
-                <select  onChange={e=>BitChange((e))}>
+                <select className="form-control margin-left" onChange={e=>BitChange((e))}>
                     <option> Select the bit</option>
                     {
                          Bit.map((address, key) => <option key={key}value={key}>{address.title}</option>)
                          }
                 </select>
-                
+                </div>
+                <div className="addpost-text"> 
+            <textarea className="form-control" cols="50" rows="10"  onChange={(e)=>setContent(e.target.value)} placeholder="Content"></textarea>
+            
             </div>
-           
-            <div > 
-            <textarea  cols="50" rows="20"  onChange={(e)=>setContent(e.target.value)} placeholder="Content"></textarea>
-
-            </div>
-<div >
-<Button onClick={()=>post(content)}>post</Button>   
+            <div className="skill-card-foot home-skill-button">
+<a className="skill-button" onClick={()=>post(content)}>post</a>   
 
 </div>
+                    </div>     
+            </div>
+           
+            
+
         </div>
     )
 }

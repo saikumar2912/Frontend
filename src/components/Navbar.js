@@ -15,12 +15,14 @@ import AdminHome from '../Admin/AdminHome';
 import Achivements from '../Pages/Achivements'
 import SearchAppBar from './SearchPost';
 import Postsearch from '../Pages/PostSearch';
-import Verification from '../Admin/Verification';
 import PostDetails from '../Pages/PostDetails';
 import TopSkillPosts from '../Pages/TopSkillPosts';
-import {Dropdown} from 'react-bootstrap';
-import services from '../Redux/Auth/Login/services';
 import UserPosts from '../Pages/UserPosts';
+import View_questions from '../Admin/view_questions';
+import AttendQuiz from '../Pages/AttendQuiz';
+import Initial from '../Quiz/Initial'
+
+
 function Navbar() {
 const user = useSelector(state => state.user.user)
 console.log(user)
@@ -48,8 +50,7 @@ const history=useHistory();
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
           
         <li className='navbar-item'>
-        {location.pathname === "/navbar/addpost"?<></> :<input type="text"  />}
-</li>
+        {location.pathname === "/navbar/addpost"?<></> :<SearchAppBar/>}</li>
         <li className='navbar-item'>
             <Link to="/navbar/Home" className='navbar-links' onClick={closeMobileMenu}>
               Home
@@ -66,7 +67,9 @@ const history=useHistory();
             <Link to="/navbar/addpost" className='navbar-links' onClick={closeMobileMenu} >Add Post  </Link>
             
           </li>
+          <li className="navbar-item profile-item">
           <Profile/>
+          </li>
           </ul>
           </>
           :
@@ -77,35 +80,24 @@ const history=useHistory();
             Home
           </Link>
           </li>
-         
           <li className='navbar-item'>
+          <Link to="/navbar/addcourse" className='navbar-links' onClick={closeMobileMenu} >
 
-          <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-SKILLS  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item> <Link to="/navbar/addcourse" className='' onClick={closeMobileMenu}>ADD SKILLS </Link></Dropdown.Item>
-    <Dropdown.Item> <Link to="/navbar/skills" className='' onClick={closeMobileMenu} >SKILLS
-</Link></Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
-
-         
-          <li className='navbar-item'>
-          <Link to="/navbar/verification" className='navbar-links' onClick={closeMobileMenu} >
-
-            Users list
+            Add skills
           </Link>
           </li>
+          <li className='navbar-item'>
+          <Link to="/navbar/skills" className='navbar-links' onClick={closeMobileMenu} >
 
+            skills
+          </Link>
           </li>
           <li className='navbar-item'>
-            <button className='navbar-links' onClick={()=>{
-services.logout()
+            <a className='navbar-links' onClick={()=>{
+          // AuthService.logout()
           history.replace("/login")
           window.location.reload()
-          }}> logout</button>
+          }}> logout</a>
 </li>
         
         
@@ -116,20 +108,23 @@ services.logout()
           
        
         </nav>
-  <Route path='/navbar/skills' component={Skills}/>
-  <Route path="/navbar/Home"  component={Home}/>
-  <Route path='/navbar/addpost' component={AddPost}/>
-  <Route path='/navbar/addcourse' component={AddCourse}/>
-  <Route path="/navbar/view" component={Bit}/>  
+        <Route path='/navbar/skills' component={Skills}/>
+        <Route path="/navbar/Home"  component={Home}/>
+        <Route path='/navbar/addpost' component={AddPost}/>
+        <Route path='/navbar/addcourse' component={AddCourse}/>
+        <Route path="/navbar/view" component={Bit}/>  
 <Route path="/navbar/profile" component={profilepage}/>
 <Route path="/navbar/postsearch" component={Skillsearch}/>
 <Route path="/navbar/skillsearch" component={Postsearch}/>
 <Route path="/navbar/new" component={AdminHome}/>
 <Route path="/navbar/achivement" component={Achivements}/>
-<Route path="/navbar/verification" component={Verification}/>
 <Route path="/navbar/postDetails" component={PostDetails}/>
 <Route path="/navbar/topskillposts" component={TopSkillPosts}/>
 <Route path="/navbar/userposts" component={UserPosts}/>
+<Route path="/navbar/questions" component={View_questions}/>
+<Route path="/navbar/quiz" component={Initial}/>
+
+
 
 
 

@@ -9,10 +9,14 @@ export const Display= () => {
       return  axios.post('http://localhost:8000/post/getposts',{},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> {
-               console.log(res.data)
+               console.log(res.data) 
                dispatch(DisplaySuccess(res.data))
-              
-            })
+               const data=res.data
+               const filteredPost =
+      data  &&
+     data.filter((e) => e && e.Title)
+    console.log(filteredPost)        
+    })
     }
   }
   
@@ -33,7 +37,8 @@ export const Display= () => {
                 (res)=> {
                    console.log(res.data)
                    dispatch(DisplaySuccess(res.data))
-                })
+                
+                  })
        .catch((e)=>console.log(e))
             })
     }

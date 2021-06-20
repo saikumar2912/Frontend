@@ -5,23 +5,35 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const New = () => {
     return (
-        <div className="wrapper-class">
-          <div class="wrap">
-            <div class="topbar-class">
-              <div class="contain">
-                <h5 className="app-name">BuildOut</h5>
-                <div class="topbar-items">
-                <Link to='/login' className='topbar-links'>
-                    Sign In
+        <div className="wrapper">
+          <div >
+          <nav className='navbars'>
+        <Link to='/navbar/home' className='navbar-links'>
+          BUILD OUT
+          <i class='fab fa-firstdraft' />
+        </Link>
+        <div class="topbar-items">
+          <ul className="navbar-menu">
+            <li className="navbar-item">
+            <Link to='/login' className='navbar-links'>
+                    Login
                 </Link>
-                <Link to='/contactus' className='topbar-links'>
+            </li>
+            <li className="navbar-item">
+            <Link to='/contactus' className='navbar-links'>
                     Contact Us
                 </Link>
-              </div>
-            </div>
-            </div>
-            <div class="content">
+            </li>
+          </ul>
+        </div>
+        </nav>
+            <div class="app-container">
+            <div className="admin-cards">
+                  <span></span>
+                  <div className="card-body">
               <Carousel>
+                
+                  
   <Carousel.Item>
     <a href="#react"><img
       className="d-block w-100"
@@ -66,10 +78,9 @@ const New = () => {
     
   </Carousel.Item>
 </Carousel>
-              
-              
-            </div>
-            <div class="c-con">
+</div>
+</div>
+<div class="c-con">
             <div class="c-card" id="react">
               <div class="c-card-img">
                 <img className="d-block" src="https://effectussoftware.com/blog/wp-content/uploads/2020/02/What-is-React-JS.jpg" alt="React"></img>
@@ -125,7 +136,10 @@ const New = () => {
                 <a href="https://angularjs.org/">View Documentation</a>
               </div>
             </div>
+            </div>        
+              
             </div>
+            
           </div>
           <footer class="c-footer">
             <div class="c-inner">

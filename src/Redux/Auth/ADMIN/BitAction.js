@@ -71,7 +71,7 @@ export const submit = (skill_id,title) => {
             })
     }
   }
- 
+  
   export const bitdetails = (e) => {
     return (dispatch) => {
       console.log("new",e);
@@ -100,6 +100,7 @@ export const submit = (skill_id,title) => {
           payload: bit
         }
       }
+      
   export const PostFailure = () => {
     return {
       type: "ADD_BIT_FAILED",

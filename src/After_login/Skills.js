@@ -34,53 +34,40 @@ console.log(Data)
   return (
 
     <>   
-    <div >
-    <div >
-    {/* <input type="text" onChange={e=>setskills(e.target.value)}/> */}
-    
-    {filteredPost.map((e)=> <>
-              {e.Title.length > 0 ?
-              <div >
-              <Card  >
-              <Link to={{pathname:'/navbar/topskillposts',state:e}} >
-                </Link>
-              <div  >
-
-              <Avatar alt={"title"} src={e.photo}  />
-              <div>
-              <h4> </h4>
-{user.role==="user"?<> {e.Title}</>:<><Link to={{pathname:'/navbar/topskillposts',state:e}} >{e.Title}</Link>
- </>}
-              </div>
-<PeopleIcon/>      {e.followers.length}
-
+    <div class="app-container">
+      <div class="row">
+        {/* <input type="text" onChange={e=>setskills(e.target.value)}/> */}
+        {filteredPost.map((e)=> <>{e.Title.length > 0 ?
+        <div className="col-12 col-xl-4 col-lg-4">
+              <div className="admin-cards">
+                <span></span>
+                <Link to={{pathname:'/navbar/topskillposts',state:e}} ></Link>
+                <div class="card-head">
+                  <Avatar alt={"title"} src={e.photo}  />
+                  <div class="card-head-in">
+                    {user.role==="user"?<> <h4>{e.Title}</h4></>:<><Link className="title" to={{pathname:'/navbar/topskillposts',state:e}} >{e.Title}</Link></>}
+                  </div>
+                  <PeopleIcon/>{e.followers.length}
               </div>
 
-              <div  >
-               <h3><strong> Description:</strong> </h3>
-
-               <h4 >{e.Description} </h4> 
-              </div>
-              <div >
-              {user.role==="user"?<div>
-                <button  onClick={()=>dispatch(follow(e._id,user._id))}> 
-                {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }
-</button>
-</div>:
-
-<div >
-        <Link to={{pathname:"/navbar/view",
+              <div className="card-body">
+                <strong> Description:</strong>
+                <p>{e.Description} </p>
+                <div className="card-foot">
+                  {user.role==="user"?<div className="skill-card-foot home-skill-button">
+                  <Link class="skill-button" onClick={()=>dispatch(follow(e._id,user._id))}> {e.followers.includes(user._id)? <> unfollow</>:<>follow</> }</Link>
+                </div>:<div class="skill-card-foot">
+                  <div className="skill-button">
+                  <Link to={{pathname:"/navbar/view",
                   state:e._id}} onClick={()=>{}}>add bit</Link>
-        < DeleteSweepIcon  onClick={()=>{dispatch(Delete(e._id))}}/>
-        <SimplePop id={e._id}/>
-</div>
-}  
-               
- 
-
+                  </div>
+                  < DeleteSweepIcon  onClick={()=>{dispatch(Delete(e._id))}}/>
+                  <SimplePop id={e._id}/>
+                </div>}  
+               </div>
               </div>
-
-              </Card>
+              </div>
+              
               </div>
               
           

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import{useSelector} from 'react-redux';
+import{useSelector,useDispatch} from 'react-redux';
+import './profilepage.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom'
-import { userposts } from '../Redux/Auth/Login/DisplayAction';
+import { userposts,DeletePost } from '../Redux/Auth/Login/DisplayAction';
 import { Card } from '@material-ui/core';
 import Axios from 'axios'
 import {MdEmail} from 'react-icons/md'
@@ -12,7 +13,8 @@ import {HiPhone} from 'react-icons/hi'
 import SimpleModal from './Edit'
 import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
 import AssignmentIndRoundedIcon from '@material-ui/icons/AssignmentIndRounded';
-import {Link}  from 'react-router-dom';
+import { Link} from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
     large: {
       width: theme.spacing(14),
@@ -53,6 +55,7 @@ const Token = () => localStorage.getItem("user");
 
 const [Data,setData]=useState([])
 
+const dispatch=useDispatch()
 useEffect(() => {
 userposts()
 
@@ -71,58 +74,59 @@ useEffect(()=>{
   console.log(Data)
 
     return (
-        <div >
-            <div >
-
-            </div>
-        <div  >
+        <div className='app-container'>
+        <div className="profile__body" >
             
-<div >
+<div className="profile__body__left">
 <Avatar  alt={user.user_name} src={user.profile_picture} className={classes.large}/>
 
 <SimpleModal/>
 
-<h1 >{user.user_name}</h1>
+<h1 className="h1">{user.user_name}</h1>
 
-<MdEmail/> {user.email_id}
-<div>
-<HiPhone/> {user.phoneNo}
+<MdEmail class="margin-right"/> {user.email_id}
+<div className="mt-3">
+<HiPhone class="margin-right"/> {user.phoneNo}
 
 </div>
-<div>
+<div className="mt-3">
 <SchoolRoundedIcon/>{user.Education}
 
 </div>
-<div> 
+<div className="mt-3"> 
   <AssignmentIndRoundedIcon/>{user.Bio}
 </div>
 
 
-<div >
+<div className="profile__body__logout">
 <Button onClick={()=>{history.push('/navbar/achivement')}}> Achivement {!achive ? "" : achive.achivement.length} </Button>
 </div >
 
     </div> 
-    <div >
-    <h1>Following Skills</h1>
-
-      <div >
-
-      {Data.map((e)=><Card>
+    <div className="new">
+      <div className="admin-cards profile-follow">
+        <span></span>
+        <div class="card-body">
+    <h4>Following Skills</h4>
+<div className="profile-skills">
+      <div className="row">
+      {Data.map((e)=><>
       {e.title.length > 0?
-      <div >
-      <>
-      <div  >
-               <div >
-             <Link to={{pathname:"/navbar/userposts",
+      <div class="col-4">
+      <div className='profile-card'>
+          <div className="skill_name">
+          <Link to={{pathname:"/navbar/userposts",
                   state:e.skill_id}} onClick={()=>{}}>{e.title}</Link>
                </div>
-              
-          </div>
+                 
+        
          
   
-      </></div>:<div> NO POSTS YET</div> }
-      </Card>)}
+      </div></div>:<div> NO POSTS YET</div> }
+      </>)}
+      </div>
+     </div>
+     </div>
      </div>
     </div>
 
