@@ -1,7 +1,10 @@
 import axios from 'axios'
-
+import { fetchuser } from './Action';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const login = (user, password) => {
+
     return axios
       .post('http://localhost:8000/users/login', {
         user,
@@ -13,10 +16,10 @@ const login = (user, password) => {
         }
         if(response.data.password !== password)
         {
-      alert(response.data.message)
+      toast(response.data.message,{closeOnClick: true,color:'black'})
       }
       else if (response.data.email_id !== user) {
-          alert(response.data.message)
+          toast(response.data.message)
           
       }  
   
@@ -24,8 +27,12 @@ const login = (user, password) => {
       })
   };
 
-  const logout=()=> {
-    localStorage.removeItem("user")
+  export const logout=()=> {
+    return(dispatch)=>{
+      localStorage.removeItem("user")
+      dispatch(fetchuser())
+    }
+   
   }
 
  export const getCurrentUser=()=> {

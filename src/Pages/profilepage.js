@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import{useSelector,useDispatch} from 'react-redux';
 import './profilepage.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom'
-import { userposts,DeletePost } from '../Redux/Auth/Login/DisplayAction';
-import { Card } from '@material-ui/core';
-import Axios from 'axios'
+import { userposts } from '../Redux/Auth/Login/DisplayAction';
 import {MdEmail} from 'react-icons/md'
 import {HiPhone} from 'react-icons/hi'
 import SimpleModal from './Edit'
 import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
 import AssignmentIndRoundedIcon from '@material-ui/icons/AssignmentIndRounded';
+import { unfollow } from '../Redux/Auth/ADMIN/SkillAction';
+import ClearIcon from '@material-ui/icons/Clear';
+import{GiAchievement}from 'react-icons/gi'
 import { Link} from 'react-router-dom';
-
+import CustomizedRatings from './Rating'
+import axios from 'axios';
+import{BiMedal} from 'react-icons/bi'
 const useStyles = makeStyles((theme) => ({
     large: {
       width: theme.spacing(14),
       height: theme.spacing(14),
-      marginLeft:'70px'
+      marginLeft:'50px'
       
     },
     root: {
@@ -44,16 +47,19 @@ const Profilepage = (a) => {
 
     const classes = useStyles();
 const user = useSelector(state => state.user.user)
-console.log(user)
+const Data = useSelector(state => state.skill.skill)
+const post = useSelector(state => state.display.display)
+const scores = useSelector(state => state.questions.score)
+console.log(scores)
 
-const state = useSelector(state => state.display.display)
-console.log(state)
 
 const achive=useSelector(state=>state.user.achivement )
 console.log(achive)
-const Token = () => localStorage.getItem("user");
 
-const [Data,setData]=useState([])
+useEffect(()=>{
+  axios.post('http://localhost:8000/result/getallquiz',{})
+  .then((res)=>console.log(res.data))
+})
 
 const dispatch=useDispatch()
 useEffect(() => {
@@ -62,25 +68,15 @@ userposts()
 }
 , [user])
 
-useEffect(()=>{
-        
-  Axios.post('http://localhost:8000/skill/userskills',{user_id:user._id},{headers:{authorization:`Bearer ${Token()}`}})
-  .then((res)=>{setData(res.data.skills)
-    }
-)
-
-
-  },[user._id])
-  console.log(Data)
 
     return (
         <div className='app-container'>
         <div className="profile__body" >
-            
 <div className="profile__body__left">
+<SimpleModal/>
+
 <Avatar  alt={user.user_name} src={user.profile_picture} className={classes.large}/>
 
-<SimpleModal/>
 
 <h1 className="h1">{user.user_name}</h1>
 
@@ -99,7 +95,8 @@ useEffect(()=>{
 
 
 <div className="profile__body__logout">
-<Button onClick={()=>{history.push('/navbar/achivement')}}> Achivement {!achive ? "" : achive.achivement.length} </Button>
+  <GiAchievement/>
+<Button onClick={()=>{history.push('/achivement')}}> Achivement {!achive ? "" : achive.achivement.length} </Button>
 </div >
 
     </div> 
@@ -108,28 +105,61 @@ useEffect(()=>{
         <span></span>
         <div class="card-body">
     <h4>Following Skills</h4>
+
 <div className="profile-skills">
       <div className="row">
       {Data.map((e)=><>
-      {e.title.length > 0?
+      {e.followers.includes(user._id)===true ?
       <div class="col-4">
       <div className='profile-card'>
           <div className="skill_name">
-          <Link to={{pathname:"/navbar/userposts",
-                  state:e.skill_id}} onClick={()=>{}}>{e.title}</Link>
+          <Link to={{pathname:"/userposts",
+                  state:e._id}} onClick={()=>{}}>{e.Title}</Link>
+          <ClearIcon  onClick={()=>dispatch(unfollow(e._id,user._id))}/> 
+
                </div>
                  
         
          
   
-      </div></div>:<div> NO POSTS YET</div> }
+      </div></div>:<div></div> }
       </>)}
       </div>
      </div>
      </div>
      </div>
-    </div>
+     { post.map(e=>achive.achivement.includes(e._id)?<>
 
+  {console.log(e)}
+  {e.skill.Title}
+     
+     </>:<></>)}
+
+{scores.map(e=>user._id.includes(e.user_id)?<div> 
+  {e.bit_id.title}
+  {e.score}
+  {e.score<50?
+<div> 
+<BiMedal className='bronze' size={30}/>
+
+</div>:e.score<70?
+<div> 
+<BiMedal className='silver' size={30}/>
+
+</div>:e.score>90?
+<div> 
+<BiMedal className='gold' size={30}/>
+
+</div>:<></> }
+
+  
+
+</div>:<></>)}
+
+ 
+
+
+    </div>
            </div>
     
              </div>
@@ -137,3 +167,5 @@ useEffect(()=>{
 }
 
 export default Profilepage
+
+

@@ -47,9 +47,9 @@ console.log(id)
       
 
     };
-const question=items.map(e=>{e.bit_id=id 
-    return(e)
-    } )
+const question=items.map((e)=>{e.bit_id=id
+return(e)
+})
 
     console.log(question)
     
@@ -70,7 +70,7 @@ const question=items.map(e=>{e.bit_id=id
             readExcel(file);
           }}
         />
-        <button onClick={()=>submit()}> add</button>
+        <button class="btn btn-primary quiz-btn" onClick={()=>submit()}> add</button>
       </div>
     );
 }

@@ -5,6 +5,9 @@ import Fade from '@material-ui/core/Fade';
 import {CgProfile} from 'react-icons/cg'
 import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux'
+import { logout } from '../Redux/Auth/Login/services';
+
 export default function FadeMenu() {
   const history=useHistory()
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -13,7 +16,7 @@ export default function FadeMenu() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+const dispatch=useDispatch()
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -29,12 +32,11 @@ export default function FadeMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-                  <Link className="profile" to="/navbar/profile" >Profile</Link>
+                  <Link className="profile" to="/profile" >Profile</Link>
 
         <MenuItem onClick={()=>{
-          // AuthService.logout()
-          history.replace("/login")
-          window.location.reload()
+           dispatch(logout())
+          history.push("/login")
           }}><div className="profile"> Logout</div></MenuItem>
       </Menu>
     </div>

@@ -2,10 +2,13 @@ import { Avatar, Card } from '@material-ui/core'
 import React, { useEffect,useState } from 'react'
 import { BiDislike, BiLike } from 'react-icons/bi'
 import{useSelector} from 'react-redux'
-import WarningIcon from '@material-ui/icons/Warning';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import { Link } from 'react-router-dom';
 import './styles.css'
 import axios from 'axios';
+import ReportIcon from '@material-ui/icons/Report';
 
 const AdminHome = () => {
 
@@ -37,10 +40,13 @@ console.log(posts)
 
     return (
         <div class="app-container">
-            <div class="admin-home-cards">
+            <div class="">
+
             <div class="row">
-                <div class="col-xl-12 col-lg-12 col-12">
                     {posts.map((e)=><>{e.content.length>0?
+            
+            <div class="col-12 d-flex col-xl-4 col-lg-4">
+
                         <div className="admin-cards">
                             <span></span>
                             <div className="card-head">
@@ -56,23 +62,30 @@ console.log(posts)
                             <div className="card-body">
                                 
                                 <div className="card-body-in">
-                                    <strong> Bit_Title: </strong>{e.bit.title}
+                                    <strong> Title: </strong>{e.bit.title}
                                 </div>
                                 <div className="card-body-in">
                                     Content:{e.content}
                                 </div>
                                 <div class="card-foot">
-                                    <BiLike className="like_icon"  size={30}/>{e.like.length}
-                                    <BiDislike className="dislike_icon"   size={30}/>{e.dislike.length}
+                                    <ThumbUpAltIcon   size={30}/>{e.like.length}
+                                    <ThumbDownIcon   size={30}/>{e.dislike.length}
+                                    <div class="d-flex flex-fill align-items-center justify-content-center">
+              <div className="link">
+              <Link to={{pathname:'/postDetails',state:e}} >View</Link>
+                </div>
+               
+              </div>
                                     <div className="admin-warning">
-                                        <WarningIcon size={30}/>{e.reports.length}
+                                        <ReportIcon size={30}/>{e.reports.length}
                                     </div>
                                 </div>
                             </div>
+            </div>
+
                         </div>:<></>}
                     </>)}
                 </div>
-            </div>
             </div>
         </div>
     )

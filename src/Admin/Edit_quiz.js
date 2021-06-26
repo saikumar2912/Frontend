@@ -40,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    height:450
+    height:450,
+    borderRadius:"20px"
   },
   input: {
     display: 'none',
@@ -111,8 +112,7 @@ const dispatch=useDispatch()
         size="large"
         className={classes.button}
         startIcon={<SaveIcon />}
-        onClick={()=>{dispatch(UpdateQuiz(id,question,option1,option2,option3,option4,answer))}}
-        
+        onClick={()=>{dispatch(UpdateQuiz(id,question,option1,option2,option3,option4,answer));setOpen(false)}}
       >
         Save
       </Button> </div>

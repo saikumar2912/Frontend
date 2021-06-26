@@ -1,8 +1,13 @@
 import React,{useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import {Post} from '../Redux/Auth/PostAction';
+import {  toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css'
 const AddCourse = () => {
-    
+
+
 const[Title,setTitle]=useState('')
 const[Description,setDescription]=useState('')
 const [image, setImage] = useState(" ")
@@ -33,11 +38,9 @@ console.log("addPost")
     .then(data=>{
         console.log('dispatch')
         dispatch(Post(user_id,Title,Description,data.url))
-    
-      })
-      .catch(err=>{
-        console.log(err)
-    })
+     })
+     .catch((e)=>{toast(e.message)})
+
 }
  
 
@@ -49,17 +52,19 @@ console.log("addPost")
             <div>
             <div className="skill-title">
             <label>Title</label>
-            <input type="text" className="form-control" onChange={(e)=>setTitle(e.target.value)}/>  
+            <input type="text" className="form-control" onChange={(e)=>setTitle(e.target.value)} value={Title}/>  
         </div>
        
         <div className="skill-text">   
-            <textarea  cols="30" rows="10" className="textarea form-control" onChange={(e)=>setDescription(e.target.value)} placeholder="Description"></textarea>
+            <textarea  cols="30" rows="10" className="textarea form-control" onChange={(e)=>setDescription(e.target.value)} value={Description} placeholder="Description"></textarea>
         </div>
         <div className="skill-file">
-            <input type="file"  onChange={(e)=>setImage(e.target.files[0])}/>
+            <input type="file"  onChange={(e)=>setImage(e.target.files[0])} />
         </div>
         <div class="skill-button">
-        <a onClick={()=>{addPost(user._id,Title,Description)}}> submit</a>
+        <a onClick={()=>{addPost(user._id,Title,Description);setTitle('');setDescription('')}}> submit</a>
+        <ToastContainer/>
+
         </div>
             </div>
             </div>

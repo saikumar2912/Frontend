@@ -1,10 +1,10 @@
 import React,{ useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import WarningIcon from '@material-ui/icons/Warning';
 import TextField from '@material-ui/core/TextField';
 import {useSelector,useDispatch} from 'react-redux'
 import { report } from '../Redux/Auth/Login/DisplayAction';
+import ReportIcon from '@material-ui/icons/Report';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -77,7 +77,7 @@ console.log(reports)
 
   return (
     <div>
-  <WarningIcon onClick={handleOpen}size={100}/>{count}
+  <ReportIcon className="alert__icon" onClick={handleOpen}size={100}/>{count}
 
 
       <Modal

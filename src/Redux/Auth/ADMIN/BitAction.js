@@ -5,14 +5,15 @@ export const submit = (skill_id,title) => {
     return (dispatch) => {
       const Token = () => localStorage.getItem("user");
         
-      return  axios.post('http://localhost:8000/bit/addbit',{
-          skill_id:skill_id,
-          title:title
+      return  axios.post('http://localhost:8000/bit/addnewbit',{
+          title:title,
+          skill_id:skill_id
+
         },{
          headers:{authorization:`Bearer ${Token()}`}
         }).then(
           (res)=>{
-           console.log("post",res.data.data.skill_id);
+           console.log("post",res.data);
            const Token = () => localStorage.getItem("user");
            return axios.post('http://localhost:8000/bit/newskill',{skill_id:res.data.data.skill_id},{
                headers:{authorization:`Bearer ${Token()}`}

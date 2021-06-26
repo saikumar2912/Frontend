@@ -4,6 +4,8 @@ import {useDispatch} from 'react-redux';
 import { Link} from 'react-router-dom';
 import { login } from '../Redux/Auth/Login/Action';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
   const dispatch=useDispatch();
   const[email_id,setEmail_id]=useState('');
@@ -34,20 +36,6 @@ const Login = () => {
           </ul>
         </div>
         </nav>
-
-          {/* <div class="topbar-class">
-              <div class="contain">
-                <h5 className="app-name">BuildOut</h5>
-                  <div class="topbar-items">
-                <Link to='/login' className='topbar-links'>
-                    Login
-                </Link>
-                <Link to='/Register' className='topbar-links'>
-                    Register
-                </Link>
-              </div>
-            </div>
-            </div> */}
         <div class="app-container bit-container">
          <div class="admin-cards login-page">
            <span></span>
@@ -65,11 +53,14 @@ const Login = () => {
             <div class="login-button">
                <a class="login"
                onClick={()=>{
-                   dispatch(login(email_id,password))
+                   dispatch(login(email_id,password));
                  }
                    
                    } > Login</a>
+
               <Link class="login" to='/loginotp'>Login with otp </Link>
+              <ToastContainer />
+
 </div>
        </form>
            </div>

@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    height:450
+    height:500
   },
   input: {
     display: 'none',
@@ -64,7 +64,6 @@ const user = useSelector(state => state.user.user._id)
   const [open, setOpen] = React.useState(false);
 const [Name, setName] = useState(user.user_name)
 const [Profile, setProfile] = useState(user.profile_picture)
-const [Password, setPassword] = useState('')
 const [PhoneNo, setPhoneNo] = useState(user.PhoneNo)
 const[Education,setEducation]=useState(user.Education);
 const [Bio,setBio]=useState(user.Bio);
@@ -110,7 +109,7 @@ const UpdateDetails =async(id,Name,PhoneNo,Education,Bio)=>{
     <div style={modalStyle} className={classes.paper}>
         <input accept="image/*" className={classes.input} onChange={(e)=>setProfile(e.target.files[0])} id="icon-button-file" type="file" />
       <label htmlFor="icon-button-file">
-      <Avatar className={classes.large} src={Profile} />
+      <Avatar className={classes.large} src={Profile} value={Profile} />
 
         <IconButton color="primary" aria-label="upload picture" component="span"  >
           <PhotoCamera />
@@ -121,18 +120,18 @@ const UpdateDetails =async(id,Name,PhoneNo,Education,Bio)=>{
         
       </div>
       <PersonIcon/>
-       <TextField id="standard-basic" label="Name" onChange={(e)=>setName(e.target.value)} value={Name} />
+       <TextField id="standard-basic" className="profile__name" label="Name" onChange={(e)=>setName(e.target.value)} value={Name} />
        <div>
      <HiPhone/> 
-     <TextField id="standard-basic" label="PhoneNo" onChange={(e)=>setPhoneNo(e.target.value)} value={PhoneNo} />
+     <TextField id="standard-basic" label="PhoneNo" className="profile__phone" onChange={(e)=>setPhoneNo(e.target.value)} value={PhoneNo} />
           </div>
           <div> 
             <SchoolRoundedIcon/>
-          <TextField id="standard-basic" label="Education" onChange={(e)=>setEducation(e.target.value)} value={Education}/>
+          <TextField id="standard-basic" label="Education" className="profile__edu" onChange={(e)=>setEducation(e.target.value)} value={Education}/>
         </div>
         <div> 
           <AssignmentIndRoundedIcon/>
-        <TextField id="standard-basic" label="Bio" onChange={(e)=>setBio(e.target.value)} value={Bio} />
+        <TextField id="standard-basic" label="Bio" className="profile__bio" onChange={(e)=>setBio(e.target.value)} value={Bio} />
        </div>
 
        
@@ -143,7 +142,8 @@ const UpdateDetails =async(id,Name,PhoneNo,Education,Bio)=>{
         size="large"
         className={classes.button}
         startIcon={<SaveIcon />}
-        onClick={()=>UpdateDetails(user,Name,PhoneNo,Education,Bio)}
+        onClick={()=>{UpdateDetails(user,Name,PhoneNo,Education,Bio);setOpen(false)}}
+
       >
         Save
       </Button> </div>
@@ -153,7 +153,7 @@ const UpdateDetails =async(id,Name,PhoneNo,Education,Bio)=>{
 
   return (
     <div>
-<CreateIcon className="create__icon" onClick={handleOpen}/>
+<CreateIcon className="create_icons" onClick={handleOpen}/>
       
       <Modal
         open={open}

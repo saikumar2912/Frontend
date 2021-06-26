@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Card } from '@material-ui/core'
+import { Avatar} from '@material-ui/core'
 import {useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
@@ -11,7 +11,7 @@ const UserPosts = () => {
     const history=useHistory();
     const state=history.location.state;
     const posts = useSelector(state => state.display.display)
-    console.log(posts)
+    console.log(posts.map((e)=>e.skill._id))
  const user = useSelector(state => state.user.user)
     return (
         <div class="app-container">

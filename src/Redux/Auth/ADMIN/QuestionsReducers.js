@@ -1,5 +1,6 @@
 const initialstate={
-    questions:[]
+    questions:[],
+    score:[]
   }
 
 const reducer = (state = initialstate, action) => {
@@ -23,7 +24,11 @@ const reducer = (state = initialstate, action) => {
          questions:action.payload
           
         }
-       
+       case "GET_SCORE_SUCCESS":
+         return{
+           ...state,
+           score:action.payload
+         }
       case "QUESTION_FAILED":
         return {
             ...state

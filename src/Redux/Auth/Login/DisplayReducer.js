@@ -28,6 +28,11 @@ display:action.payload
         return {
             ...state
         }
+        case "UPDATE_POST_SUCCESS":
+        return{
+          ...state,
+          display:action.payload
+        }
         case "REPORT_POST_SUCCESS":
         return {
          ...state,

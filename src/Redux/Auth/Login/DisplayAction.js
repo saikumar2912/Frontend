@@ -11,11 +11,7 @@ export const Display= () => {
             (res)=> {
                console.log(res.data) 
                dispatch(DisplaySuccess(res.data))
-               const data=res.data
-               const filteredPost =
-      data  &&
-     data.filter((e) => e && e.Title)
-    console.log(filteredPost)        
+                     
     })
     }
   }
@@ -183,6 +179,28 @@ export const Display= () => {
     }
   }
 
+  export const UpdatePost =(id,user_id)=>{
+    return (dispatch) => {
+      const Token = () => localStorage.getItem("user");
+      
+        
+      return  axios.patch(`http://localhost:8000/post/updatepost/${id}`,{},{headers:{authorization:`Bearer ${Token()}`}
+        }).then(
+            (res)=> { console.log(res.data)
+              return axios.post('http://localhost:8000/post/user_idposts',{user_id:user_id},{
+                headers:{authorization:`Bearer ${Token()}`}
+             })
+            .then(
+                (res)=> {
+                   console.log(res.data)
+                   dispatch(postdetail(res.data))
+                })
+       .catch((e)=>console.log(e))
+            })
+    }
+  }
+
+
   
 
 
@@ -192,6 +210,12 @@ export const Display= () => {
       dispatch(DeleteSuccess(e))
       }
     }
+    export const postdetail = (e) => {
+      return (dispatch) => {
+        console.log("new",e);
+        dispatch(UpdateSuccess(e))
+        }
+      }
   export const DisplaySuccess = skill => {
   
     return {
@@ -200,6 +224,13 @@ export const Display= () => {
     }
   }
   export const DeleteSuccess = skill => {
+  
+    return {
+      type: "DELETE_POST_SUCCESS",
+      payload: skill
+    }
+  }
+  export const UpdateSuccess = skill => {
   
     return {
       type: "DELETE_POST_SUCCESS",

@@ -13,15 +13,14 @@ const user = useSelector(state => state.user.user)
     console.log(reportid)  
 
     return (
-        <div class="admin-cards">
-            <span></span>
+        <div>
+            
             <div class="card-body">
-                <h2>Reports</h2>
+        
 {report.map(e=><>
 {e.post_id._id===reportid?<>
 <div class="report-body">
 
-<h6>{e.user_id.user_name}</h6>
 <p>{e.report}</p>
 <div class="d-flex">
 <ThumbUpAltIcon className={e.reportlike.includes(user._id)?"like_icon":"likes_icon"} onClick={()=>{dispatch(Reportlike(e._id,user._id));}} 

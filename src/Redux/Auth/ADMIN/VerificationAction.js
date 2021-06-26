@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import {  toast } from 'react-toastify';
 export const reqVerification = () => {
     return (dispatch) => {
       const Token = () => localStorage.getItem("user");
@@ -30,7 +30,7 @@ export const reqVerification = () => {
             })
            .then(
                (res)=> {
-                 alert(res.data.status)
+                 toast(res.data.status)
                   console.log(res.data)
                   dispatch(reqVerification())
                })

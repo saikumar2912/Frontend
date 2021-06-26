@@ -139,7 +139,7 @@ dispatch(Question())
 
   return (
     <div>
-<button className="create__icon" onClick={handleOpen}>add quiz</button>
+<button className="btn btn-primary" onClick={handleOpen}>Add Quiz</button>
       
       <Modal
         open={open}

@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { Skill } from './ADMIN/SkillAction';
+import {  toast } from 'react-toastify';
+
 export const Post = (user_id,Title,Description,photo) => {
   console.log('AddPostReducer')
    
@@ -15,7 +17,8 @@ export const Post = (user_id,Title,Description,photo) => {
         },{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> {
-               console.log(res.data)
+
+              toast(res.data.message)
                return  axios.post('http://localhost:8000/skill/skills',{},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> {

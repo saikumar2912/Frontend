@@ -11,9 +11,9 @@
     flex: 0 0 3%;
     width:30%;
     padding: 1rem;
-    color:#fff;
+    color:#000;
     transition: 15s;
-    box-shadow: 1px 1px 20px 5px #15f4ee;
+    box-shadow: 1px 1px 2px 2px #2BAE66FF;
     /* margin-top: -10%; */
     /* color: rgb(255, 157, 171); */
   }
@@ -41,13 +41,13 @@
   .profile__body__left > h1{
     align-self: center;
     font-family: Serif;
-    color:#fff;
+    color:#000;
   padding-top:1rem;
   margin-top: 1rem;
-  border-top:2px solid #15f4ee;
+  border-top:2px solid #2BAE66FF;
   }
   .margin-right{
-    margin-right: 1rem;
+    margin-right: 0.2rem;
   }
   .MuiSvgIcon-root{
     margin-right: 1rem;
@@ -114,4 +114,17 @@
     margin-left:180px;
     cursor:pointer;
     
+  }
+  .create_icons{
+    margin-left: 180px;
+  }
+
+  .bronze{
+    color:brown
+  }
+  .silver{
+    color:silver
+  }
+  .gold{
+    color:gold
   }

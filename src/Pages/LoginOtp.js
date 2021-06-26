@@ -7,6 +7,8 @@ import {fetchuser} from '../Redux/Auth/Login/Action'
 import { reqVerification } from '../Redux/Auth/ADMIN/VerificationAction';
 import { Skill } from '../Redux/Auth/ADMIN/SkillAction';
 import { Displayreports } from '../Redux/Auth/Login/DisplayAction';
+import PhoneInput from 'react-phone-number-input/input'
+
 const LoginOtp = () => {
     const [phoneNo, setphoneNo] = useState('')
     const [code, setCode] = useState('')
@@ -71,8 +73,9 @@ const verify=(phoneNo,b)=>{
            <div class="card-body">
            <form class="login-form form-group">
            <label htmlFor="number" > PhoneNo</label>
-              <input type="number" name='number' placeholder=" Enter Your PHONENO" className="form-control"  
+              <input type="" name='number' placeholder=" Enter Your PHONENO" className="form-control"  
               onChange={(e)=>setphoneNo(e.target.value)}/>
+          
                {state?<></>:<>
                <div class="login-inputs">
                  <label htmlFor="number" className="form-label" > verify</label>

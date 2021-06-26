@@ -5,6 +5,8 @@ import {bitdetails, DeleteBit, submit} from '../Redux/Auth/ADMIN/BitAction'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import SimplePopover from './EditBit';
 import Quiz from './Quiz';
+import {  toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 const Bit = (props) => {
@@ -46,8 +48,8 @@ const[title,setTitle]=useState('')
      <div class="bit-icons">
      <SimplePopover id={e.bit_id}/>
      <DeleteForeverIcon onClick={()=>{dispatch(DeleteBit(e.bit_id))}}/> 
-     <Quiz id={e.bit_id}/>
-     <Link to={{pathname:"/navbar/questions",
+     <Quiz id={e.bit_id} skillid={e.skill_id}/>
+     <Link to={{pathname:"/questions",
                   state:e.bit_id}} onClick={()=>{}}>view</Link>     
                   
                   </div>
@@ -58,9 +60,10 @@ const[title,setTitle]=useState('')
    </>)}
   
  <div>
-   {user.role==="user"?<></>:<><input className="form-control" onChange={(e)=>setTitle(e.target.value)}/>
+   {user.role==="user"?<></>:<><input placeholder="Add Bit" className="form-control" onChange={(e)=>setTitle(e.target.value)}value={title}/>
    <div className="skill-button">
-<a className="bit" onClick={()=>dispatch(submit(state,title))}>ADD</a>
+<a className="bit" onClick={()=>{dispatch(submit(state,title));setTitle('')}} >ADD</a>
+<ToastContainer/>
 </div>
 </>}
  

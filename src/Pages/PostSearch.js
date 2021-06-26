@@ -58,7 +58,7 @@ const Postsearch = (search) => {
     </div>:
     
     <div className='navbar-item'>
-            <Link to={{pathname:"/navbar/view",
+            <Link to={{pathname:"/view",
                       state:e._id}} onClick={()=>{}} >add bit</Link>
     
     </div>

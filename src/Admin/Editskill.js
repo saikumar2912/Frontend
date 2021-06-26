@@ -49,7 +49,7 @@ console.log(Title)
         }}
       >
   <TextField id="outlined-basic" label="" variant="outlined" onChange={(e)=>setTitle(e.target.value)} />
-<CheckBoxIcon onClick={()=>dispatch(UpdateSkill(id,Title))}/>
+<CheckBoxIcon onClick={()=>dispatch(UpdateSkill(id,Title))}        open={false}  />
       </Popover>
     </div>
   );

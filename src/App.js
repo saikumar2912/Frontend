@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router,Switch,Route,Redirect, HashRouter} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Route,Redirect} from 'react-router-dom';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Register from './components/Register';
@@ -22,11 +22,9 @@ console.log(state)
 
       <Router>
         {!user ? <Switch>
-          <Route path='/'exact component={New}/>
-
+          <Route path='/login'exact component={Login}/>
           <Route path='/Register'exact component={Register} />
          <Route path="/contactus" exact component={Contactus}/>
-         <Route path='/login'exact component={Login}/>
          <Route path='/loginotp'exact component={LoginOtp}/>
 
          
@@ -36,23 +34,14 @@ console.log(state)
         user.role==="user"?   
         <Switch>
        
-       <Route path='/navbar' component={Navbar}/>
-         <Redirect to='/navbar/home'/>
-
-       
-
-                </Switch>
+       <Navbar/>
+          </Switch>
                 :
                 <Switch>
-<Route path='/navbar' component={Navbar}/>
+<Navbar/>
 
-<Redirect to='/navbar/new'/>
-                </Switch>
-                
-         }
-        
-
-      </Router>
+                </Switch>}
+       </Router>
     </div>
   )
 }

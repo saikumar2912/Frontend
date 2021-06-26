@@ -1,11 +1,12 @@
 import {useSelector,useDispatch} from 'react-redux';
-import { Avatar, Card } from '@material-ui/core';
+import { Avatar} from '@material-ui/core';
 import {  dislike,like} from '../Redux/Auth/Login/DisplayAction';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import SimpleModal from './Pop';
 import { Link } from 'react-router-dom';
-
+import parse from "html-react-parser"
+import Quiz from '../After_login/Quiz'
 const Post = ({id}) => {
     
 const dispatch=useDispatch();
@@ -26,29 +27,30 @@ const dispatch=useDispatch();
                <div className="card-head-in">
                  <div className="card-head-name">
                     <h5>{e.skill.Title}</h5> 
-                    <div class="name">
-                      {e.user.user_name}    
-                    </div>
+                   
                   </div>
                </div>
             </div>
           <div className="card-body">
             <div className="card-body-in">
-              <strong> Bit_Title:</strong>  {e.bit.title}
+              <strong> Title:</strong>  {e.bit.title}
             </div>
             <div className="card-body-in">
-              <strong> Content:</strong>{e.content}
+              <strong> Content:</strong>   {parse(e.content)}
             </div>
             <div className="card-foot">
-              <ThumbUpAltIcon className={e.like.includes(user._id)?"like_icon":"like_icon"} onClick={()=>{dispatch(like(e._id,user._id));}} size={100}/>{e.like.length}
-              <ThumbDownIcon className={e.dislike.includes(user._id)?"dislike_icon":"dislike_icon"} onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
+              <ThumbUpAltIcon className={e.like.includes(user._id)?"like_icon":"like_icons"} onClick={()=>{dispatch(like(e._id,user._id));}} size={100}/>{e.like.length}
+              <ThumbDownIcon className={e.dislike.includes(user._id)?"dislike_icon":"dislike_icons"} onClick={()=>{dispatch(dislike(e._id,user._id))}} size={100}/>{e.dislike.length}
+              <div class="d-flex flex-fill align-items-center justify-content-center">
               <div className="link">
-              <Link to={{pathname:'/navbar/postDetails',state:e}} >view</Link>
+              <Link to={{pathname:'/postDetails',state:e}} >View</Link>
                 </div>
+               
+              </div>
+
               <div className="warning">
               
                 <SimpleModal postid={e._id} count={e.reports.length}/>
-                <Link to={{pathname:'/navbar/quiz',state:e.bit._id}}>attend quiz </Link>
               </div>
             </div>
           </div>
