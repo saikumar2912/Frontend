@@ -85,18 +85,24 @@ const useStyles = makeStyles((theme) => ({
       Data.filter((e) => e && e.Title.toLowerCase().replace(/\s/g, '').includes(skills.toLowerCase().replace(/\s/g, '')))
 
   const classes = useStyles();
-  
+const NoData=  filteredPost.filter((e)=>e.followers.includes(user._id)===false)
+console.log(NoData)
   return (
            
             
                  <>
      <div class="app-container">
-<div className="skill-search">
+<div className="skill-search ">
 
 {user.role==="user"?<> </>:< input className="search__input form-control w-25" placeholder="Search…" type="text" onChange={e=>setskills(e.target.value)}/>}
-  {user.role==="user"?<></>:<> <div>
-  <Link to="/new"> All Posts</Link>
-    
+  {user.role==="user"?<></>:<> <div class='d-flex'>
+    <div class='allposts ml-3'>
+    <Link to="/new"> All Posts</Link>
+</div>
+<div  class='allposts ml-3'>
+<Link to='/topquizusers'> topquizusers</Link>
+
+</div>
      </div></>}
 </div>
     
@@ -105,8 +111,9 @@ const useStyles = makeStyles((theme) => ({
 
        <div class="row">
        
+{NoData.length>0?<>
 
-         {filteredPost.map((e)=> <>{e.followers.includes(user._id)===false  ?
+  {filteredPost.map((e)=> <>{e.followers.includes(user._id)===false  ?
          <div className="col-12 col-xl-4 col-lg-4">
                <div className="admin-cards">
                  <span></span>
@@ -128,14 +135,14 @@ const useStyles = makeStyles((theme) => ({
                  </div>:
                  <div class="skill-card-foot">
                   
-                   <div className="skill-button">
+                   <div className="skill-button d-flex">
                  
                    <Link to={{pathname:"/view",
                    state:e._id}} onClick={()=>{}}>add bit</Link>
                    </div>
                   
                    < DeleteSweepIcon  onClick={()=>{dispatch(Delete(e._id))}}/>
-                   <SimplePop id={e._id}/>
+                   <SimplePop id={e}/>
                  </div>
                 
                 
@@ -143,13 +150,15 @@ const useStyles = makeStyles((theme) => ({
                 </div>
                </div>
                </div>
-              
                </div>
-         : <>{console.log("no posts")}</>}
+      
+         : <> </>}
        </>
-    
       
      )}
+</>:<div className='nodata'>
+  No More Skills To Follow</div>}
+         
      </div>
      </div>
      </>

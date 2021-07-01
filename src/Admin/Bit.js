@@ -38,38 +38,61 @@ const[title,setTitle]=useState('')
   },[state])
     
  return (
-   <div class="app-container bit-container">
-     <div class="bit-card">
-   {Data.map((e)=><>
-   {e.title.length >0 ?<div class="bit-card-in">
-     {e.title}
-
-     {user.role==="user"?<></>:<>
-     <div class="bit-icons">
-     <SimplePopover id={e.bit_id}/>
-     <DeleteForeverIcon onClick={()=>{dispatch(DeleteBit(e.bit_id))}}/> 
-     <Quiz id={e.bit_id} skillid={e.skill_id}/>
-     <Link to={{pathname:"/questions",
-                  state:e.bit_id}} onClick={()=>{}}>view</Link>     
-                  
-                  </div>
-     </>}
-   </div>:<>
-  
-   </>}
-   </>)}
-  
- <div>
-   {user.role==="user"?<></>:<><input placeholder="Add Bit" className="form-control" onChange={(e)=>setTitle(e.target.value)}value={title}/>
+   <div class="app-container">
+     <div className="skill-search">
+     {user.role==="user"?<></>:<><input placeholder="Add Bit" className="search__input form-control w-25" onChange={(e)=>setTitle(e.target.value)}value={title}/>
    <div className="skill-button">
-<a className="bit" onClick={()=>{dispatch(submit(state,title));setTitle('')}} >ADD</a>
+<a className="bit ml-4" onClick={()=>{dispatch(submit(state,title));setTitle('')}} >ADD</a>
 <ToastContainer/>
 </div>
 </>}
- 
-</div> 
 </div>
-  </div>
+     <div class="row">
+       
+
+     {Data.map((e)=><>
+   {e.title.length >0 ?
+       <div className="col-12 col-xl-4 col-lg-4">
+             <div className="admin-cards">
+               <span></span>
+               <div class="card-head">
+                 <div class="card-head-in">
+                 <strong> {e.title} </strong>  
+            
+                 </div>
+                 <DeleteForeverIcon onClick={()=>{dispatch(DeleteBit(e.bit_id))}}/> 
+     <SimplePopover id={e.bit_id}/>
+             </div>
+      
+             <div className="card-body">
+               
+               <div className="card-foot">
+            
+               <Quiz id={e.bit_id} skillid={e.skill_id}/>
+
+               </div>
+               <div class="skill-card-foot">
+     
+                 <div className="skill-button">
+               
+                 <Link to={{pathname:"/questions",
+                  state:e.bit_id}} onClick={()=>{}}>view</Link>     
+                </div>
+    
+                 
+               </div>
+              
+              
+              </div>
+             </div>
+             </div>
+            
+       : <> </>}
+     </>
+    
+   )}
+   </div>
+</div>   
 
 
 
@@ -77,3 +100,6 @@ const[title,setTitle]=useState('')
 }
     
 export default Bit
+
+
+

@@ -1,25 +1,24 @@
-import { Avatar, Card } from '@material-ui/core'
+import { Avatar} from '@material-ui/core'
 import React, { useEffect,useState } from 'react'
-import { BiDislike, BiLike } from 'react-icons/bi'
 import{useSelector} from 'react-redux'
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import { Link } from 'react-router-dom';
 import './styles.css'
 import axios from 'axios';
-import ReportIcon from '@material-ui/icons/Report';
+import parse from "html-react-parser"
+import { ToastContainer } from 'react-toastify';
+import {  toast } from 'react-toastify';
+
 
 const AdminHome = () => {
 
 const [posts, setPosts] = useState([])
-
-const Data = useSelector(state => state.display.display)
+const users = useSelector(state => state.user.user)
+console.log(users)
 
 const user=useSelector(state=>state.display.display)
 console.log(user)
 const admin=useSelector(state=>state.user.user._id)
-const post=useSelector(state=>state.display.display.map(e=>e._id))
 
 useEffect(() => {
     axios.post('http://localhost:8000/post/highposts')
@@ -54,9 +53,14 @@ console.log(posts)
                                 <div class="card-head-in">
                                     <div class="card-head-name">
                                     <h5>{e.skill.Title}</h5>
-                                    <div class="name">{e.user.user_name}</div>
+                                    <div class="name">@{e.user.user_name}</div>
                                     </div>
-                                    <StarBorderIcon  onClick={()=>{achive(e.user._id,e._id)}} />
+                                    {users.role=== "user"?<>
+                                    
+                                     </>:<>
+                                     <StarBorderIcon   onClick={()=>{achive(e.user._id,e._id)}} />
+< ToastContainer/>
+                                    </>}
                                 </div>
                             </div>
                             <div className="card-body">
@@ -65,21 +69,20 @@ console.log(posts)
                                     <strong> Title: </strong>{e.bit.title}
                                 </div>
                                 <div className="card-body-in">
-                                    Content:{e.content}
+                                    Content:{parse(e.content)}
+                                </div>
+                              
+                                    <div className="admin-warning">
+                                    </div>
                                 </div>
                                 <div class="card-foot">
-                                    <ThumbUpAltIcon   size={30}/>{e.like.length}
-                                    <ThumbDownIcon   size={30}/>{e.dislike.length}
+                                    
                                     <div class="d-flex flex-fill align-items-center justify-content-center">
               <div className="link">
               <Link to={{pathname:'/postDetails',state:e}} >View</Link>
                 </div>
                
               </div>
-                                    <div className="admin-warning">
-                                        <ReportIcon size={30}/>{e.reports.length}
-                                    </div>
-                                </div>
                             </div>
             </div>
 

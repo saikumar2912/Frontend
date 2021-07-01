@@ -51,7 +51,7 @@ const Skillchange=(e)=>{
 }
 console.log(skill)
 const Bit= value.map(Bit=>Bit)
-// console.log(Bit)
+console.log(Bit)
 const BitChange=(e)=>{
     setId((value[e.target.value]))
 }
@@ -66,32 +66,56 @@ console.log(id.bit_id)
             <div className="">
                 
                 <span></span>
-                <div class="">
-                <div class="">
                 <select className="" onChange={e=> Skillchange((e))} >
                         <option>Select the Skills </option>
                          {
                          Add.map((address, key) => <option key={key}value={key}>{address.title}</option>)
                          }
                 </select>
-                <select className="" onChange={e=>BitChange((e))}>
-                     <option> Select the bit </option> 
-                    {
-                         Bit.map((address, key) => <option key={key}value={key}>{address.title}</option>)
-                         }
-                </select>
-                {questions.map(e=>e.bit_id._id===id.bit_id? <></>:<></>)
-                
-                
-                }<Link to={{pathname:'/quiz',state:id.bit_id}}>Attend Quiz </Link>
-                <div class="link">
 
-                </div>            
+
+<div className="app-container">
+<div class="row">
+  {Bit.map(e=>e.title.length > 0 ? 
+    <div className="col-12 d-flex col-xl-4 col-lg-4">
+
+          <div className="admin-cards">
+            <span></span>
+            <div className="card-head">
+               {/* <Avatar alt={"title"} src={e.user_id.profile_picture}  /> */}
+               <div className="card-head-in">
+                 <div className="card-head-name">
+                    <h5>Title:{e.title} </h5> 
+                   
+                  </div>
+               </div>
             </div>
-            <div className="">
-
-</div>
-                    </div>     
+          <div className="card-body flex-fill">
+            <div className="card-body-in">
+              <strong>  </strong>  
+            </div>
+            <div className="card-body-in">
+              
+            </div>
+            
+          </div>
+          <div className="card-foot">
+              <div class="d-flex flex-fill align-items-center justify-content-center">
+              <div className="link">
+              <Link to={{pathname:'/quiz',state:e}}>Attend Quiz </Link>
+                </div>
+              </div>
+              <div className="warning">
+              
+              </div>
+            </div>
+          </div>
+        </div>
+  :<></> )} 
+  
+     </div>
+        </div>
+            
             </div>
            
             

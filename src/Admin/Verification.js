@@ -12,7 +12,7 @@ import { Verification} from '../Redux/Auth/ADMIN/VerificationAction'
 import { ToastContainer } from 'react-toastify';
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    background:'#2bae66ff',
+    background:'black',
     color:"white",
   },
   body: {
@@ -72,15 +72,15 @@ export default function CustomizedTables() {
           
             <StyledTableRow key={e._id}>
               <StyledTableCell component="th" scope="row">
-                {e.user_id.email_id}
+                {e.email_id}
               </StyledTableCell>
-              <StyledTableCell align="center">{e.user_id.user_name}</StyledTableCell>
+              <StyledTableCell align="center"> {e.user_name}</StyledTableCell>
               <StyledTableCell align="center">
                   
-                <button className=" btn btn-primary" onClick={() => dispatch(Verification(e._id,e.user_id._id,user._id,"Verified")) }> Accept</button>  
+                <button className=" btn btn-primary" onClick={() => dispatch(Verification(e.email_id,"Verified")) }> Accept</button>  
                 </StyledTableCell>
               <StyledTableCell align="center">   
-   <button className=" btn btn-secondary" onClick={()=>{dispatch(Verification(e._id,e.user_id._id,user._id,"Rejected"))}}>Reject</button>
+   <button className=" btn btn-secondary" onClick={()=>{dispatch(Verification(e.email_id,"Rejected"))}}>Reject</button>
  <ToastContainer/>
  </StyledTableCell>
               

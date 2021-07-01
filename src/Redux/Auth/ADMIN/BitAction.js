@@ -14,16 +14,20 @@ export const submit = (skill_id,title) => {
         }).then(
           (res)=>{
            console.log("post",res.data);
-           const Token = () => localStorage.getItem("user");
-           return axios.post('http://localhost:8000/bit/newskill',{skill_id:res.data.data.skill_id},{
-               headers:{authorization:`Bearer ${Token()}`}
-            })
-           .then(
-               (res)=> {
-                  console.log(res.data)
-                  dispatch(bitdetails(res.data.bits))
-               })
-      .catch((e)=>console.log(e))
+           if(res.data!=='already exists'){
+            const Token = () => localStorage.getItem("user");
+
+            return axios.post('http://localhost:8000/bit/newskill',{skill_id:res.data.data.skill_id},{
+                headers:{authorization:`Bearer ${Token()}`}
+             })
+            .then(
+                (res)=> {
+                   console.log(res.data)
+                   dispatch(bitdetails(res.data.bits))
+                })
+       .catch((e)=>console.log(e))
+           }
+           
          }
          )
       

@@ -57,16 +57,18 @@ margintop:"200px"
 
 export default function SimpleModal() {
 const user = useSelector(state => state.user.user._id)
-
+console.log(user)
+const users = useSelector(state => state.user.user)
+console.log(users)
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
-const [Name, setName] = useState(user.user_name)
-const [Profile, setProfile] = useState(user.profile_picture)
-const [PhoneNo, setPhoneNo] = useState(user.PhoneNo)
-const[Education,setEducation]=useState(user.Education);
-const [Bio,setBio]=useState(user.Bio);
+const [Name, setName] = useState(users.user_name)
+const [Profile, setProfile] = useState(users.profile_picture)
+const [PhoneNo, setPhoneNo] = useState(users.phoneNo)
+const[Education,setEducation]=useState(users.Education);
+const [Bio,setBio]=useState(users.Bio);
 
   const handleOpen = () => {
     setOpen(true);
@@ -109,7 +111,7 @@ const UpdateDetails =async(id,Name,PhoneNo,Education,Bio)=>{
     <div style={modalStyle} className={classes.paper}>
         <input accept="image/*" className={classes.input} onChange={(e)=>setProfile(e.target.files[0])} id="icon-button-file" type="file" />
       <label htmlFor="icon-button-file">
-      <Avatar className={classes.large} src={Profile} value={Profile} />
+      <Avatar className={classes.large} src={Profile} value={users.profile_picture} />
 
         <IconButton color="primary" aria-label="upload picture" component="span"  >
           <PhotoCamera />

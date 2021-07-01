@@ -13,11 +13,17 @@ import SchoolRoundedIcon from '@material-ui/icons/SchoolRounded';
 import AssignmentIndRoundedIcon from '@material-ui/icons/AssignmentIndRounded';
 import { unfollow } from '../Redux/Auth/ADMIN/SkillAction';
 import ClearIcon from '@material-ui/icons/Clear';
-import{GiAchievement}from 'react-icons/gi'
 import { Link} from 'react-router-dom';
-import CustomizedRatings from './Rating'
 import axios from 'axios';
-import{BiMedal} from 'react-icons/bi'
+import{BiMedal} from 'react-icons/bi';
+import TransitionsModal from './Achivemodal'
+import Transition from './postachivement';
+
+
+
+
+
+
 const useStyles = makeStyles((theme) => ({
     large: {
       width: theme.spacing(14),
@@ -53,6 +59,7 @@ const scores = useSelector(state => state.questions.score)
 console.log(scores)
 
 
+
 const achive=useSelector(state=>state.user.achivement )
 console.log(achive)
 
@@ -73,7 +80,7 @@ userposts()
         <div className='app-container'>
         <div className="profile__body" >
 <div className="profile__body__left">
-<SimpleModal/>
+<SimpleModal  />
 
 <Avatar  alt={user.user_name} src={user.profile_picture} className={classes.large}/>
 
@@ -94,10 +101,7 @@ userposts()
 </div>
 
 
-<div className="profile__body__logout">
-  <GiAchievement/>
-<Button onClick={()=>{history.push('/achivement')}}> Achivement {!achive ? "" : achive.achivement.length} </Button>
-</div >
+{/* <Button onClick={()=>{history.push('/achivement')}}> Achivement {!achive ? "" : achive.achivement.length} </Button> */}
 
     </div> 
     <div className="new">
@@ -128,41 +132,57 @@ userposts()
      </div>
      </div>
      </div>
-     { post.map(e=>achive.achivement.includes(e._id)?<>
 
-  {console.log(e)}
-  {e.skill.Title}
-     
-     </>:<></>)}
+     <div class="d-flex">
 
-{scores.map(e=>user._id.includes(e.user_id)?<div> 
-  {e.bit_id.title}
-  {e.score}
-  {e.score<50?
-<div> 
+         <div class="admin-cards profile-follow p-3">
+           
+     <h3>Achievements</h3>
+
+<div class="d-flex p-3 ">
+
+{scores.map(e=>user._id.includes(e.user_id)?
+<div class="col-4">
+<div className='profile-card'>
+          <div className="skill_name">
+<TransitionsModal id={e.bit_id._id} title={e.bit_id.title} > </TransitionsModal>
+
+
+{e.score<50?
+<div class="bronzec ">
+{e.score} 
 <BiMedal className='bronze' size={30}/>
 
 </div>:e.score<70?
 <div> 
+{e.score}
 <BiMedal className='silver' size={30}/>
 
 </div>:e.score>90?
-<div> 
+<div class="goldc"> 
+{e.score}
 <BiMedal className='gold' size={30}/>
 
-</div>:<></> }
+</div>
 
-  
+:<></> }
 
+</div></div>
 </div>:<></>)}
 
- 
+</div>
+
+
+         </div>
+
+     </div>
+       </div>
 
 
     </div>
            </div>
     
-             </div>
+            
     )
 }
 

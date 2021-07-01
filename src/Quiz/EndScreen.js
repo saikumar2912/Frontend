@@ -2,9 +2,7 @@ import React,{useEffect} from "react";
 import { useContext } from "react";
 import { GameStateContext } from "./Context";
 import {useSelector,useDispatch } from 'react-redux'
-import axios from 'axios';
 import { Final } from "../Redux/Auth/ADMIN/QuestionsAction";
-import { GiMusicalScore } from "react-icons/gi";
 
 const EndScreen = () => {
  

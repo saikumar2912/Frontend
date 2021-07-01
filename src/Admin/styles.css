@@ -23,16 +23,18 @@
   flex-direction: column;
   margin-bottom: 3rem;
   /* box-shadow: 10px 10px 10px rgb(0 0 0 / 20%); */
-  border-radius: 0.75rem;
-  background: transparent;
-  border: 2px solid #2bae66ff;
+  background: #fff;
   color: #000;
   width: 100%;
-  transition: 0.5s;
   position: relative;
+  border-radius:1rem;
+  transition: 0.5s;
 }
-.admin-cards:hover {
-  transform: translateY(-20px);
+.admin-cards:hover{
+  transform:translateY(-20px)
+}
+.admin-cards:hover{
+  transform:translateY(-20px);
 }
 /* .admin-cards:before {
   content: "";
@@ -83,14 +85,12 @@
 .admin-cards .card-head {
   position: relative;
   z-index: 10;
-  border-radius: 0.75rem 0.75rem 0 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0.5rem;
-  color: #fff;
+  color: #000;
   /* border-bottom: 2px solid #15f4ee; */
-  background: #2bae66ff;
 }
 
 .admin-cards .card-head-in {
@@ -99,17 +99,15 @@
   justify-content: space-between;
   align-items: center;
   flex: 1;
-  color: white;
-  font-weight:500;
+  color: #000;
+  font-weight: 500;
 }
 .card-head-name {
   flex: 1;
-  padding-left: 0.1rem;
+  padding-left: 0.4rem;
   text-transform: capitalize;
-
 }
 .card-head-name .name {
-  margin-left: 1rem;
   text-transform: capitalize;
   font-weight: 200;
 }
@@ -124,13 +122,14 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-transform: capitalize
 }
 .admin-cards .card-foot {
   display: flex;
   align-items: flex-start;
   margin-top: 2rem;
-  margin-bottom:1rem;
-  margin-right:1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 .card-foot .warning {
   justify-content: flex-end;
@@ -144,7 +143,7 @@
 }
 .card-foot .link a {
   color: #000;
-  border: 2px solid #2bae66ff;
+  border: 2px solid #000;
   border-radius: 0.5rem;
   text-decoration: none;
   padding: 0 1rem;
@@ -163,7 +162,7 @@
 /* Skill page */
 
 .card-head-in .title {
-  color: white;
+  color:black;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
@@ -187,7 +186,7 @@
 .skill-card-foot.home-skill-button .skill-button {
   flex: 0 0;
   color: #000;
-  border: 2px solid #2bae66ff;
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   font-weight: 600;
@@ -196,6 +195,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
+  margin-top:1rem;
 }
 .skill-card-foot.home-skill-button {
   flex: 1;
@@ -209,7 +209,7 @@
   text-transform: uppercase;
   cursor: pointer;
   color: #000;
-  border: 2px solid #2bae66ff;
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 1rem;
   font-weight: 600;
 }
@@ -220,20 +220,32 @@
   justify-content: center;
 }
 .add-skill .add-skill-box {
-  box-shadow: 1px 1px 6px 2px #2bae66ff;
+  box-shadow: 1px 1px 6px 2px rgb(0, 0, 0);
   padding: 3rem;
   color: #000;
   font-size: 1.25rem;
   font-weight: 600;
 }
-
+.allposts{
+  padding: 0.25rem 1rem;
+  background: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #000;
+  border: 2px solid rgb(248, 246, 246);
+  border-radius: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
 .skill-title,
 .skill-file,
 .skill-text {
   margin-bottom: 1rem;
 }
 .skill-button {
-  display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
@@ -246,9 +258,15 @@
 
 /* Editbit */
 .app-container.bit-container {
+  /* background-image:url('https://wallpapercave.com/wp/wp5320845.jpg'); */
   display: flex;
   align-items: center;
   justify-content: center;
+background-repeat:no-repeat;
+background-position: center;
+background-size: cover;
+
+
 }
 .bit-card {
   padding: 2rem;
@@ -305,13 +323,12 @@
 
 /* navbar */
 nav {
-  background-image: url('https://htmlcolorcodes.com/assets/images/html-color-codes-best-prototyping-tools.jpg');
+  background: #000;
   height: 4.5rem;
   display: flex;
   align-items: center;
   font-size: 1.2rem;
   padding: 1rem;
-  border-bottom: 2px solid #2bae66ff;
   position: sticky;
   z-index: 999;
   top: 0;
@@ -336,9 +353,6 @@ nav ul .navbar-links {
   transition: 1.5s;
   text-transform: uppercase;
 }
-nav ul .navbar-links:hover {
-  border: 2px solid #fff;
-}
 
 .navbar-item .navbar-search {
   border: 2px solid #15f4ee;
@@ -359,7 +373,7 @@ nav ul .navbar-links:hover {
 }
 
 .wrapper {
-  background-color: #fff;
+  background-color: rgb(194, 192, 192);
 }
 
 /* post details */
@@ -394,7 +408,7 @@ nav ul .navbar-links:hover {
   color: #000;
 }
 .profile-card {
-  border: 2px solid #2bae66ff;
+  border: 2px solid #000;
   padding: 0.25rem 1rem;
   margin-bottom: 0.5rem;
   border-radius: 3rem;
@@ -441,15 +455,19 @@ nav ul .navbar-links:hover {
 }
 .login-button {
   margin-top: 1rem;
+  justify-content: space-between;
+
+  margin-left:1rem;
 }
 .login {
   padding: 0.25rem 1rem;
-  border: 2px solid #2bae66ff;
+  border: 2px solid rgb(3, 3, 3);
   border-radius: 0.5rem;
   color: #000;
   font-weight: 600;
   font-size: large;
   cursor: pointer;
+  justify-content:inherit;
 }
 .login:last-child {
   margin-left: 1rem;
@@ -459,8 +477,7 @@ nav ul .navbar-links:hover {
   color: #000;
 }
 .form-control:hover {
-  box-shadow: 1px 2px 30px #fff;
-resize:none;
+  resize: none;
 }
 
 .reg-form {
@@ -553,17 +570,77 @@ resize:none;
   margin-left: 0;
 }
 
-.verification__container{
-min-height:81.8vh;
+.verification__container {
+  min-height: 81.8vh;
 }
-.admin-skill{
+.admin-skill {
   position: absolute;
   bottom: 2rem;
   left: 7rem;
 }
-.skill-search{
+.skill-search {
   margin: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:3rem;
+}
+
+.achieve {
+  border-right: 2px solid #000;
+}
+
+.goldc {
+  color: green;
+}
+
+.bronzec {
+  color: #cd7f32;
+}
+
+.body-modal {
+  padding: 1rem;
+}
+
+.c-body {
+  background-color: #cccccc30;
+}
+.c-head {
+  background: #000;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.c-cert {
+  padding: 1rem;
+  background: transparent;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+}
+.c-cert h5 {
+  color: purple;
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+.c-cert .date {
+  color: red;
+  font-size:20px;
+}
+.sign {
+  font-size: 1.2rem;
+  border-top: 1px solid #000;
+  padding-top: 1rem;
+}
+.nodata{
+  color:white;
+  font-size: 4rem;
+  
+}

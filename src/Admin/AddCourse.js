@@ -3,7 +3,8 @@ import {useSelector,useDispatch} from 'react-redux';
 import {Post} from '../Redux/Auth/PostAction';
 import {  toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
-
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import 'react-toastify/dist/ReactToastify.css'
 const AddCourse = () => {
 
@@ -61,6 +62,7 @@ console.log("addPost")
         <div className="skill-file">
             <input type="file"  onChange={(e)=>setImage(e.target.files[0])} />
         </div>
+        
         <div class="skill-button">
         <a onClick={()=>{addPost(user._id,Title,Description);setTitle('');setDescription('')}}> submit</a>
         <ToastContainer/>

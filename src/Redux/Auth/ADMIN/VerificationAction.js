@@ -3,7 +3,7 @@ import {  toast } from 'react-toastify';
 export const reqVerification = () => {
     return (dispatch) => {
       const Token = () => localStorage.getItem("user");
-       return axios.post('http://localhost:8000/verify/getReq/',{},{
+       return axios.post('http://localhost:8000/users/allusers',{},{
            headers:{authorization:`Bearer ${Token()}`}
         })
        .then(
@@ -16,15 +16,12 @@ export const reqVerification = () => {
       }
     }
 
-    export const Verification = (id,user_id,admin_id,status) => {
-        console.log(id,user_id,admin_id,status);
+    export const Verification = (email_id,status) => {
         return (dispatch) => {
           const Token = () => localStorage.getItem("user");
-           return axios.post('http://localhost:8000/verify/adminVerification',{
-            _id:id,
-            user_id:user_id,
-            admin_id:admin_id,
-            status:status
+           return axios.post('http://localhost:8000/users/adminVerification',{
+            email_id:email_id,
+            status:"Verified"
            },{
                headers:{authorization:`Bearer ${Token()}`}
             })

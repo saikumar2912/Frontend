@@ -179,21 +179,21 @@ export const Display= () => {
     }
   }
 
-  export const UpdatePost =(id,user_id)=>{
+  export const UpdatePost =(id,content,user_id)=>{
     return (dispatch) => {
       const Token = () => localStorage.getItem("user");
       
         
-      return  axios.patch(`http://localhost:8000/post/updatepost/${id}`,{},{headers:{authorization:`Bearer ${Token()}`}
+      return  axios.patch(`http://localhost:8000/post/updatepost/${id}`,{content:content},{headers:{authorization:`Bearer ${Token()}`}
         }).then(
             (res)=> { console.log(res.data)
-              return axios.post('http://localhost:8000/post/user_idposts',{user_id:user_id},{
+              return axios.post('http://localhost:8000/post/getposts',{},{
                 headers:{authorization:`Bearer ${Token()}`}
              })
             .then(
                 (res)=> {
                    console.log(res.data)
-                   dispatch(postdetail(res.data))
+                   dispatch( UpdatePostSuccess(res.data))
                 })
        .catch((e)=>console.log(e))
             })
@@ -210,12 +210,7 @@ export const Display= () => {
       dispatch(DeleteSuccess(e))
       }
     }
-    export const postdetail = (e) => {
-      return (dispatch) => {
-        console.log("new",e);
-        dispatch(UpdateSuccess(e))
-        }
-      }
+   
   export const DisplaySuccess = skill => {
   
     return {
@@ -245,7 +240,13 @@ export const Display= () => {
       payload: report
     }
   }
+  export const UpdatePostSuccess = skill => {
   
+    return {
+      type: "UPDATE_POST_SUCCESS",
+      payload: skill
+    }
+  }
   
   export const DisplayFailure = () => {
     return {

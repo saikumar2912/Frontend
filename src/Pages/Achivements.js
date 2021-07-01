@@ -67,6 +67,7 @@ size={100}/>{e.like.length}
 </div>: <> </>)}
         </div>
             </div>
+            
         </div>
     )
 }

@@ -24,6 +24,7 @@ import BasicTable from '../Admin/Verification';
 import Quiz from '../After_login/Quiz';
 import App from '../After_login/Editor';
 import { logout } from '../Redux/Auth/Login/services';
+import TopQuizUsers from '../Admin/TopQuizUsers';
 
 
 function Navbar() {
@@ -60,7 +61,12 @@ const history=useHistory();
               Home
             </Link>
           </li>
-         
+          <li className='navbar-item'>
+          <Link to="/new" className='navbar-links' onClick={closeMobileMenu} >
+
+            Trending Posts
+          </Link>
+          </li>         
           <li className='navbar-item'>
             <Link to="/skills" className='navbar-links' onClick={closeMobileMenu} >
 
@@ -136,6 +142,7 @@ Users list
 <Route path='/verification' component={BasicTable}/>
 <Route path="/topskillposts" component={TopSkillPosts}/>
 <Route path="/userposts" component={UserPosts}/>
+<Route path="/topquizusers" component={TopQuizUsers}/>
 <Route path="/questions" component={View_questions}/>
 <Route path="/quiz" component={Initial}/>
 <Route path="/home"  component={Home}/>

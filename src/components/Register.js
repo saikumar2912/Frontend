@@ -57,14 +57,7 @@ const submit=(a,c,d,e)=>{
     }
     Axios.post('http://localhost:8000/users/addUser',register)
     .then((res)=>{ console.log(res.data)
-    alert(res.data.message)
-    return Axios.post('http://localhost:8000/verify/verification',{
-        user_id:res.data.data._id,
-       })
-       .then((res)=>{
-        console.log(res.data) })
-        .catch((e)=>console.log(e))
-    })
+    alert(res.data.message)})
     
     .catch((e)=>{alert(e.message)})
     console.log(register)

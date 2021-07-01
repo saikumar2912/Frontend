@@ -6,7 +6,6 @@ import {  dislike, like} from '../Redux/Auth/Login/DisplayAction';
 import {useDispatch,useSelector} from 'react-redux';
 import SimpleModal from '../components/Pop'
 import Modal from 'react-bootstrap/Modal';
-import Timer from '../Quiz/Timer';
 import parse from "html-react-parser"
 
 
@@ -61,29 +60,25 @@ const [modalShow, setModalShow] = React.useState(false);
         <div class="app-container post-con">
             <div className="admin-cards">
                 <span></span>
-                <div>
+            
         {post.map(a=><>{a._id===e._id?<>
         
-            <div>
-        <div>
-        <div className="card-head">
+        
+                <div className="card-head">
        
             <img src={a.skill.photo} alt="react" class="left" />
             <div class="card-head-name">
             <h3>{a.skill.Title}</h3>
             <div class="name">
-                <h4>{a.user.user_name}</h4>
+                @{a.user.user_name}
+
             </div>
             </div>
         </div>
         
-        <div class="card-body">
-
-           
-
+        <div class="card-body flex-fill">
               {parse(e.content)}
-               
-                
+                          
         </div>
         <div className="card-foot">
             <div className="card-foot-in">
@@ -99,16 +94,14 @@ const [modalShow, setModalShow] = React.useState(false);
 
             </div>
         </div>
-      <Timer/>
             <Modalreports show={modalShow} onHide={()=>setModalShow(false)} />
 
-    </div>
-        </div>
+    
         </>:<></>} </>)}
         </div>
         </div>
         
-        </div>
+        
 
         
         </>

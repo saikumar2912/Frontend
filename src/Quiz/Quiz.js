@@ -1,12 +1,10 @@
 import { useState } from "react";
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { useContext } from "react";
 import { GameStateContext } from "./Context";
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import axios from 'axios'
-import { Final } from "../Redux/Auth/ADMIN/QuestionsAction";
 
 
 function Quiz() {
@@ -15,7 +13,6 @@ function Quiz() {
   const {score,setScore,setSeconds, seconds, gameState, setGameState,state,user_id} = useContext(
     GameStateContext
   );
-  const bit_id=state
 
   console.log(user_id)
   const [value, setValue] = useState();
@@ -25,12 +22,11 @@ console.log(state)
     // console.log(ques)
 
 
-    const not=ques.filter(e=>e.bit_id._id===state)
+    const not=ques.filter(e=>e.bit_id._id===state.bit_id)
 console.log(not)
     const Questions = not
 console.log(Questions)
 
-const dispatch=useDispatch()
 
 
 const handleChange = (event) => {

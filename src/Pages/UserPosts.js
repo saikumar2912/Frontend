@@ -5,13 +5,14 @@ import {useHistory} from 'react-router-dom'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import WarningIcon from '@material-ui/icons/Warning';
-
+import parse from "html-react-parser"
+import SimplePop from './Editpost';
 
 const UserPosts = () => {
     const history=useHistory();
     const state=history.location.state;
     const posts = useSelector(state => state.display.display)
-    console.log(posts.map((e)=>e.skill._id))
+    console.log(posts)
  const user = useSelector(state => state.user.user)
     return (
         <div class="app-container">
@@ -27,6 +28,7 @@ const UserPosts = () => {
                         <h5>{e.skill.Title}</h5>
                                                 
                     </div>
+                    <SimplePop id={e}/>
                </div>
                <div class="card-body">
             <div class="card-body-in"> 
@@ -34,7 +36,7 @@ const UserPosts = () => {
                
            </div>
 <div className="card-body-in">
-{e.content}
+{parse(e.content)}
  </div>
  <div class="card-foot">
      <ThumbUpAltIcon />{e.like.length}

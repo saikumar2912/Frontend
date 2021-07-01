@@ -1,24 +1,21 @@
 import Quiz from "./Quiz";
-import EndScreen from "./EndScreen";
-import React,{ useState,useEffect } from "react";
+import React,{ useState} from "react";
 import { GameStateContext } from "./Context";
-import {useSelector,useDispatch} from 'react-redux';
-import { Final } from "../Redux/Auth/ADMIN/QuestionsAction";
+import {useSelector} from 'react-redux';
+import TransitionsModal from './Popup';
+import {useHistory} from 'react-router-dom'
 
 // ['menu', 'playing', 'finished']
 function App(props) {
 
 const user_id = useSelector(state => state.user.user._id)
-
 console.log(user_id)
   const {location:{state}}=props;
   console.log(state)
-const bit_id=state
-
+const history=useHistory()
   const [gameState, setGameState] = useState('playing');
   const [userName, setUserName] = useState("");
   const [score, setScore] = useState(0);
-  const dispatch=useDispatch()
 // const[seconds,setSeconds]=useState(10)
 //   const Timer=()=> {
   
@@ -57,8 +54,8 @@ const bit_id=state
 
  </>} */}
  {gameState === "playing" && <Quiz />}
-{gameState === "finished" && <EndScreen/>} 
-
+ {gameState === "finished" && <TransitionsModal/> }
+ {gameState==='finsihed'&& history.push('/Quizs')}
       </GameStateContext.Provider>
     </div>
   );

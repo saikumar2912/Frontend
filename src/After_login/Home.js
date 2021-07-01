@@ -17,8 +17,8 @@ console.log(state)
 
 
   return (
-    <div class="app-container"> 
-          <div class="admin-home-cards">
+    <div class="app-contai"> 
+          <div class="admin-hoards">
       {skill.map(e=>e.followers.map(s=>(
         user._id ===s ? <Post id={e._id}/> :<div> </div>
 

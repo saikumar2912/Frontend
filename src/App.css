@@ -41,7 +41,7 @@ a{text-decoration: none;}
 .carousel{background-color: grey; position: relative; width: 100%; border-radius: .5rem;}
 .carousel-item img{height: 20rem; border-radius: 0.5rem;}
 .carousel-inner .carousel-caption{color:black;}
-.c-footer{min-height: 2.5rem; text-align: center; font-size: .75rem; padding: .685rem 0; flex-shrink: 0; position: relative; color:white;background:#2BAE66FF; border-top: 2px solid #2BAE66FF;}
+.c-footer{min-height: 2.5rem; text-align: center; font-size: .75rem; padding: .685rem 0; flex-shrink: 0; position: relative; color:white;background:rgb(0, 0, 0);}
 .c-card{display: flex; margin: 1rem 0rem; padding:1rem; border:2px solid #2bae66ff; color:#000; border-radius: .5rem;}
 .c-card .c-card-img img{width: 20rem; height: 15rem; border-radius: 2rem;box-shadow: 1px 2px 30px #fff;}
 .c-con{display: flex; flex-direction: column; margin: 1rem 1rem;   position: relative;}

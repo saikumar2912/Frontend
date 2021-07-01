@@ -1,130 +1,131 @@
-.profile__body{
-    display: flex;
-    margin-top: 10px;
-    
-    border-radius: 2px;
-    padding:10px;
-  }
-  
-  .profile__body__left{
-    flex-direction: column;
-    flex: 0 0 3%;
-    width:30%;
-    padding: 1rem;
-    color:#000;
-    transition: 15s;
-    box-shadow: 1px 1px 2px 2px #2BAE66FF;
-    /* margin-top: -10%; */
-    /* color: rgb(255, 157, 171); */
-  }
-  
-  
-  .avatar{
-    align-self: center;
-     display: flex;
-  
-     width: 10px;
-     size: 10vh 10hh ;
-    }
-    
-    .profileImage{
-        /* color:transparent; */
-        align-self: center;
-        margin-bottom: -40%;
-        
-    }
-  .profile__body__right{
-    display: flex;
-    
-  
-  }
-  .profile__body__left > h1{
-    align-self: center;
-    font-family: Serif;
-    color:#000;
-  padding-top:1rem;
-  margin-top: 1rem;
-  border-top:2px solid #2BAE66FF;
-  }
-  .margin-right{
-    margin-right: 0.2rem;
-  }
-  .MuiSvgIcon-root{
-    margin-right: 1rem;
-  }
-  .profile__body__up{
-  
-    flex-direction: column;
-    margin-top:80px;
-    padding: 15px;
-    /* margin-top: -10%; */
-    border-top: solid black;
-    /* color: rgb(255, 157, 171); */
-  }
-  .profile__body__achive{
-    flex-direction: column;
-    margin-top:0px;
-    padding: 15px;
-    /* margin-top: -10%; */
-    border-top: solid black;
-    border-width: 1px;
-  
-    /* color: rgb(255, 157, 171); */
-  }
-  .profile__body__logout{
-  
-    flex-direction: column;
-    padding: 15px;
-    /* margin-top: -10%; */
-    border-top: solid black;
-    border-width: 1px;
-  
-    /* color: rgb(255, 157, 171); */
-  }
-  .h4{
-    margin-top:10px;
-  }
-  .profile__post{
-    justify-content:center;
-    display:flex;
-  }
-  
-  .new{
-    margin-left:2rem;
-    width:calc(100% - 35%);
-  }
-  
-  .skill_name h5{ margin-bottom: 0; flex:1;}
-  
-  .checkcircle{
-  cursor:pointer;
-  }
-  .h1{
-    text-transform: capitalize;
-  }
-  .profile__card{
-    width: 300px;
-    padding:5px;
-  }
-  .save__icon{
-    margin-top:20px;
-    margin-left:100px
-  }
-  .create__icon{
-    margin-left:180px;
-    cursor:pointer;
-    
-  }
-  .create_icons{
-    margin-left: 180px;
-  }
+.profile__body {
+  display: flex;
+  margin-top: 10px;
 
-  .bronze{
-    color:brown
-  }
-  .silver{
-    color:silver
-  }
-  .gold{
-    color:gold
-  }
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.profile__body__left {
+  flex-direction: column;
+  flex: 0 0 33%;
+  width: 33%;
+  padding: 1rem;
+  color: #000;
+  border: 2px solid #000;
+  background-color:#fff;
+  /* margin-top: -10%; */
+  /* color: rgb(255, 157, 171); */
+}
+
+.avatar {
+  align-self: center;
+  display: flex;
+
+  width: 10px;
+  size: 10vh 10hh;
+}
+
+.profileImage {
+  /* color:transparent; */
+  align-self: center;
+  margin-bottom: -40%;
+}
+.profile__body__right {
+  display: flex;
+}
+.profile__body__left > h1 {
+  align-self: center;
+  font-family: Serif;
+  color: #000;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 2px solid #000;
+}
+.margin-right {
+  margin-right: 0.2rem;
+}
+.MuiSvgIcon-root {
+  margin-right: 1rem;
+}
+.profile__body__up {
+  flex-direction: column;
+  margin-top: 80px;
+  padding: 15px;
+  /* margin-top: -10%; */
+  border-top: solid black;
+  /* color: rgb(255, 157, 171); */
+}
+.profile__body__achive {
+  flex-direction: column;
+  margin-top: 0px;
+  padding: 15px;
+  /* margin-top: -10%; */
+  border-top: solid black;
+  border-width: 1px;
+
+  /* color: rgb(255, 157, 171); */
+}
+.profile__body__logout {
+  flex-direction: column;
+  padding: 15px;
+  /* margin-top: -10%; */
+  border-top: solid black;
+  border-width: 1px;
+
+  /* color: rgb(255, 157, 171); */
+}
+.h4 {
+  margin-top: 10px;
+}
+.profile__post {
+  justify-content: center;
+  display: flex;
+}
+
+.new {
+  margin-left: 2rem;
+  width: calc(100% - 35%);
+}
+
+.skill_name h5 {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.checkcircle {
+  cursor: pointer;
+}
+.h1 {
+  text-transform: capitalize;
+}
+.profile__card {
+  width: 300px;
+  padding: 5px;
+}
+.save__icon {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+.create__icon {
+  margin-left: 180px;
+  cursor: pointer;
+}
+.create_icons {
+  margin-left: 180px;
+}
+
+.bronze {
+  color: brown;
+}
+.silver {
+  color: silver;
+}
+.gold {
+  color: goldenrod;
+}
+
+
+.achivename{
+  text-transform: capitalize;
+}

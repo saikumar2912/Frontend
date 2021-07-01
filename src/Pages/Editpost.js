@@ -5,7 +5,7 @@ import {RiEdit2Fill} from 'react-icons/ri'
 import { TextField } from '@material-ui/core';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import {useDispatch} from "react-redux"
-import { UpdateSkill } from '../Redux/Auth/PostAction';
+import { UpdatePost } from '../Redux/Auth/Login/DisplayAction';
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -17,7 +17,8 @@ export default function SimplePop({id}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const [Title, setTitle] = useState(id.Title)
+  const [content, setContent] = useState(id.content)
+  console.log(id)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -30,7 +31,7 @@ export default function SimplePop({id}) {
   const ids = open ? 'simple-popover' : undefined;
 
   const dispatch=useDispatch()
-console.log(Title)
+console.log(content)
   return (
     <div>
       <RiEdit2Fill aria-describedby={ids} variant="contained" color="primary" onClick={handleClick}/>
@@ -48,8 +49,8 @@ console.log(Title)
           horizontal: 'center',
         }}
       >
-  <TextField id="outlined-basic" label="" variant="outlined" onChange={(e)=>setTitle(e.target.value)} value={Title} />
-<CheckBoxIcon onClick={()=>dispatch(UpdateSkill(id._id,Title))}        open={false}  />
+  <TextField id="outlined-basic" label="" variant="outlined" onChange={(e)=>setContent(e.target.value)} value={content} />
+<CheckBoxIcon onClick={()=>{dispatch(UpdatePost(id._id,content))}}         />
       </Popover>
     </div>
   );

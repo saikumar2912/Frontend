@@ -51,15 +51,23 @@ const Login = () => {
               <input type="password"  name='password' placeholder=" Enter Your Password"  className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
             </div>
             <div class="login-button">
-               <a class="login"
+               <a class="login mr-3"
                onClick={()=>{
                    dispatch(login(email_id,password));
                  }
                    
                    } > Login</a>
+                   <Link class="login" to='/loginotp'>Login with otp </Link>
 
-              <Link class="login" to='/loginotp'>Login with otp </Link>
-              <ToastContainer />
+              <ToastContainer position="bottom-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover />
 
 </div>
        </form>

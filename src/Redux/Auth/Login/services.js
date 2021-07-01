@@ -16,10 +16,22 @@ const login = (user, password) => {
         }
         if(response.data.password !== password)
         {
-      toast(response.data.message,{closeOnClick: true,color:'black'})
+      toast.success(response.data.message,{position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined})
       }
       else if (response.data.email_id !== user) {
-          toast(response.data.message)
+          toast.error(response.data.message,{position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,})
           
       }  
   
