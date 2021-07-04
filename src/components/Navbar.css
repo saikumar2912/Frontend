@@ -1,19 +1,10 @@
-.navbars {
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-}
-
 .navbar_logo {
   color: #fff;
   justify-self: start;
-  margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
+  font-weight: 500;
 }
 
 .fa-firstdraft {
@@ -22,14 +13,11 @@
 }
 
 .navbar-menu {
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-gap: 10px;
+  display: flex;
   list-style: none;
   text-align: center;
-  width: 70vw;
-  justify-content: end;
-  margin-right: 2rem;
+  justify-content: flex-end;
+  flex: 1 !important;
 }
 
 .navbar-item {
@@ -38,17 +26,52 @@
   height: 80px;
 }
 
-.navbar-links {
+.my-navbar-search {
+  position: relative;
+  overflow: hidden;
+  background: url("https://www.pngjoy.com/pngl/13/365123_search-icon-search-icon-svg-free-transparent-png.png")
+    no-repeat center center;
+  background-size: 1rem;
+}
+.navbar-menu .my-navbar-item {
+  min-width: 2.5rem;
+  padding: 0 0.25rem;
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-navbar-search .form-control {
+  padding-right: 1rem;
+  width: 2rem;
+  border-color: transparent;
+  transition: all 0.1s ease-in-out;
+  opacity: 0;
+  cursor: pointer;
+}
+.my-navbar-search img {
+  position: absolute;
+  right: -100%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 0.625rem;
+}
+/* .navbar-links {
   color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
-}
+} */
 
-.navbar-links:hover {
-  background-color: #1888ff;
+/* .navbar-links:hover {
+  background-color: #fff;
+  color:blue;
+  text-decoration: none;
   border-radius: 4px;
   transition: all 0.2s ease-out;
-}
+} */
 
 .fa-bars {
   color: #fff;
@@ -144,7 +167,81 @@
     display: none;
   }
 }
-.navpage{
-    background-image: url('https://img.17qq.com/images/hjibefodgfz.jpeg');
+.navpage {
+  background-image: url("https://img.17qq.com/images/hjibefodgfz.jpeg");
+}
+.cgprofile {
+  display: flex;
+  color: white;
+  margin: 5%;
+  margin-top: 25px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-bottom: 1px;
+}
+.navbar-addskill {
+  margin-top: 50px;
+  margin-left: 400px;
+}
+.navbar-skills {
+  margin-left: 600px;
+  margin-bottom: 15px;
+}
 
+.navbar-link {
+  color: black;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+.navbar-link:hover {
+  background: lightgrey;
+  transition: 250ms;
+}
+.navbar-link:hover {
+  background-color: lightgrey;
+  border-radius: 0;
+}
+
+.search__icon {
+  cursor: pointer;
+}
+.search__input {
+  border-radius: 15px;
+}
+.searchinput:focus {
+  width: 100%;
+}
+.like_icon {
+  color: green;
+  cursor:pointer;
+
+}
+.dislike_icon {
+  color: red;
+  cursor:pointer;
+}
+.dislike_icons{
+  cursor:pointer;
+ 
+}
+.like_icons{
+  cursor:pointer;
+
+}
+.alert__icon{
+  cursor:pointer;
+
+}
+.form-controls{
+  resize:none;
+}
+.editor {
+  margin-right: 10em;
+}
+
+.ck-editor__editable_inline {
+  min-height: 400px;
+}
+.Quiz__page{
+min-height:81.5vh
 }

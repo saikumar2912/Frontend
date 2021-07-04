@@ -1,49 +1,91 @@
 import React,{useState}from 'react'
-import auth from './Auth'
-import Axios from 'axios';
-import './login.css'
-const Login = (props) => {
-  const[email,setEmail]=useState('');
+import {useDispatch} from 'react-redux';
+// import './login.css'
+import { Link} from 'react-router-dom';
+import { login } from '../Redux/Auth/Login/Action';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer} from 'material-react-toastify';
+  import 'material-react-toastify/dist/ReactToastify.css';
+const Login = () => {
+  const dispatch=useDispatch();
+  const[email_id,setEmail_id]=useState('');
   const[password,setPassword]=useState('')
 
-  const submit=(a,f)=>{
-    const register={
-        email:a,
-        password:f
-    }
-    Axios.post('http://localhost:8000/users/login',register)
-    .then( (res)=>console.log(res.data))
-    .then(
-     alert("Registered successful")
-    ).catch((e)=>{alert(e.message)})
-    console.log(register)
-       }
-      const handlesubmit=(e)=>{
 
-        e.preventDefault()
-    }
+      
     return (
 
-        <div className='login-main'>
-        <div className="login-container" >
-         <form onSubmit={handlesubmit} className="login">
-             <h1 className=''> hi welcome</h1>
-             <div className="login-inputs" >
-            <label htmlFor="email" className="login-label" > Email</label>
-                <input type="email" name='email' placeholder=" Enter Your Email" className="login-input"  onChange={(e)=>setEmail(e.target.value)}/>
+        <div class="wrapper">
+          <nav className='navbars'>
+        <Link to='/home' className='navbar-links'>
+          BUILD OUT
+          <i class='fab fa-firstdraft' />
+        </Link>
+        <div class="topbar-items">
+          <ul className="navbar-menu">
+            <li className="navbar-item">
+            <Link to='/' className='navbar-links'>
+                    Login
+                </Link>
+            </li>
+            <li className="navbar-item">
+            <Link to='/Register' className='navbar-links'>
+                    Register
+                </Link>
+            </li>
+          </ul>
+        </div>
+        </nav>
+        <div class="app-container bit-container">
+         <div class="admin-cards login-page">
+           <span></span>
+           <div class="card-body">
+           <form class="login-form form-group">
+           <h3>Login</h3>
+            <div className="login-inputs" >
+              <label htmlFor="email" className="form-label" > Email</label>
+              <input type="email" name='email' placeholder=" Enter Your Email" className="form-control"  onChange={(e)=>setEmail_id(e.target.value)}/>
+            </div>
+            <div className="login-inputs">
+              <label htmlFor="password"  className="form-label" > Password</label>
+              <input type="password"  name='password' placeholder=" Enter Your Password"  className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
+            </div>
+            <div class="login-button">
+               <a class="login mr-3"
+               onClick={()=>{
+                   dispatch(login(email_id,password));
+                 }
+                   
+                   } > Login</a>
+                   <Link class="login" to='/loginotp'>Login with otp </Link>
 
-               </div>
-               <div className="login-inputs">
-            <label htmlFor="password"  className="login-label" > Password</label>
-                <input type="password"  name='password'placeholder=" Enter Your Password"  className="login-input" onChange={(e)=>setPassword(e.target.value)}/>
-               </div>
-               <button
-               className='button'
-        onClick={() => {submit(email,password); props.history.push('/navbar')}}
-      > Login</button>
+             
+
+</div>
        </form>
+           </div>
+         </div>
+         <ToastContainer position="bottom-right"
+         autoClose={2000}
+         hideProgressBar
+         
+         newestOnTop={false}
+         closeOnClick
+         rtl={false}
+         pauseOnFocusLoss
+         draggable
+         pauseOnHover/>
         </div>
+        
+        <footer class="c-footer">
+            <div class="c-inner">
+              Copyright BuildOut. All rights reserved. For internal use only.
+            </div>
+          </footer>
+          
+
         </div>
+        
     )
 }
 

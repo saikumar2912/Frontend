@@ -1,14 +1,13 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import {Dropdown} from 'react-bootstrap'
 
 const Contactus = () => {
     return (
-        <div>
-            <Navbar/>
-            <h1>contact</h1>
-
+        
+          <div>
+              
+          </div>
             
-        </div>
     )
 }
 
