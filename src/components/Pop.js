@@ -70,7 +70,7 @@ console.log(reports)
     <div style={modalStyle} className={classes.paper}>
           <TextField id="standard-basic" className={classes.textfield} label="Reason" onChange={(e)=>setReport(e.target.value)} />
           <div class="skill-button postdetail-btn">
-          <a onClick={()=>{dispatch(report(user,postid,reports))}}> add</a>
+          <a onClick={()=>{dispatch(report(user,postid,reports));setOpen(false)} }> add</a>
           </div>
     </div>
   );

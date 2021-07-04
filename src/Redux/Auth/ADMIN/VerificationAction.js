@@ -35,6 +35,23 @@ export const reqVerification = () => {
           
           }
         }
+        export const Reject = (_id) => {
+          return (dispatch) => {
+            const Token = () => localStorage.getItem("user");
+             return axios.delete(`http://localhost:8000/users/deleteuser/${_id}`,{},{
+                 headers:{authorization:`Bearer ${Token()}`}
+              })
+             .then(
+    (res)=> {
+      toast(res.data.message)
+
+                    console.log(res.data)
+                    dispatch(reqVerification())
+                 })
+        .catch((e)=>console.log(e))
+            
+            }
+          }
 export const StatusSuccess=a=>{
     return {
         type: "STATUS__SUCCESS",

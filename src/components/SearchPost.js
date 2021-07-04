@@ -110,9 +110,9 @@ export default function SearchAppBar() {
         <List className={classes.listbox} {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
             <ListItem button style={{color:"black"}} {...getOptionProps( option, index )}
-            onClick={()=>{
+            onChange={()=>{
                 console.log("option")
-                {location.pathname === "/navbar/Home"? history.push("/navbar/postsearch",option):history.push("/navbar/skillsearch",option)}
+                {location.pathname === "/Home"? history.push("/postsearch",option):history.push("/skillsearch",option)}
               }
              }
             >{option}</ListItem>

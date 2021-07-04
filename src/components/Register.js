@@ -78,7 +78,7 @@ const submit=(a,c,d,e)=>{
         <div class="topbar-items">
           <ul className="navbar-menu">
             <li className="navbar-item">
-            <Link to='/login' className='navbar-links'>
+            <Link to='/' className='navbar-links'>
                     Login
                 </Link>
             </li>

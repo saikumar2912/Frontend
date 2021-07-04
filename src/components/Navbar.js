@@ -22,10 +22,10 @@ import View_questions from '../Admin/view_questions';
 import Initial from '../Quiz/Initial'
 import BasicTable from '../Admin/Verification';
 import Quiz from '../After_login/Quiz';
-import App from '../After_login/Editor';
 import { logout } from '../Redux/Auth/Login/services';
 import TopQuizUsers from '../Admin/TopQuizUsers';
-
+import NewSearch from '../After_login/NewSearch';
+import SearchIcon from '@material-ui/icons/Search';
 
 function Navbar() {
 const user = useSelector(state => state.user.user)
@@ -38,6 +38,13 @@ const history=useHistory();
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const [skills, setskills] = useState('')
+    const Data = useSelector(state => state.post.post)
+    console.log(Data)
+const handlechange=(e)=>{
+setskills(e.target.value)
+}
+  console.log(skills)
 
   return (
     <div class="wrapper">
@@ -55,7 +62,8 @@ const history=useHistory();
         <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
           
         <li className='navbar-item'>
-        {location.pathname === "/addpost"?<></> :<SearchAppBar/>}</li>
+        {location.pathname === "/addpost"?<></> :<>< input className="search__input" placeholder="Search…" type="text" onChange={handlechange}/>   </>}
+</li>
         <li className='navbar-item'>
             <Link to="/home" className='navbar-links' onClick={closeMobileMenu}>
               Home
@@ -89,6 +97,7 @@ const history=useHistory();
           </ul>
           </>
           :
+          
           <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
             <li className='navbar-item'>
           <Link to="/new" className='navbar-links' onClick={closeMobileMenu} >
@@ -118,17 +127,20 @@ Users list
           <li className='navbar-item'>
             <a className='navbar-links' onClick={()=>{
           dispatch(logout())
-          history.push("/login")
+          history.push("/")
           }}> logout</a>
 </li>
         
         
 
       
-      </ul>}
+      </ul>
+      }
         </nav>
 
-        <Route path='/skills' component={Skills}/>
+        <Route path='/skills'  render={(props)=> (
+          <Skills {...props} search={skills} />
+        )} />
         <Route path='/addpost' component={AddPost}/>
         <Route path='/addcourse' component={AddCourse}/>
         <Route path="/view" component={Bit}/>
@@ -145,7 +157,9 @@ Users list
 <Route path="/topquizusers" component={TopQuizUsers}/>
 <Route path="/questions" component={View_questions}/>
 <Route path="/quiz" component={Initial}/>
-<Route path="/home"  component={Home}/>
+<Route path="/home"     render={(props)=> (
+          <Home {...props} search={skills} />
+        )}/>
 {user.role==='user'?
 <Redirect to='/home'/>:
 <Redirect to='/skills'/>

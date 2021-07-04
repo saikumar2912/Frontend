@@ -128,7 +128,7 @@ dispatch(Question())
         size="large"
         className={classes.button}
         startIcon={<SaveIcon />}
-        onClick={()=>{submit(question,option1,option2,option3,option4,answer,id)}}
+        onClick={()=>{submit(question,option1,option2,option3,option4,answer,id);setOpen(false)}}
         
       >
         Save

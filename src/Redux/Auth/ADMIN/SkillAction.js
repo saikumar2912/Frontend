@@ -61,6 +61,7 @@ export const Skill = () => {
 
   }
   
+ 
   export const skilldetails = (e) => {
     return (dispatch) => {
       console.log("new",e);

@@ -4,8 +4,8 @@ import {useDispatch} from 'react-redux';
 import { Link} from 'react-router-dom';
 import { login } from '../Redux/Auth/Login/Action';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ToastContainer } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer} from 'material-react-toastify';
+  import 'material-react-toastify/dist/ReactToastify.css';
 const Login = () => {
   const dispatch=useDispatch();
   const[email_id,setEmail_id]=useState('');
@@ -17,14 +17,14 @@ const Login = () => {
 
         <div class="wrapper">
           <nav className='navbars'>
-        <Link to='/navbar/home' className='navbar-links'>
+        <Link to='/home' className='navbar-links'>
           BUILD OUT
           <i class='fab fa-firstdraft' />
         </Link>
         <div class="topbar-items">
           <ul className="navbar-menu">
             <li className="navbar-item">
-            <Link to='/login' className='navbar-links'>
+            <Link to='/' className='navbar-links'>
                     Login
                 </Link>
             </li>
@@ -59,21 +59,22 @@ const Login = () => {
                    } > Login</a>
                    <Link class="login" to='/loginotp'>Login with otp </Link>
 
-              <ToastContainer position="bottom-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover />
+             
 
 </div>
        </form>
            </div>
          </div>
-
+         <ToastContainer position="bottom-right"
+         autoClose={2000}
+         hideProgressBar
+         
+         newestOnTop={false}
+         closeOnClick
+         rtl={false}
+         pauseOnFocusLoss
+         draggable
+         pauseOnHover/>
         </div>
         
         <footer class="c-footer">

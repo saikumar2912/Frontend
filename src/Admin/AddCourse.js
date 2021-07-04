@@ -2,10 +2,8 @@ import React,{useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import {Post} from '../Redux/Auth/PostAction';
 import {  toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
-import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer} from 'material-react-toastify';
+  import 'material-react-toastify/dist/ReactToastify.css';
 const AddCourse = () => {
 
 
@@ -14,11 +12,9 @@ const[Description,setDescription]=useState('')
 const [image, setImage] = useState(" ")
 const[url,setUrl]=useState('')
 const user = useSelector(state => state)
-console.log(user)
 const dispatch=useDispatch()
 
 const addPost =async(user_id,Title,Description)=>{
-console.log("addPost")
 
     //console.log(image)
     var formdata = new FormData();

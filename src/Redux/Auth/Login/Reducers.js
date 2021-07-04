@@ -15,6 +15,11 @@ const reducer=(state=initial,action)=>{
              ...state,
              achivement:action.payload
       }
+      case 'ACHIVEMENTS':
+        return{
+               ...state,
+               achivement:action.payload
+        }
       case 'UPDATE':
       return{
              ...state,

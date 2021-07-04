@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router,Switch,Route,Redirect} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Register from './components/Register';
-import New from './Pages/InitialPage';
 import Contactus from './Pages/Contactus';
 import {useSelector} from 'react-redux'
 import LoginOtp from './Pages/LoginOtp';
@@ -22,7 +21,7 @@ console.log(state)
 
       <Router>
         {!user ? <Switch>
-          <Route path='/login'exact component={Login}/>
+          <Route path='/'exact component={Login}/>
           <Route path='/Register'exact component={Register} />
          <Route path="/contactus" exact component={Contactus}/>
          <Route path='/loginotp'exact component={LoginOtp}/>

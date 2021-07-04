@@ -1,9 +1,7 @@
 import {useSelector,useDispatch} from 'react-redux';
 import { Avatar} from '@material-ui/core';
-import SimpleModal from './Pop';
 import { Link } from 'react-router-dom';
 import parse from "html-react-parser"
-import Quiz from '../After_login/Quiz'
 const Post = ({id}) => {
     
 const dispatch=useDispatch();
@@ -11,12 +9,13 @@ const dispatch=useDispatch();
     console.log(user)
     const Display = useSelector(state => state.display.display)
     console.log(Display)
-  
+  const disp=Display.filter(e=>e.skill._id===id)
+  console.log(disp)
     return (
       <div class="app-container">
 
 <div class="row">
-  {Display.map(e=>id === e.skill._id ?
+  {Display.map(e=>e.skill._id ===id ?
     <div className="col-12 d-flex col-xl-4 col-lg-4">
 
           <div className="admin-cards">

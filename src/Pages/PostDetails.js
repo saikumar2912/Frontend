@@ -33,7 +33,6 @@ const e=history.location.state
             <Modal.Body>
             {post.map(a=><>{a._id===e._id?<>
            <Reports reportid={a._id}/> 
-           <SimpleModal postid={a._id} count={a.reports.length} />
 
         </>:<></>}</>)}
             </Modal.Body>
@@ -47,14 +46,19 @@ const PostDetails = ({props}) => {
 const dispatch=useDispatch();
 const user = useSelector(state => state.user.user)
 const post = useSelector(state => state.display.display)
-const report = useSelector(state => state)
-console.log(report.display)
+const report = useSelector(state => state.display.Report)
+console.log(report)
+
+const reports=[];
+
 
     const history=useHistory()
     console.log(history.location.state)
 const e=history.location.state
 const [modalShow, setModalShow] = React.useState(false);
-
+const rep =report.filter(s=>s.post_id._id===e._id)
+rep.map(s=>reports.push(s.user_id._id))
+console.log(reports)
     return (
         <>
         <div class="app-container post-con">
@@ -77,7 +81,7 @@ const [modalShow, setModalShow] = React.useState(false);
         </div>
         
         <div class="card-body flex-fill">
-              {parse(e.content)}
+              {parse(a.content)}
                           
         </div>
         <div className="card-foot">
@@ -91,6 +95,8 @@ const [modalShow, setModalShow] = React.useState(false);
            Reports
        </button>
        <div className="warning">
+{reports.includes(user._id)?<></>:<> 
+    <SimpleModal postid={a._id} count={a.reports.length} /></>}
 
             </div>
         </div>

@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { useSelector,useDispatch } from 'react-redux';
-import { Verification} from '../Redux/Auth/ADMIN/VerificationAction'
+import { Reject, Verification} from '../Redux/Auth/ADMIN/VerificationAction'
 import { ToastContainer } from 'react-toastify';
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -80,7 +80,7 @@ export default function CustomizedTables() {
                 <button className=" btn btn-primary" onClick={() => dispatch(Verification(e.email_id,"Verified")) }> Accept</button>  
                 </StyledTableCell>
               <StyledTableCell align="center">   
-   <button className=" btn btn-secondary" onClick={()=>{dispatch(Verification(e.email_id,"Rejected"))}}>Reject</button>
+   <button className=" btn btn-secondary" onClick={()=>{dispatch(Reject(e._id))}}>Reject</button>
  <ToastContainer/>
  </StyledTableCell>
               

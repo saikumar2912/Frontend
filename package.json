@@ -21,6 +21,7 @@
     "classnames": "^2.3.1",
     "history": "^5.0.0",
     "html-react-parser": "^1.2.7",
+    "material-react-toastify": "^1.0.1",
     "primereact": "^6.3.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.6.0",

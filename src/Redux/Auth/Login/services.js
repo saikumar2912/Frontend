@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { fetchuser } from './Action';
-import {  toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import {  toast } from 'material-react-toastify';
+import 'material-react-toastify/dist/ReactToastify.css';
+
 
 const login = (user, password) => {
 
@@ -16,22 +17,17 @@ const login = (user, password) => {
         }
         if(response.data.password !== password)
         {
-      toast.success(response.data.message,{position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined})
+      toast.success(response.data.message,{
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        })
       }
       else if (response.data.email_id !== user) {
-          toast.error(response.data.message,{position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,})
+          toast.error(response.data.message)
           
       }  
   

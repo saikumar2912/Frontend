@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { Skill } from './ADMIN/SkillAction';
-import {  toast } from 'react-toastify';
+import {  toast } from 'material-react-toastify';
+import 'material-react-toastify/dist/ReactToastify.css';
+
 
 export const Post = (user_id,Title,Description,photo) => {
   console.log('AddPostReducer')

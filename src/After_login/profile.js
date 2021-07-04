@@ -36,7 +36,7 @@ const dispatch=useDispatch()
 
         <MenuItem onClick={()=>{
            dispatch(logout())
-          history.push("/login")
+          history.push("/")
           }}><div className="profile"> Logout</div></MenuItem>
       </Menu>
     </div>

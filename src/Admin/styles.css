@@ -21,7 +21,7 @@
 .admin-cards {
   display: flex;
   flex-direction: column;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   /* box-shadow: 10px 10px 10px rgb(0 0 0 / 20%); */
   background: #fff;
   color: #000;
@@ -29,6 +29,9 @@
   position: relative;
   border-radius:1rem;
   transition: 0.5s;
+    -webkit-line-clamp: 4;   
+    -webkit-box-orient: vertical;     
+    overflow: hidden; 
 }
 .admin-cards:hover{
   transform:translateY(-20px)
@@ -643,4 +646,7 @@ nav ul .navbar-links {
   color:white;
   font-size: 4rem;
   
+}
+.starcolor{
+  color:gold;
 }

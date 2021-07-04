@@ -5,22 +5,16 @@ import {bitdetails, DeleteBit, submit} from '../Redux/Auth/ADMIN/BitAction'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import SimplePopover from './EditBit';
 import Quiz from './Quiz';
-import {  toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 const Bit = (props) => {
 
   const {location:{state}}=props;
-  console.log(state)
   const dispatch=useDispatch()
 const Data = useSelector(data => data.bit.bit)
-console.log(Data)
 // const [bit,setBit]=useState([])
-const bit = useSelector(state => state)
-console.log(bit)
 const user = useSelector(state => state.user.user)
-  console.log(user)
 
 
 const[title,setTitle]=useState('')

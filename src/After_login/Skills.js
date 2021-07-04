@@ -68,24 +68,23 @@ const useStyles = makeStyles((theme) => ({
   },
  
 }));
-   export default function RecipeReviewCard() {
+   export default function RecipeReviewCard({search}) {
   const dispatch=useDispatch();
-
+console.log(search)
    const user = useSelector(state => state.user.user)
    console.log(user)
  const [skills, setskills] = useState('')
- const Data = useSelector(state => state.skill.skill)
+ const Data = useSelector(state => state.post.post)
  console.log(Data)
-
+ const posts =useSelector(state=>state)
+console.log(posts)
   const count=useSelector(state=>state.skill.skill.map(e=>e.followers))
   console.log(count)     
       
-       const filteredPost =
-       Data  &&
-      Data.filter((e) => e && e.Title.toLowerCase().replace(/\s/g, '').includes(skills.toLowerCase().replace(/\s/g, '')))
+       const filteredPost=Data  && Data.filter((e) => e && e.Title.toLowerCase().replace(/\s/g, '').includes(search.toLowerCase().replace(/\s/g, '')))
 
-  const classes = useStyles();
 const NoData=  filteredPost.filter((e)=>e.followers.includes(user._id)===false)
+
 console.log(NoData)
   return (
            
@@ -94,7 +93,6 @@ console.log(NoData)
      <div class="app-container">
 <div className="skill-search ">
 
-{user.role==="user"?<> </>:< input className="search__input form-control w-25" placeholder="Search…" type="text" onChange={e=>setskills(e.target.value)}/>}
   {user.role==="user"?<></>:<> <div class='d-flex'>
     <div class='allposts ml-3'>
     <Link to="/new"> All Posts</Link>
@@ -119,7 +117,7 @@ console.log(NoData)
                  <span></span>
                  <Link to={{pathname:'/topskillposts',state:e}} ></Link>
                  <div class="card-head">
-                   <Avatar alt={"title"} src={e.photo}  />
+                   <Avatar alt={"title"} src={e.photo} />
                    <div class="card-head-in">
                      {user.role==="user"?<> <h4>{e.Title}</h4></>:<><Link className="title" to={{pathname:'/topskillposts',state:e}} >{e.Title}</Link></>}
                    </div>
@@ -137,8 +135,7 @@ console.log(NoData)
                   
                    <div className="skill-button d-flex">
                  
-                   <Link to={{pathname:"/view",
-                   state:e._id}} onClick={()=>{}}>add bit</Link>
+                   <Link to={{pathname:"/view",state:e._id}} onClick={()=>{}}>add bit</Link>
                    </div>
                   
                    < DeleteSweepIcon  onClick={()=>{dispatch(Delete(e._id))}}/>

@@ -72,7 +72,6 @@ const[answer,setAnswer]=useState(id.answer)
   const handleClose = () => {
     setOpen(false);
   };
-console.log(user)
 const dispatch=useDispatch()
 
   const body = (

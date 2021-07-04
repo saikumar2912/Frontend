@@ -29,7 +29,8 @@ export const login=(user,password)=>{
             dispatch(Skill())
             dispatch(Displayreports())
             dispatch(Question())
-dispatch(Score())
+            dispatch(Score())
+            dispatch(Achivements())
           }
          
 
@@ -58,6 +59,20 @@ export const Achivement=(user_id)=>{
       })
   }
   
+}
+export const Achivements = () => {
+   
+  return (dispatch) => {
+    const Token = () => localStorage.getItem("user");
+    
+      
+    return  axios.post('http://localhost:8000/achivement/allachive',{},{headers:{authorization:`Bearer ${Token()}`}
+      }).then(
+          (res)=> {
+             console.log(res.data)
+             dispatch(achivements(res.data))
+          })
+  }
 }
 export const Update=(id,user_name,phoneNo,profile_picture,Education,Bio)=>{
   return(dispatch)=>{
@@ -91,6 +106,12 @@ const userlogout=()=>{
 const achivement=(a)=>{
   return{
     type:'ACHIVEMENT',
+    payload:a
+  }
+}
+const achivements=(a)=>{
+  return{
+    type:'ACHIVEMENTS',
     payload:a
   }
 }

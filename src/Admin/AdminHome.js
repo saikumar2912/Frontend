@@ -1,31 +1,29 @@
 import { Avatar} from '@material-ui/core'
 import React, { useEffect,useState } from 'react'
 import{useSelector} from 'react-redux'
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { Link } from 'react-router-dom';
 import './styles.css'
 import axios from 'axios';
 import parse from "html-react-parser"
 import { ToastContainer } from 'react-toastify';
-import {  toast } from 'react-toastify';
+import GradeIcon from '@material-ui/icons/Grade';
 
 
 const AdminHome = () => {
 
 const [posts, setPosts] = useState([])
 const users = useSelector(state => state.user.user)
-console.log(users)
 
-const user=useSelector(state=>state.display.display)
-console.log(user)
 const admin=useSelector(state=>state.user.user._id)
+const achivements=[];
 
 useEffect(() => {
     axios.post('http://localhost:8000/post/highposts')
     .then((res)=>setPosts(res.data))
     
 }, [])
-console.log(posts)
+const state = useSelector(state => state.user.achivement)
+state.map(e=>e.achivement.map(a=>achivements.push(a)))
 
     const achive=(user,post)=>{
         const submit={
@@ -58,7 +56,7 @@ console.log(posts)
                                     {users.role=== "user"?<>
                                     
                                      </>:<>
-                                     <StarBorderIcon   onClick={()=>{achive(e.user._id,e._id)}} />
+                                     <GradeIcon className={achivements.includes(e._id)?"starcolor":""}   onClick={()=>{achive(e.user._id,e._id)}} />
 < ToastContainer/>
                                     </>}
                                 </div>
