@@ -13,7 +13,6 @@ import {useHistory,useLocation} from 'react-router-dom';
 import Skillsearch from '../Pages/skillsearch';
 import AdminHome from '../Admin/AdminHome';
 import Achivements from '../Pages/Achivements'
-import SearchAppBar from './SearchPost';
 import Postsearch from '../Pages/PostSearch';
 import PostDetails from '../Pages/PostDetails';
 import TopSkillPosts from '../Pages/TopSkillPosts';
@@ -24,8 +23,6 @@ import BasicTable from '../Admin/Verification';
 import Quiz from '../After_login/Quiz';
 import { logout } from '../Redux/Auth/Login/services';
 import TopQuizUsers from '../Admin/TopQuizUsers';
-import NewSearch from '../After_login/NewSearch';
-import SearchIcon from '@material-ui/icons/Search';
 
 function Navbar() {
 const user = useSelector(state => state.user.user)
@@ -39,7 +36,7 @@ const history=useHistory();
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const [skills, setskills] = useState('')
-    const Data = useSelector(state => state.post.post)
+    const Data = useSelector(state => state.skill.skill)
     console.log(Data)
 const handlechange=(e)=>{
 setskills(e.target.value)
@@ -97,7 +94,9 @@ setskills(e.target.value)
           </ul>
           </>
           :
-          
+          <>
+          <input className="search__input" placeholder="Search…" type="text" onChange={handlechange}/>
+
           <ul className={click ? 'navbar-menu active' : 'navbar-menu'}>
             <li className='navbar-item'>
           <Link to="/new" className='navbar-links' onClick={closeMobileMenu} >
@@ -135,6 +134,7 @@ Users list
 
       
       </ul>
+      </>
       }
         </nav>
 

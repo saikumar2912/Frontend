@@ -69,7 +69,6 @@ const BitChange=(e)=>{
     }
     Axios.post("http://localhost:8000/post/addpost",posted,{headers:{authorization:`Bearer ${Token()}`}})
     .then((res)=>(console.log(res.data)))
-    .then(alert("posted succeffully"))
     .catch((e)=>{toast(e.message)})
     dispatch(Display())
 
@@ -114,14 +113,14 @@ const BitChange=(e)=>{
             
             </div>
             <div className="skill-card-foot home-skill-button">
-<a className="skill-button" onClick={()=>post(content)}>post</a>   
-<ToastContainer/>
+<a className="skill-button" onClick={()=>{post(content);setContent('')}}>post</a>   
 
 </div>
                     </div>     
             </div>
            
             
+            <ToastContainer/>
 
         </div>
     )

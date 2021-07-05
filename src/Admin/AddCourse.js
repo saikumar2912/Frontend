@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
-import {Post} from '../Redux/Auth/PostAction';
+import {Post} from '../Redux/Auth/ADMIN/SkillAction';
 import {  toast } from 'react-toastify';
 import { ToastContainer} from 'material-react-toastify';
   import 'material-react-toastify/dist/ReactToastify.css';
@@ -60,7 +60,7 @@ const addPost =async(user_id,Title,Description)=>{
         </div>
         
         <div class="skill-button">
-        <a onClick={()=>{addPost(user._id,Title,Description);setTitle('');setDescription('')}}> submit</a>
+        <a onClick={()=>{addPost(user._id,Title,Description);setTitle('');setDescription('');}}> submit</a>
         <ToastContainer/>
 
         </div>

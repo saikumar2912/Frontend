@@ -3,7 +3,6 @@ import{useSelector,useDispatch} from 'react-redux';
 import './profilepage.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom'
 import { userposts } from '../Redux/Auth/Login/DisplayAction';
 import {MdEmail} from 'react-icons/md'
@@ -17,7 +16,6 @@ import { Link} from 'react-router-dom';
 import axios from 'axios';
 import{BiMedal} from 'react-icons/bi';
 import TransitionsModal from './Achivemodal'
-import Transition from './postachivement';
 
 
 
@@ -135,11 +133,11 @@ userposts()
 
      <div class="d-flex">
 
-         <div class="admin-cards profile-follow p-3">
+         <div class="admin-cards profile-follow p-3 mt-3">
            
      <h3>Achievements</h3>
 
-<div class="d-flex p-3 ">
+<div class="d-flex p-3  ">
 
 {scores.map(e=>user._id.includes(e.user_id)?
 <div class="col-4">

@@ -22,8 +22,8 @@ console.log(filteredPost)
 
 
   return (
-    <div class="app-contai"> 
-          <div class="admin-hoards">
+    <div class="app-container"> 
+          <div class="row">
       {filteredPost.map(e=>e.followers.map(s=>(
         user._id ===s ? <Post id={e._id}/> :<div> </div>
 

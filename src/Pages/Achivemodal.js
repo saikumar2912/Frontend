@@ -80,7 +80,7 @@ const user = useSelector(state => state.user.user)
                 BUILDING A POSITIVE WORKPLACE CULTURE
             </h5>
               <div class="pt-3 mb-4 date">
-                Award Date: '27/06/2021'
+                
               </div>
               <div class="d-flex align-items-center justify-content-between">
                 <div>BuildOut</div>

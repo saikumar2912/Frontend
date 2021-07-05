@@ -53,7 +53,7 @@ margintop:"200px"
 
 export default function SimpleModal({id}) {
 const user = useSelector(state => state.user.user._id)
-
+console.log(id)
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);

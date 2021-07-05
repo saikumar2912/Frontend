@@ -5,7 +5,7 @@ import {RiEdit2Fill} from 'react-icons/ri'
 import { TextField } from '@material-ui/core';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import {useDispatch} from "react-redux"
-import { UpdateSkill } from '../Redux/Auth/PostAction';
+import { UpdateSkill } from '../Redux/Auth/ADMIN/SkillAction';
 
 const useStyles = makeStyles((theme) => ({
   typography: {

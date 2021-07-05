@@ -54,7 +54,7 @@ const[title,setTitle]=useState('')
                  <strong> {e.title} </strong>  
             
                  </div>
-                 <DeleteForeverIcon onClick={()=>{dispatch(DeleteBit(e.bit_id))}}/> 
+                 <DeleteForeverIcon className="bitdelete" onClick={()=>{dispatch(DeleteBit(e.bit_id))}}/> 
      <SimplePopover id={e.bit_id}/>
              </div>
       

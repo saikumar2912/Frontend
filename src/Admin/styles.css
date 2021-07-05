@@ -33,6 +33,13 @@
     -webkit-box-orient: vertical;     
     overflow: hidden; 
 }
+.bitedit{
+  cursor:pointer;
+}
+.bitdelete{
+  cursor:pointer;
+
+}
 .admin-cards:hover{
   transform:translateY(-20px)
 }
@@ -430,10 +437,11 @@ nav ul .navbar-links {
 }
 .profile-skills {
   position: relative;
-  display: flex;
+  /* display: flex; */
   flex: 1;
   align-items: center;
   flex-wrap: nowrap;
+  width:100%;
 }
 .profile-follow {
   min-height: 20rem;
