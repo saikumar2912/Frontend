@@ -1,22 +1,22 @@
-const initialstate={
-    post:[]
-}
+// const initialstate={
+//     post:[]
+// }
 
-const reducer = (state = initialstate, action) => {
-    switch (action.type) {
+// const reducer = (state = initialstate, action) => {
+//     switch (action.type) {
      
-      case "ADD_SKILL_SUCCESS":
-        return {
-         ...state,
-         post:action.payload
+//       case "ADD_SKILL_SUCCESS":
+//         return {
+//          ...state,
+//          post:action.payload
           
-        }
-      case "ADD_SKILL_FAILED":
-        return {
-            ...state
-        }
-      default: return state
-    }
-  }
+//         }
+//       case "ADD_SKILL_FAILED":
+//         return {
+//             ...state
+//         }
+//       default: return state
+//     }
+//   }
   
-  export default reducer
+//   export default reducer

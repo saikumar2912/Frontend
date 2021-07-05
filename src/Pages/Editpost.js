@@ -7,6 +7,7 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import {useDispatch} from "react-redux"
 import { UpdatePost } from '../Redux/Auth/Login/DisplayAction';
 
+
 const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(2),
@@ -18,7 +19,7 @@ export default function SimplePop({id}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [content, setContent] = useState(id.content)
-  console.log(id)
+  console.log(id.content)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };

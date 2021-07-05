@@ -1,18 +1,13 @@
-import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
-
 import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import {useSelector,useDispatch} from 'react-redux'
 import { follow } from '../Redux/Auth/ADMIN/SkillAction';
 import { Link } from 'react-router-dom';
-import { Delete } from '../Redux/Auth/PostAction';
+import { Delete } from '../Redux/Auth/ADMIN/SkillAction';
 import PeopleIcon from '@material-ui/icons/People';
 import SimplePop from '../Admin/Editskill';
 import DeleteSweepIcon from '@material-ui/icons/DeleteSweep';
-import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
-import SearchAppBar from '../components/SearchPost';
 
 
 
@@ -73,16 +68,14 @@ const useStyles = makeStyles((theme) => ({
 console.log(search)
    const user = useSelector(state => state.user.user)
    console.log(user)
- const [skills, setskills] = useState('')
- const Data = useSelector(state => state.post.post)
- console.log(Data)
- const posts =useSelector(state=>state)
-console.log(posts)
+   const state = useSelector(state => state)
+   console.log(state)
+ const Data = useSelector(state => state.skill.skill)
+console.log(Data)
   const count=useSelector(state=>state.skill.skill.map(e=>e.followers))
-  console.log(count)     
       
        const filteredPost=Data  && Data.filter((e) => e && e.Title.toLowerCase().replace(/\s/g, '').includes(search.toLowerCase().replace(/\s/g, '')))
-
+console.log(filteredPost)
 const NoData=  filteredPost.filter((e)=>e.followers.includes(user._id)===false)
 
 console.log(NoData)
@@ -123,10 +116,13 @@ console.log(NoData)
                    </div>
                    <PeopleIcon/>{e.followers.length}
                </div>
+<div class='card-body flex-fill'>
 
-               <div className="card-body">
+               <div className="card-body-in">
                  <strong> Description:</strong>
                  <p>{e.Description} </p>
+</div>
+
                  <div className="card-foot">
                    {user.role==="user"?<div className="skill-card-foot home-skill-button">
                    <Link class="skill-button" onClick={()=>dispatch(follow(e._id,user._id))}> follow</Link>
@@ -138,7 +134,7 @@ console.log(NoData)
                    <Link to={{pathname:"/view",state:e._id}} onClick={()=>{}}>add bit</Link>
                    </div>
                   
-                   < DeleteSweepIcon  onClick={()=>{dispatch(Delete(e._id))}}/>
+                   < DeleteSweepIcon className='deletebutton' onClick={()=>{dispatch(Delete(e._id))}}/>
                    <SimplePop id={e}/>
                  </div>
                 

@@ -26,8 +26,8 @@ const View_questions = (props) => {
             <div> <strong>Answer: </strong>{e.answer}</div>
             </div>
             <div class="d-flex">
-            <DeleteForeverIcon onClick={()=>{dispatch(DeleteQuiz(e._id))}}/> 
-            <SimpleModal id={e._id}/>
+            <DeleteForeverIcon className="deletebutton" onClick={()=>{dispatch(DeleteQuiz(e._id))}}/> 
+            <SimpleModal id={e}/>
             </div>
             </div>
             </>:<></>

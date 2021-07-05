@@ -66,7 +66,7 @@ console.log(id.bit_id)
             <div className="">
                 
                 <span></span>
-                <select className="" onChange={e=> Skillchange((e))} >
+                <select className="select" onChange={e=> Skillchange((e))} >
                         <option>Select the Skills </option>
                          {
                          Add.map((address, key) => <option key={key}value={key}>{address.title}</option>)
@@ -85,7 +85,7 @@ console.log(id.bit_id)
                {/* <Avatar alt={"title"} src={e.user_id.profile_picture}  /> */}
                <div className="card-head-in">
                  <div className="card-head-name">
-                    <h5>Title:{e.title} </h5> 
+                    <h5>Title:  {e.title} </h5> 
                    
                   </div>
                </div>

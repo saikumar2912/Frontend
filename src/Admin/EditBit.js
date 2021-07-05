@@ -27,7 +27,7 @@ export default function SimplePopover({id}) {
 console.log(title)
   return (
     <div>
-      <RiEdit2Fill aria-describedby={ids} variant="contained" color="primary" onClick={handleClick}/>
+      <RiEdit2Fill className="bitedit" aria-describedby={ids} variant="contained" color="primary" onClick={handleClick}/>
       <Popover
         id={ids}
         open={open}

@@ -46,14 +46,14 @@ const verify=(phoneNo,b)=>{
     return (
         <div class="wrapper">
           <nav className='navbars'>
-        <Link to='/navbar/home' className='navbar-links'>
+        <Link to='/' className='navbar-links'>
           BUILD OUT
           <i class='fab fa-firstdraft' />
         </Link>
         <div class="topbar-items">
           <ul className="navbar-menu">
             <li className="navbar-item">
-            <Link to='/login' className='navbar-links'>
+            <Link to='/' className='navbar-links'>
                     Login
                 </Link>
             </li>

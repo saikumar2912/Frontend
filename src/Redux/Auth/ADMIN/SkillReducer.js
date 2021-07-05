@@ -11,6 +11,17 @@ const reducer = (state = initialstate, action) => {
          skill:action.payload
           
         }
+        
+      case "ADD_SKILL_SUCCESS":
+        return {
+         ...state,
+         skill:action.payload
+          
+        }
+      case "ADD_SKILL_FAILED":
+        return {
+            ...state
+        }
       case "SKILL_FAILED":
         return {
             ...state

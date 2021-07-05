@@ -12,13 +12,12 @@ const dispatch=useDispatch();
   const disp=Display.filter(e=>e.skill._id===id)
   console.log(disp)
     return (
-      <div class="app-container">
 
-<div class="row">
+<>
   {Display.map(e=>e.skill._id ===id ?
     <div className="col-12 d-flex col-xl-4 col-lg-4">
 
-          <div className="admin-cards">
+          <div className="admin-cards mt-3">
             <span></span>
             <div className="card-head">
                <Avatar alt={"title"} src={e.skill.photo}  />
@@ -54,8 +53,7 @@ const dispatch=useDispatch();
         </div>
   :<></> )} 
   
-     </div>
-             </div> 
+     </>
     )
 }
 
